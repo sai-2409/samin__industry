@@ -234,6 +234,38 @@ p {
 }
 /* Coding styles for the header */
 
+/* Coding styles for the main page */
+
+.main__content{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-top: 30px;
+    margin-bottom: 20vh;
+}
+.mright__header{
+    color: var(--primary-color);
+    font-size: 50px;
+    font-weight: 800;
+    margin-top: 20vh;
+    margin-bottom: 42px;
+}
+.mright__statement{
+    color: var(--black);
+    font-size: 25px;
+    font-weight: 600;
+    max-width: 530px;
+    margin-bottom: 75px;
+}
+.mbutton1, .mbutton2{
+    width: 222px;
+    height: 47px;
+    margin-right: 5vh;
+    font-size: 20px;
+    font-weight: 700;
+}
+/* Coding styles for the main page */
+
 
 @media (max-width: 768px) {
     body {
