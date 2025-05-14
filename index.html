@@ -22,9 +22,15 @@
 
     <!-- Coding for the header of the website -->
 
+    <!-- I will put the main cart here for a moment -->
+    <div class="floating-cart">
+        <img src="images/icons/cart__icon.svg" alt="Корзина">
+    </div>
+    <!-- I will put the main cart here for a moment -->
+
     <header class="header">
         <div class="container common__container">
-            <div class="header__content">
+            <nav class="nav">
                 <div class="header__logos">
                     <img src="./images/logoWalnuts-welcome-page.svg" alt="SAMIN логотип" class="header__logo">
                     <div class="logo__name">
@@ -35,17 +41,17 @@
                 </div>
                 <div class="header__list">
                     <ul>
-                        <li class="header__list-item"><a href="#!">Главное</a></li>
-                        <li class="header__list-item"><a href="#!">Достоинства</a></li>
-                        <li class="header__list-item"><a href="#!">Меню</a></li>
-                        <li class="header__list-item"><a href="#!">Отзывы</a></li>
+                        <li class="header__list-item nav__btn1"><a href="#section__1">Главное</a></li>
+                        <li class="header__list-item nav__btn2"><a href="#section__2">Достоинства</a></li>
+                        <li class="header__list-item nav__btn3"><a href="#section__3">Меню</a></li>
+                        <li class="header__list-item nav__btn4"><a href="#section__4">Отзывы</a></li>
                     </ul>
                 </div>
                 <div class="header__order">
                     <img src="./images/icons/cart__icon.svg" alt="Cart" class="header__cart">
                     <button class="header__button common__button">Заказать</button>
                 </div>
-            </div>
+            </nav>
         </div>
     </header>
 
@@ -85,7 +91,7 @@
     <!-- Coding for the commitment section of the website -->
 
     <!-- Coding for the pros section -->
-    <section class="pros">
+    <section class="pros" id="section__2">
         <div class="pros__container common__container">
             <div class="pros-header">
                 <h2>Почему стоит выбрать <span class="brand">Samin</span></h2>
@@ -127,7 +133,7 @@
     <!-- Coding for the pros section -->
 
     <!-- Coding for the menu section -->
-     <section class="menu">
+     <section class="menu" id="section__3">
         <div class="menu__container common__container">
             <h1 class="menu__header">Заказать</h1>
             <div class="cardsM">
@@ -271,9 +277,24 @@
      </section>
     <!-- Coding for the menu section -->
 
+    <!-- Start building the smart calculator -->
+     <h1 class="calc__header">
+        Калькулятор
+    </h1>
+    <div class="calc">
+        <input class="input__full" type="text" name="" id="name" placeholder="ваше имя">
+        <input class="input__full" type="text" name="" id="phone" placeholder="вид продукта">
+        <input type="text" class="input__full input__half" name="" id="number" placeholder="ваш возраст">
+        <input type="text" class="input__full input__half" name="" id="weight" placeholder="ваш вес">
+        <div class="calc__button">
+            <button id="show__btn1">Посчитать</button>
+        </div>
+    </div>
+    <!-- Start building the smart calculator -->
+
     <!-- Coding for the reviews section of the website -->
     <!-- Отзывы с 3D эффектом -->
-    <section class="reviews-section">
+    <section class="reviews-section" id="section__4">
         <div class="common__container">
             <h2 class="reviews__title">Отзывы покупателей из других площадок</h2>
             <div class="card-slider">
