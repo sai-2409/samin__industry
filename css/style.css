@@ -32,6 +32,7 @@ body {
     --text-color: #000;
     --white: #fff;
     --black: #000;
+    --dark-bg: #2F2F2F;
     --gray: #ccc;
     --font-family: "Roboto", sans-serif;
 }
@@ -535,6 +536,55 @@ section.pros {
 }
 /* Coding styles for the reviews section */
 
+/* Coding styles for the footer of the website */
+.footer{
+    background-color: var(--dark-bg);
+    padding: 35px 0;
+}
+.footer__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 20px 0;
+}
+.footer__mini-header{
+    color: var(--white);
+    font-size: 20px;
+    margin-bottom: 2vh;
+}
+.footer__others ul{
+    margin-bottom: 1vh;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.footer__others ul li{
+    /* margin-right: 20px; */
+    margin-bottom: 15px;
+
+}
+.footer__others ul li a{
+    text-decoration: none;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+}
+.footer__others ul li a:hover{
+    opacity: .6;
+    transition: all 0.5s ease-in-out;
+}
+.last__footer{
+    background: var(--black);
+}
+.last__footer-content{
+    color: var(--white);
+    font-size: 15px;
+    letter-spacing: 0.45px;
+    text-align: center;
+    padding: 10px 0;
+    opacity: 0.8;
+}
+/* Coding styles for the footer of the website */
 
 
 @media (max-width: 768px) {
