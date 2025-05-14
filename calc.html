@@ -30,9 +30,22 @@
         <input type="text" class="input__full input__half" name="" id="number" placeholder="ваш возраст">
         <input type="text" class="input__full input__half" name="" id="weight" placeholder="ваш вес">
         <div class="calc__button">
-            <button>Посчитать</button>
+            <button id="show__btn1">Посчитать</button>
         </div>
     </div>
+    <div class="result-container" id="result">
+        <h3>Вот ваши результаты:</h3>
+        <p><strong>Саид</strong>, ваша рекомендуемая дневная норма потребления <strong>миндаля</strong> составляет: <span class="amount">35 грамм</span>.</p>
+        <p>Вот его КБЖУ на 100 г:</p>
+        <ul>
+            <li>Калории: <strong>579 ккал</strong></li>
+            <li>Белки: <strong>21 г</strong></li>
+            <li>Жиры: <strong>49 г</strong></li>
+            <li>Углеводы: <strong>22 г</strong></li>
+        </ul>
+    </div>
 
+    <!-- Connecting JS to the HTML -->
+    <script src="js/calc.js"></script>
 </body>
 </html>

@@ -102,3 +102,47 @@ p {
     color: var(--white); /* Change text color on hover */
     /* transform: scale(1.1); */
 }
+
+/* Calc result styles */
+
+.result-container {
+  margin-top: 30px;
+  background-color: #fbc34a;
+  border-radius: 25px;
+  padding: 25px;
+  font-family: 'Arial', sans-serif;
+  color: #5c2503;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.result-container h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #5c2503;
+}
+
+.result-container p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.result-container .amount {
+  font-weight: bold;
+  color: #000;
+}
+
+.result-container ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.result-container li {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
