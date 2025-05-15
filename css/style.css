@@ -761,7 +761,7 @@ section.pros {
   margin-bottom: 20px;
   display: flex;
 }
-.product__card img {
+.product__image {
   margin-right: 25px;
 }
 .product__header {
@@ -787,7 +787,7 @@ section.pros {
 /* Styling for the products section */
 .products {
   padding: 40px 0;
-  background-color: var(--secondary-color);
+  background-color: var(--main-orange);
 }
 
 .product__card {
@@ -842,8 +842,8 @@ section.pros {
 }
 
 .product__icon {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 }
 
 .product__cart {
@@ -856,13 +856,17 @@ section.pros {
 }
 
 .product__cart span {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   color: var(--white);
   cursor: pointer;
 }
+.product__cart span:hover {
+    color: var(--black);
+    transition: all 0.3s ease-in-out;
+}
 
 .product__cart-icon {
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
 }

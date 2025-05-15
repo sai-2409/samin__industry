@@ -1,15 +1,33 @@
-// Fixing the header to be sticky
-  const header = document.querySelector('.header');
-  const nav = document.querySelector('.nav');
-  const navHeight = nav.getBoundingClientRect().height;
-  
+// Setting variables for the first time 
+const header = document.querySelector('.header');
+const nav = document.querySelector('.nav');
+const navHeight = nav.getBoundingClientRect().height;
+const headerButton = document.querySelector('.header__button');
+const headerButton2 = document.querySelector('.mbutton1');
+const headerButtonCalc = document.querySelector('.mbutton2');
+const section3 = document.getElementById('section__3');
+const sectionCalc = document.getElementById('section__calc');
+
+
+// Scrolling to Menu section with headerButton 
+headerButton.addEventListener('click', function() {
+  section3.scrollIntoView({ behavior: 'smooth'});
+});
+// Scrolling to Menu from another common button
+headerButton2.addEventListener('click', function() {
+  section3.scrollIntoView({ behavior: 'smooth'});
+});
+// Scrolling  to Calculator section with headerButton
+headerButtonCalc.addEventListener('click', function() {
+  sectionCalc.scrollIntoView({behavior: 'smooth'});
+});
+// Fixing the header to be sticky  
   const stickyNav = function(entries) {
     const [entry] = entries;
 
     if (!entry.isIntersecting) nav.classList.add('sticky');
     else nav.classList.remove('sticky');
   };
-  console.log(navHeight);
 
   const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
