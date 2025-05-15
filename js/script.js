@@ -1,5 +1,7 @@
+// Coding JS code for the index.html
 // Setting variables for the first time 
 const header = document.querySelector('.header');
+const headerCart = document.querySelector('.header__cart');
 const nav = document.querySelector('.nav');
 const navHeight = nav.getBoundingClientRect().height;
 const headerButton = document.querySelector('.header__button');
@@ -8,6 +10,10 @@ const headerButtonCalc = document.querySelector('.mbutton2');
 const section3 = document.getElementById('section__3');
 const sectionCalc = document.getElementById('section__calc');
 
+// Going to the cart with headerCart
+headerCart.addEventListener('click', function() {
+  window.location.href = 'cartSamin.html';
+});
 
 // Scrolling to Menu section with headerButton 
 headerButton.addEventListener('click', function() {
@@ -22,20 +28,20 @@ headerButtonCalc.addEventListener('click', function() {
   sectionCalc.scrollIntoView({behavior: 'smooth'});
 });
 // Fixing the header to be sticky  
-  const stickyNav = function(entries) {
-    const [entry] = entries;
+  // const stickyNav = function(entries) {
+  //   const [entry] = entries;
 
-    if (!entry.isIntersecting) nav.classList.add('sticky');
-    else nav.classList.remove('sticky');
-  };
+  //   if (!entry.isIntersecting) nav.classList.add('sticky');
+  //   else nav.classList.remove('sticky');
+  // };
 
-  const headerObserver = new IntersectionObserver(stickyNav, {
-  root: null,
-  threshold: 0,
-  rootMargin: `-${navHeight}px`
-  });
+  // const headerObserver = new IntersectionObserver(stickyNav, {
+  // root: null,
+  // threshold: 0,
+  // rootMargin: `-${navHeight}px`
+  // });
 
-  headerObserver.observe(header);
+  // headerObserver.observe(header);
 
 // Fixing the header to be sticky
 
@@ -92,3 +98,15 @@ btnCart.forEach((btnItem) => {
   });
 });
 
+// Making tracker of the website interactive
+
+// Here is coding for the cartSamin.js
+// const minusBtn = document.querySelectorAll('.product__cart-min');
+// const plusBtn = document.querySelectorAll('.product__cart-plus');
+
+// minusBtn.forEach(btn => {
+//   btn.addEventListener('click', () => {
+//     let currentCount = parseInt(cartCounter.textContent);
+//     cartCounter.textContent = currentCount - 1;
+//   });
+// });

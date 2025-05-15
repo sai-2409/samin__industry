@@ -30,7 +30,7 @@
     <!-- I will put the main cart here for a moment -->
 
     <header class="header">
-        <div class="container common__container">
+        <div class="header__container">
             <nav class="nav">
                 <div class="header__logos">
                     <img src="./images/logoWalnuts-welcome-page.svg" alt="SAMIN логотип" class="header__logo">
@@ -296,23 +296,41 @@
     <!-- Coding for the reviews section of the website -->
     <!-- Отзывы с 3D эффектом -->
     <section class="reviews-section" id="section__4">
-        <div class="common__container">
+        <div class="review__container">
             <h2 class="reviews__title">Отзывы покупателей из других площадок</h2>
-            <div class="card-slider">
-            <div class="card-card left">
+            <div class="review-slider">
+            <div class="slide-track">
+                <div class="slide">
                 <p class="reviewer">Иван Иванов</p>
                 <div class="avatar"></div>
                 <p class="review-text">"Очень доволен качеством орехов. Буду заказывать снова!"</p>
-            </div>
-            <div class="card-card center">
+                </div>
+                <div class="slide">
                 <p class="reviewer">Екатерина Викторовна</p>
                 <div class="avatar"></div>
                 <p class="review-text">"Быстрая доставка, всё отлично упаковано. Спасибо SAMIN!"</p>
-            </div>
-            <div class="card-card right">
+                </div>
+                <div class="slide">
                 <p class="reviewer">Роман Петров</p>
                 <div class="avatar"></div>
                 <p class="review-text">"Лучший сервис на Wildberries! Натуральный вкус и качество."</p>
+                </div>
+                <!-- дублируем слайды для бесконечного цикла -->
+                <div class="slide">
+                <p class="reviewer">Иван Иванов</p>
+                <div class="avatar"></div>
+                <p class="review-text">"Очень доволен качеством орехов. Буду заказывать снова!"</p>
+                </div>
+                <div class="slide">
+                <p class="reviewer">Екатерина Викторовна</p>
+                <div class="avatar"></div>
+                <p class="review-text">"Быстрая доставка, всё отлично упаковано. Спасибо SAMIN!"</p>
+                </div>
+                <div class="slide">
+                <p class="reviewer">Роман Петров</p>
+                <div class="avatar"></div>
+                <p class="review-text">"Лучший сервис на Wildberries! Натуральный вкус и качество."</p>
+                </div>
             </div>
             </div>
         </div>
