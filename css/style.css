@@ -167,7 +167,11 @@ p {
   border-radius: 8px;
   font-size: 14px;
 }
-
+.welcome__buttons-all{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .button__welcome {
   background: var(--primary-color);
   color: var(--white);
@@ -853,8 +857,12 @@ section.pros {
   background-color: var(--main-orange);
   padding: 5px 10px;
   border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.product__cart:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 .product__cart span {
   font-size: 20px;
   font-weight: bold;
