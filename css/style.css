@@ -88,6 +88,17 @@ p {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
+.floating__cart-counter{
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: var(--primary-color);
+    color: var(--main-orange);
+    border-radius: 50%;
+    padding: 3px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
 /* Setting Up basic settings */
 .whole__page{
     display: flex;
@@ -205,21 +216,21 @@ p {
     margin: 0 auto;
 }
 .nav{
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 30px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* margin-top: 30px; */
+    /* display: flex;
+    justify-content: space-between;
+    /* align-items: center;  */
+    width: 1300px;
     height: 9rem;
-    width: 100%;
-    padding: 0 6rem;
     z-index: 100;
 }
 .nav.sticky {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.95);
+  /* width: 100%; */
 }
 .header__logos{
     display: flex;

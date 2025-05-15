@@ -25,6 +25,7 @@
     <!-- I will put the main cart here for a moment -->
     <div class="floating-cart">
         <img src="images/icons/cart__icon.svg" alt="Корзина">
+        <span class="floating__cart-counter">0</span>
     </div>
     <!-- I will put the main cart here for a moment -->
 
@@ -41,10 +42,10 @@
                 </div>
                 <div class="header__list">
                     <ul>
-                        <li class="header__list-item nav__btn1"><a href="#section__1">Главное</a></li>
-                        <li class="header__list-item nav__btn2"><a href="#section__2">Достоинства</a></li>
-                        <li class="header__list-item nav__btn3"><a href="#section__3">Меню</a></li>
-                        <li class="header__list-item nav__btn4"><a href="#section__4">Отзывы</a></li>
+                        <li class="header__list-item"><a href="#section__1" class="nav__link nav__btn1">Главное</a></li>
+                        <li class="header__list-item"><a href="#section__2" class="nav__link nav__btn2">Достоинства</a></li>
+                        <li class="header__list-item"><a href="#section__3" class="nav__link nav__btn3">Меню</a></li>
+                        <li class="header__list-item"><a href="#section__4" class="nav__link nav__btn4">Отзывы</a></li>
                     </ul>
                 </div>
                 <div class="header__order">
@@ -59,7 +60,7 @@
     
     <!-- Coding main section of the website  -->
 
-    <section class="main">
+    <section class="main" id="section__1">
         <div class="main__content">
             <div class="main__pic">
                 <img src="./images/mainPicture.jpg" alt="Nuts">
@@ -362,5 +363,6 @@
 
     <!-- Start building -->
 
+    <script src="js/script.js"></script>
 </body>
 </html>

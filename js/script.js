@@ -9,6 +9,7 @@
     if (!entry.isIntersecting) nav.classList.add('sticky');
     else nav.classList.remove('sticky');
   };
+  console.log(navHeight);
 
   const headerObserver = new IntersectionObserver(stickyNav, {
   root: null,
@@ -20,8 +21,25 @@
 
 // Fixing the header to be sticky
 
-// Scrolling to sections smoothly
-const btnScrollTo1 = document.querySelector('.nav__link--1');
+
+// Making menu fade animation 
+const HandleHover = function(e) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('.header__logo');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  };
+};
+
+nav.addEventListener('mouseover', HandleHover.bind(0.5));
+nav.addEventListener('mouseout', HandleHover.bind(1));
+// Making menu fade animation 
+
 
 
 
@@ -44,3 +62,15 @@ cards.forEach((card, index) => {
 });
 
 updateSlider();
+
+// Working with counter for the Cart
+const cartCounter = document.querySelector('.floating__cart-counter');
+const btnCart = document.querySelectorAll('.card__cart');
+
+btnCart.forEach((btnItem) => {
+  btnItem.addEventListener('click', () => {
+    let currentCount = parseInt(cartCounter.textContent);
+    cartCounter.textContent = currentCount + 1;
+  });
+});
+
