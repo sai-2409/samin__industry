@@ -63,7 +63,7 @@ cards.forEach((card, index) => {
 
 updateSlider();
 
-// Working with counter for the Cart
+// Working with counter for the Cart and this shit is working man for now ! 
 const cartCounter = document.querySelector('.floating__cart-counter');
 const btnCart = document.querySelectorAll('.card__cart');
 

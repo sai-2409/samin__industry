@@ -1,40 +1,40 @@
 /* Setting Up basic settings */
 html {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    width: 100%;
-    height: 100%;
-    /* overflow: hidden; Prevent scrolling */
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  /* overflow: hidden; Prevent scrolling */
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    margin: 0;
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    /* display: flex; */
-    height: 100vh;
-    /* overflow: hidden; Prevent scrolling */
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  /* display: flex; */
+  height: 100vh;
+  /* overflow: hidden; Prevent scrolling */
 }
 /* Setting up common colors */
 
 :root {
-    --primary-color: #8B3000;
-    --main-orange: #FFC338;
-    --secondary-color: #f0f0f0;
-    --text-color: #000;
-    --white: #fff;
-    --black: #000;
-    --dark-bg: #2F2F2F;
-    --gray: #ccc;
-    --font-family: "Roboto", sans-serif;
+  --primary-color: #8b3000;
+  --main-orange: #ffc338;
+  --secondary-color: #f0f0f0;
+  --text-color: #000;
+  --white: #fff;
+  --black: #000;
+  --dark-bg: #2f2f2f;
+  --gray: #ccc;
+  --font-family: "Roboto", sans-serif;
 }
 
 /* Setting up common colors */
@@ -46,21 +46,21 @@ h4,
 h5,
 h6,
 p {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
-.common__button{
-    background-color: var(--main-orange);
-    border: 1px solid var(--black);
-    border-radius: 5px;
-    padding: 12px 38px;
+.common__button {
+  background-color: var(--main-orange);
+  border: 1px solid var(--black);
+  border-radius: 5px;
+  padding: 12px 38px;
 }
-.common__button:hover{
-    background-color: var(--white);
-    color: var(--black);
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
+.common__button:hover {
+  background-color: var(--white);
+  color: var(--black);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 /* Here is the styles for the main cart */
 .floating-cart {
@@ -88,256 +88,257 @@ p {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
-.floating__cart-counter{
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: var(--primary-color);
-    color: var(--main-orange);
-    border-radius: 50%;
-    padding: 3px 6px;
-    font-size: 12px;
-    font-weight: bold;
+.floating__cart-counter {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: var(--primary-color);
+  color: var(--main-orange);
+  border-radius: 50%;
+  padding: 3px 6px;
+  font-size: 12px;
+  font-weight: bold;
 }
 /* Setting Up basic settings */
-.whole__page{
-    display: flex;
-    width: 100%;
-    height: 100vh;
+.whole__page {
+  display: flex;
+  width: 100%;
+  height: 100vh;
 }
 .left {
-    width: 50%;
-    background: var(--secondary-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px;
+  width: 50%;
+  background: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
 }
 
 .logo img {
-    width: 120px;
-    margin-bottom: 20px;
+  width: 120px;
+  margin-bottom: 20px;
 }
 
 .brand {
-    color: var(--primary-color);
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    letter-spacing: 4px;
+  color: var(--primary-color);
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  letter-spacing: 4px;
 }
 
 .tagline {
-    font-size: 18px;
-    font-weight: 600;
-    color: black;
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
 }
 
 .right {
-    width: 50%;
-    background: var(--primary-color);
-    color: var(--white);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px;
+  width: 50%;
+  background: var(--primary-color);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
 }
 
 .form-container {
-    background: var(--white);
-    color: var(--primary-color);
-    border-radius: 20px;
-    padding: 30px;
-    max-width: 100%;
-    margin-bottom: 30px;
+  background: var(--white);
+  color: var(--primary-color);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 100%;
+  margin-bottom: 30px;
 }
 
 .form-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .input__welcome {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid var(--gray);
-    border-radius: 8px;
-    font-size: 14px;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  font-size: 14px;
 }
 
 .button__welcome {
-    background: var(--primary-color);
-    color: var(--white);
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 200px;
-    margin-top: 10px;
-    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
-
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 200px;
+  margin-top: 10px;
+  transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
 }
 
 .button__welcome:hover {
-    background-color: var(--primary-color);
-    color: var(--white);
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .welcome {
-    max-width: 400px;
+  max-width: 400px;
 }
 
 .welcome h1 {
-    font-size: 28px;
-    margin-top: 25px;
-    margin-bottom: 20px;
+  font-size: 28px;
+  margin-top: 25px;
+  margin-bottom: 20px;
 }
-.welcome__line{
-    width: 100%;
-    height: 2px;
-    background-color: var(--white);
-    margin: 10px 0;
+.welcome__line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--white);
+  margin: 10px 0;
 }
 .welcome p {
-    line-height: 1.5;
-    font-size: 14px;
-    min-width: 100%;
+  line-height: 1.5;
+  font-size: 14px;
+  min-width: 100%;
 }
 
 /* Coding styles for the header */
-.common__container{
-    max-width: 1300px;
-    margin: 0 auto;
+.common__container {
+  max-width: 1300px;
+  margin: 0 auto;
 }
-.nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* margin-top: 30px; */
-    /* display: flex;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-top: 30px; */
+  /* display: flex;
     justify-content: space-between;
     /* align-items: center;  */
-    width: 1300px;
-    height: 9rem;
-    z-index: 100;
+  width: 1300px;
+  height: 7rem;
+  z-index: 100;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .nav.sticky {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.95);
   /* width: 100%; */
 }
-.header__logos{
-    display: flex;
-    align-items: center;
+.header__logos {
+  display: flex;
+  align-items: center;
 }
-.header__logos img{
-    width: 70px;
-    height: 70px;
-    margin-right: 8%;
+.header__logos img {
+  width: 70px;
+  height: 70px;
+  margin-right: 8%;
 }
-.header__samin{
-    color: var(--primary-color);
-    font-size: 30px;
-    margin-bottom: 5%;
+.header__samin {
+  color: var(--primary-color);
+  font-size: 30px;
+  margin-bottom: 5%;
 }
-.header__statement{
-    color: var(--text-color);
-    font-size: 8px;
+.header__statement {
+  color: var(--text-color);
+  font-size: 8px;
 }
-.header__list ul{
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.header__list ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.header__list-item{
-    margin-right: 20px;
+.header__list-item {
+  margin-right: 20px;
 }
-.header__list-item a{
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 14px;
-    font-weight: 500;
+.header__list-item a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 500;
 }
-.header__list-item a:hover{
-    text-decoration: underline;
+.header__list-item a:hover {
+  text-decoration: underline;
 }
-.header__order{
-    display: flex;
-    align-items: center;
+.header__order {
+  display: flex;
+  align-items: center;
 }
-.header__order img{
-    margin-right: 10px;
-    cursor: pointer;
+.header__order img {
+  margin-right: 10px;
+  cursor: pointer;
 }
-.header__button{
-    font-size: 15px;
+.header__button {
+  font-size: 15px;
 }
 /* Coding styles for the header */
 
 /* Coding styles for the main page */
 
-.main__content{
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    margin-top: 30px;
-    margin-bottom: 20vh;
+.main__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: 30px;
+  margin-bottom: 20vh;
 }
-.mright__header{
-    color: var(--primary-color);
-    font-size: 50px;
-    font-weight: 800;
-    margin-top: 20vh;
-    margin-bottom: 42px;
+.mright__header {
+  color: var(--primary-color);
+  font-size: 50px;
+  font-weight: 800;
+  margin-top: 20vh;
+  margin-bottom: 42px;
 }
-.mright__statement{
-    color: var(--black);
-    font-size: 25px;
-    font-weight: 600;
-    max-width: 530px;
-    margin-bottom: 75px;
+.mright__statement {
+  color: var(--black);
+  font-size: 25px;
+  font-weight: 600;
+  max-width: 530px;
+  margin-bottom: 75px;
 }
-.mbutton1, .mbutton2{
-    width: 222px;
-    height: 47px;
-    margin-right: 5vh;
-    font-size: 20px;
-    font-weight: 700;
+.mbutton1,
+.mbutton2 {
+  width: 222px;
+  height: 47px;
+  margin-right: 5vh;
+  font-size: 20px;
+  font-weight: 700;
 }
 /* Coding styles for the main page */
 
 /* Coding styles for the commitment section */
-.commitment{
-    height: 480px;
-    background-color: var(--main-orange);
-    border-radius: 240px 0;
+.commitment {
+  height: 480px;
+  background-color: var(--main-orange);
+  border-radius: 240px 0;
 }
-.commitment__content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    flex-wrap: wrap;
-
+.commitment__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  flex-wrap: wrap;
 }
-.commitment__header{
-    color: var(--text-color);
-    font-size: 50px;
-    font-weight: 400;
-    max-width: 430px;
+.commitment__header {
+  color: var(--text-color);
+  font-size: 50px;
+  font-weight: 400;
+  max-width: 430px;
 }
-.commitment__text{
-    color: var(--text-color);
-    font-size: 18px;
-    font-weight: 400;
-    max-width: 520px;
+.commitment__text {
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 520px;
 }
 /* Coding styles for the commitment section */
 
@@ -345,7 +346,7 @@ p {
 section.pros {
   padding: 60px 20px;
   background-color: #ffffff;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   text-align: center;
 }
 
@@ -399,105 +400,105 @@ section.pros {
 /* Coding styles for the pros section */
 
 /* Coding styles for the menu section */
-.menu{
-    background-color: var(--main-orange);
+.menu {
+  background-color: var(--main-orange);
 }
-.menu__header{
-    color: var(--white);
-    font-size: 65px;
-    font-weight: 800;
-    letter-spacing: 1.95px;
-    text-align: center;
-    padding: 5vh 0;
+.menu__header {
+  color: var(--white);
+  font-size: 65px;
+  font-weight: 800;
+  letter-spacing: 1.95px;
+  text-align: center;
+  padding: 5vh 0;
 }
-.cardsM{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+.cardsM {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.cardM{
-    background-color: var(--white);
-    border-radius: 10px;
-    padding: 25px;
-    max-width: 275px;
-    margin-bottom: 5vh;
+.cardM {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 25px;
+  max-width: 275px;
+  margin-bottom: 5vh;
 }
-.cardM__price{
-    color: var(--text-color);
-    font-size: 25px;
-    font-weight: 700;
-    letter-spacing: 0.75px;
-    margin: 10px 0;
+.cardM__price {
+  color: var(--text-color);
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.75px;
+  margin: 10px 0;
 }
-.cardM__name{
-    color: var(--text-color);
-    font-size: 30px;
-    font-weight: 500;
-    letter-spacing: 0.6px;
-    margin-bottom: 20px;
+.cardM__name {
+  color: var(--text-color);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  margin-bottom: 20px;
 }
 
 /* Fancy button which ll kill the perfomance  */
-.card__cart{
-    background-color: var(--white);
-    border: 1px solid var(--main-orange);
-    padding: 5px;
-    position: relative;
-    /* width: 7.2em; */
-    width: 100%;
-    height: 2em;
-    transition: 0.5s;
-    font-size: 20px;
-    border-radius: 0.4em;
+.card__cart {
+  background-color: var(--white);
+  border: 1px solid var(--main-orange);
+  padding: 5px;
+  position: relative;
+  /* width: 7.2em; */
+  width: 100%;
+  height: 2em;
+  transition: 0.5s;
+  font-size: 20px;
+  border-radius: 0.4em;
 }
-.card__cart p{
-    position: absolute;
-    top: 0.4em;
-    left: 30%;
-    margin: 0;
-    padding: 0;
-    transition: .5s;
-    color: var(--main-orange);
+.card__cart p {
+  position: absolute;
+  top: 0.4em;
+  left: 30%;
+  margin: 0;
+  padding: 0;
+  transition: 0.5s;
+  color: var(--main-orange);
 }
-.card__cart img{
-    position: absolute;
-    top: 0.45em;
-    right: 0.5em;
-    margin: 0;
-    padding: 0;
-    opacity: 0;
-    transition: 0.5s;
-    height: 1em;
-    fill: var(--white);
+.card__cart img {
+  position: absolute;
+  top: 0.45em;
+  right: 0.5em;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  transition: 0.5s;
+  height: 1em;
+  fill: var(--white);
 }
-.card__cart:hover p{
-    left: 0.3em;
-    color: var(--white);
+.card__cart:hover p {
+  left: 0.3em;
+  color: var(--white);
 }
-.card__cart:hover img{
-    opacity: 1;
+.card__cart:hover img {
+  opacity: 1;
 }
-.card__cart:hover{
-    cursor: pointer;
-    background-color: var(--main-orange);
+.card__cart:hover {
+  cursor: pointer;
+  background-color: var(--main-orange);
 }
 /* Fancy button which ll kill the perfomance  */
-.loading{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 20px;
-    border-radius: 8px;
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 8px;
 }
-.loading__span{
-    width: 12px;
-    height: 12px;
-    background: #fff;
-    border-radius: 50%;
-    display: inline-block;
-    animation: blink 1.4s infinite ease-in-out both;
+.loading__span {
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  animation: blink 1.4s infinite ease-in-out both;
 }
 .loading__span:nth-child(2) {
   animation-delay: 0.2s;
@@ -508,7 +509,9 @@ section.pros {
 }
 
 @keyframes blink {
-  0%, 80%, 100% {
+  0%,
+  80%,
+  100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -520,56 +523,56 @@ section.pros {
 /* Coding styles for the menu section */
 
 /* Writing styles for the calc section */
-.calc__header{
-    font-size: 50px;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-align: center;
-    margin: 10vh 0 5vh 0;
+.common__header {
+  font-size: 50px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  margin: 10vh 0 5vh 0;
 }
-.calc{
-    margin: 0 auto;
-    width: 500px;
-    height: 700px;
-    background-color: var(--main-orange);
-    border-radius: 30px;
-    padding: 50px;
-    margin-bottom: 10vh;
+.calc {
+  margin: 0 auto;
+  width: 500px;
+  height: 700px;
+  background-color: var(--main-orange);
+  border-radius: 30px;
+  padding: 50px;
+  margin-bottom: 10vh;
 }
-.input__full{
-    width: 100%;
-    height: 60px;
-    border-radius: 10px;
-    border: none;
-    padding: 0 20px;
-    font-size: 15px;
-    color: var(--gray);
-    margin-bottom: 25px;
-    background-color: var(--white);
+.input__full {
+  width: 100%;
+  height: 60px;
+  border-radius: 10px;
+  border: none;
+  padding: 0 20px;
+  font-size: 15px;
+  color: var(--gray);
+  margin-bottom: 25px;
+  background-color: var(--white);
 }
-.calc__button button{
-    margin-top: 50px;
-    width: 70%;
-    height: 60px;
-    border-radius: 10px;
-    border: none;
-    padding: 0 20px;
-    font-size: 15px;
-    color: var(--primary-color);
-    margin-bottom: 25px;
-    background-color: var(--white);
-    border: 1px solid var(--primary-color);
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    font-size: 20px;
-    left: 50%;
-    transform: translateX(20%);
+.calc__button button {
+  margin-top: 50px;
+  width: 70%;
+  height: 60px;
+  border-radius: 10px;
+  border: none;
+  padding: 0 20px;
+  font-size: 15px;
+  color: var(--primary-color);
+  margin-bottom: 25px;
+  background-color: var(--white);
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 20px;
+  left: 50%;
+  transform: translateX(20%);
 }
 
 .calc__button button:hover {
-    background-color: var(--primary-color); /* Change background color on hover */
-    color: var(--white); /* Change text color on hover */
-    /* transform: scale(1.1); */
+  background-color: var(--primary-color); /* Change background color on hover */
+  color: var(--white); /* Change text color on hover */
+  /* transform: scale(1.1); */
 }
 
 /* Calc result styles */
@@ -584,7 +587,7 @@ section.pros {
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: none;
 }
 
@@ -647,7 +650,7 @@ section.pros {
   padding: 20px;
   text-align: center;
   transition: transform 0.6s ease, opacity 0.6s ease;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
   opacity: 0.5;
   transform: scale(0.9);
@@ -680,67 +683,186 @@ section.pros {
 /* Coding styles for the reviews section */
 
 /* Coding styles for the footer of the website */
-.footer{
-    background-color: var(--dark-bg);
-    padding: 35px 0;
+.footer {
+  background-color: var(--dark-bg);
+  padding: 35px 0;
 }
-.footer__container{
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    padding: 20px 0;
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 20px 0;
 }
-.footer__mini-header{
-    color: var(--white);
-    font-size: 20px;
-    margin-bottom: 2vh;
+.footer__mini-header {
+  color: var(--white);
+  font-size: 20px;
+  margin-bottom: 2vh;
 }
-.footer__others ul{
-    margin-bottom: 1vh;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.footer__others ul {
+  margin-bottom: 1vh;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.footer__others ul li{
-    /* margin-right: 20px; */
-    margin-bottom: 15px;
-
+.footer__others ul li {
+  /* margin-right: 20px; */
+  margin-bottom: 15px;
 }
-.footer__others ul li a{
-    text-decoration: none;
-    color: var(--white);
-    font-size: 14px;
-    font-weight: 500;
+.footer__others ul li a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
 }
-.footer__others ul li a:hover{
-    opacity: .6;
-    transition: all 0.5s ease-in-out;
+.footer__others ul li a:hover {
+  opacity: 0.6;
+  transition: all 0.5s ease-in-out;
 }
-.last__footer{
-    background: var(--black);
+.last__footer {
+  background: var(--black);
 }
-.last__footer-content{
-    color: var(--white);
-    font-size: 15px;
-    letter-spacing: 0.45px;
-    text-align: center;
-    padding: 10px 0;
-    opacity: 0.8;
+.last__footer-content {
+  color: var(--white);
+  font-size: 15px;
+  letter-spacing: 0.45px;
+  text-align: center;
+  padding: 10px 0;
+  opacity: 0.8;
 }
 /* Coding styles for the footer of the website */
 
-
 @media (max-width: 768px) {
-    body {
-        flex-direction: column;
-    }
+  body {
+    flex-direction: column;
+  }
 
-    .left, .right {
-        width: 100%;
-        height: 50vh;
-    }
+  .left,
+  .right {
+    width: 100%;
+    height: 50vh;
+  }
 
-    .form-container {
-        width: 100%;
-    }
+  .form-container {
+    width: 100%;
+  }
+}
+
+/* Writing styles for the Cart page */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 30px;
+}
+.product__card {
+  background: var(--main-orange);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+}
+.product__card img {
+  margin-right: 25px;
+}
+.product__header {
+  color: var(--white);
+  font-size: 23px;
+  font-weight: 600;
+  letter-spacing: 0.69px;
+  margin-bottom: 10%;
+}
+.product__flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.product__cart {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 10px;
+}
+/* Writing styles for the Cart page */
+
+/* Styling for the products section */
+.products {
+  padding: 40px 0;
+  background-color: var(--secondary-color);
+}
+
+.product__card {
+  display: flex;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product__card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.product__image {
+  width: 120px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+.product__info {
+  flex: 1;
+}
+
+.product__header {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.product__flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product__add-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product__shipping {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.product__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.product__cart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--main-orange);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.product__cart span {
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.product__cart-icon {
+  width: 20px;
+  height: 20px;
 }
