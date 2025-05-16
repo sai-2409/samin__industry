@@ -28,22 +28,46 @@ headerButtonCalc.addEventListener('click', function() {
   sectionCalc.scrollIntoView({behavior: 'smooth'});
 });
 // Fixing the header to be sticky  
-  // const stickyNav = function(entries) {
-  //   const [entry] = entries;
+  const stickyNav = function(entries) {
+    const [entry] = entries;
 
-  //   if (!entry.isIntersecting) nav.classList.add('sticky');
-  //   else nav.classList.remove('sticky');
-  // };
+    if (!entry.isIntersecting) nav.classList.add('sticky');
+    else nav.classList.remove('sticky');
+  };
 
-  // const headerObserver = new IntersectionObserver(stickyNav, {
-  // root: null,
-  // threshold: 0,
-  // rootMargin: `-${navHeight}px`
-  // });
+  const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0.2,
+  rootMargin: `-${navHeight}px`
+  });
 
-  // headerObserver.observe(header);
-
+  headerObserver.observe(header);
 // Fixing the header to be sticky
+
+// Making slider for the menu section 
+const slider = document.querySelector('.cardM__slider')
+const images = slider.querySelectorAll('.cardM__slider-img');
+let current = 0;
+let timer;
+
+function showImage(index) {
+  images.forEach((img, i) => img.classList.toggle('active', i === index));
+};
+function startSlider() {
+  timer = setInterval(() => {
+    current = (current + 1) % images.length;
+    showImage(current);
+  }, 400);
+}
+function stopSlider() {
+  clearInterval(timer); 
+};
+slider.addEventListener('mouseenter', startSlider);
+slider.addEventListener('mouseleave', stopSlider);
+
+// Making slider for the menu section 
+
+
 
 
 // Making menu fade animation 

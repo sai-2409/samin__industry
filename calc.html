@@ -1,51 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card Slider</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; }
 
-    <!-- Google fonts and icons-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="images/logo__walnuts-print-version.svg" type="image/x-icon">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/calc__style.css">
-    <!-- Title icon for the website -->
-    <title>Samin</title>
-
+    .card {
+      width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .slider {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    .slider img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s;
+    }
+    .slider img.active {
+      opacity: 1;
+    }
+    .card-content {
+      padding: 15px;
+    }
+    .price {
+      font-size: 24px;
+      color: green;
+    }
+    .title {
+      font-weight: bold;
+    }
+    .stars {
+      color: #ffaa00;
+    }
+    .availability {
+      color: #007aff;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    
-    <!-- Start building -->
-
-    <h1 class="common__header">
-        Калькулятор
-    </h1>
-`
-    <div class="calc">
-        <input class="input__full" type="text" name="" id="name" placeholder="ваше имя">
-        <input class="input__full" type="text" name="" id="phone" placeholder="вид продукта">
-        <input type="text" class="input__full input__half" name="" id="number" placeholder="ваш возраст">
-        <input type="text" class="input__full input__half" name="" id="weight" placeholder="ваш вес">
-        <div class="calc__button">
-            <button id="show__btn1">Посчитать</button>
-        </div>
+  <div class="card">
+    <div class="slider" id="slider">
+      <img src="img1.jpg" class="active" alt="Image 1">
+      <img src="img2.jpg" alt="Image 2">
+      <img src="img3.jpg" alt="Image 3">
     </div>
-    <div class="result-container" id="result">
-        <h3>Вот ваши результаты:</h3>
-        <p><strong>Саид</strong>, ваша рекомендуемая дневная норма потребления <strong>миндаля</strong> составляет: <span class="amount">35 грамм</span>.</p>
-        <p>Вот его КБЖУ на 100 г:</p>
-        <ul>
-            <li>Калории: <strong>579 ккал</strong></li>
-            <li>Белки: <strong>21 г</strong></li>
-            <li>Жиры: <strong>49 г</strong></li>
-            <li>Углеводы: <strong>22 г</strong></li>
-        </ul>
+    <div class="card-content">
+      <div class="price">603 ₽</div>
+      <div class="title">Миндаль сушёный Walnuts крупный 500 грамм, свежий</div>
+      <div class="stars">★ 4.7 (1819 оценок)</div>
+      <div class="availability">● Завтра, по клику · ПВЗ</div>
     </div>
+  </div>
 
-    <!-- Connecting JS to the HTML -->
-    <script src="js/calc.js"></script>
+  <script>
+    const slider = document.getElementById('slider');
+    const images = slider.querySelectorAll('img');
+    let current = 0;
+    let timer;
+
+    function showImage(index) {
+      images.forEach((img, i) => img.classList.toggle('active', i === index));
+    }
+
+    function startSlider() {
+      timer = setInterval(() => {
+        current = (current + 1) % images.length;
+        showImage(current);
+      }, 2000);
+    }
+
+    function stopSlider() {
+      clearInterval(timer);
+    }
+
+    slider.addEventListener('mouseenter', startSlider);
+    slider.addEventListener('mouseleave', stopSlider);
+  </script>
 </body>
 </html>
