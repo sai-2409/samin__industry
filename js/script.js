@@ -27,21 +27,40 @@ headerButton2.addEventListener('click', function() {
 headerButtonCalc.addEventListener('click', function() {
   sectionCalc.scrollIntoView({behavior: 'smooth'});
 });
+
 // Fixing the header to be sticky  
-  const stickyNav = function(entries) {
-    const [entry] = entries;
+const stickyObserver = new IntersectionObserver(
+  ([entry]) => {
+    if (!entry.isIntersecting) {
+      nav.classList.add('sticky');
+    } else {
+      nav.classList.remove('sticky');
+    }
+  },
+  {
+    root: null,
+    threshold: 0,
+    rootMargin: '-1px' // чтобы сработало сразу как ушло
+  }
+);
 
-    if (!entry.isIntersecting) nav.classList.add('sticky');
-    else nav.classList.remove('sticky');
-  };
+stickyObserver.observe(header);
 
-  const headerObserver = new IntersectionObserver(stickyNav, {
-  root: null,
-  threshold: 0.2,
-  rootMargin: `-${navHeight}px`
-  });
+  // const stickyNav = function(entries) {
+  //   const [entry] = entries;
 
-  headerObserver.observe(header);
+  //   if (!entry.isIntersecting) nav.classList.add('sticky');
+  //   else nav.classList.remove('sticky');
+  // };
+
+  // const headerObserver = new IntersectionObserver(stickyNav, {
+  // root: null,
+  // threshold: 0,
+  // rootMargin: `-${navHeight}px`
+  // });
+
+  // headerObserver.observe(header);
+  // nav.classList.remove('sticky');
 // Fixing the header to be sticky
 
 // Making slider for the menu section 
@@ -134,3 +153,26 @@ btnCart.forEach((btnItem) => {
 //     cartCounter.textContent = currentCount - 1;
 //   });
 // });
+
+
+
+// Reveal sections 
+const allSections = document.querySelectorAll('.section')
+
+const revealSection = function(entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove('section__hidden');
+  observer.unobserve(entry.target);
+};
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0,
+
+});
+allSections.forEach(function(section) {
+  sectionObserver.observe(section);
+  section.classList.add('section__hidden');
+});
