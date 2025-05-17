@@ -940,10 +940,11 @@ section.pros {
     width: 150px;
     height: 150px;
     border-radius: 20px;
+    margin-right: 20px;
 }
 .wall__title{
     font-size: 17px;
-    max-width: 500px;
+    max-width: 440px;
     margin-bottom: 15px;
     font-weight: 500;
 }
@@ -959,17 +960,45 @@ section.pros {
     background-color: var(--gray);
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 50px;
-    padding: 10px;
+    /* padding: 5px; */
     border-radius: 10px;
     width: 100px;
     height: 35px;
 }
+.quantity:hover{
+    transform: scale(1.05);
+    transition: .3s;
+}
 .quantity__minus, .quantity__plus{
     border: none;
-    font-size: 20px;
-    background-color: var(--gray);
+    font-size: 23px;
+    background: none;
     cursor: pointer;
+}
+.quantity__minus{
+    padding-left: 10px;
+}
+.quantity__plus{
+    padding-right: 10px;
+}
+.quantity__minus:hover, .quantity__plus:hover{
+    color: var(--ligherGray);
+    transition: .2s;
+}
+.remove__item{
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: var(--gray);
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.remove__item:hover{
+    background-color: #333;
+    border-radius: 50%;
+    transition: .3s;
 }
 /* Coding styles for the tracker of the cart */
 
