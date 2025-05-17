@@ -28,6 +28,7 @@ body {
 
 :root {
   --primary-color: #8b3000;
+  --redPrimary: #FF1100;
   --main-orange: #ffc338;
   --star-orange: #ffaa00;
   --blue-main: #007aff;
@@ -62,6 +63,11 @@ p {
   opacity: 0;
   transform: translateY(8rem);
   transition: all 0.5s ease-in-out;
+}
+.hide__card{
+  opacity: 0;
+  /* transform: scale(0.9);
+  transition: all 0.3s ease; */
 }
 .common__button {
   background-color: var(--main-orange);
@@ -866,13 +872,19 @@ section.pros {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+}
+.cardCart__container{
+    display: flex;
+    justify-content: space-between;
 }
 .wall{
     background-color: var(--ligherGray);
     border-radius: 25px;
     padding: 15px;
+    width: 100%;
     max-width: 850px;
+    margin-right: 30px;
 }
 .wall__brand{
     display: flex;
@@ -894,7 +906,7 @@ section.pros {
     display: flex;
     justify-content: space-between;
     align-items: start;
-    margin: 20px 0;
+    margin: 30px 0;
 }
 .samin-checkbox {
   display: inline-flex;
@@ -992,7 +1004,7 @@ section.pros {
     border: none;
     font-size: 30px;
     color: var(--gray);
-    padding: 5px 10px;
+    padding: 5px 15px;
     cursor: pointer;
 }
 .remove__item:hover{
@@ -1000,6 +1012,73 @@ section.pros {
     border-radius: 50%;
     transition: .3s;
 }
-/* Coding styles for the tracker of the cart */
 
-/* Coding styles for the tracker of the cart */
+/* coding for the order of the website */
+.order{
+    border-radius: 25px;
+    background-color: var(--ligherGray);
+    padding: 25px;
+    width: 30%;
+    height: 50%;
+}
+.order__input{
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: var(--gray);
+    color: var(--ligherGray);
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+}
+.order__input:focus, .order__input:active{
+  border-color: var(--dark-bg);
+  box-shadow: 0 0 5px var(--dark-bg);
+  background-color: var(--white);
+  color: var(--dark-bg);
+}
+.order__items{
+    display: flex;
+    font-weight: 600;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.order__common-text{
+    font-weight: 400;
+    font-size: 14px;
+    margin: 8px 0;
+}
+.order__discount{
+    display: flex;
+    justify-content: space-between;
+}
+.order__discount-amount{
+    color: var(--redPrimary);
+    margin-top: 8px;
+}
+.order__delivery{
+    display: flex;
+    justify-content: space-between;
+}
+.order__summary{
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0 10px 0;
+}
+.order__summary-text{
+    font-size: 25px;
+    font-weight: 500;
+}
+.order__summary-amount{
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--green);
+}
+.order__button{
+    width: 100%;
+    font-size: 20px;
+}
+/* coding for the order of the website */

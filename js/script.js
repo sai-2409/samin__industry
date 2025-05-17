@@ -3,7 +3,7 @@
 const header = document.querySelector('.header');
 const headerCart = document.querySelector('.header__cart');
 const nav = document.querySelector('.nav');
-const navHeight = nav.getBoundingClientRect().height;
+// const navHeight = nav.getBoundingClientRect().height;
 const headerButton = document.querySelector('.header__button');
 const headerButton2 = document.querySelector('.mbutton1');
 const headerButtonCalc = document.querySelector('.mbutton2');
@@ -64,25 +64,25 @@ stickyObserver.observe(header);
 // Fixing the header to be sticky
 
 // Making slider for the menu section 
-const slider = document.querySelector('.cardM__slider')
-const images = slider.querySelectorAll('.cardM__slider-img');
-let current = 0;
-let timer;
+// const slider = document.querySelector('.cardM__slider')
+// const images = slider.querySelectorAll('.cardM__slider-img');
+// let current = 0;
+// let timer;
 
-function showImage(index) {
-  images.forEach((img, i) => img.classList.toggle('active', i === index));
-};
-function startSlider() {
-  timer = setInterval(() => {
-    current = (current + 1) % images.length;
-    showImage(current);
-  }, 400);
-}
-function stopSlider() {
-  clearInterval(timer); 
-};
-slider.addEventListener('mouseenter', startSlider);
-slider.addEventListener('mouseleave', stopSlider);
+// function showImage(index) {
+//   images.forEach((img, i) => img.classList.toggle('active', i === index));
+// };
+// function startSlider() {
+//   timer = setInterval(() => {
+//     current = (current + 1) % images.length;
+//     showImage(current);
+//   }, 400);
+// }
+// function stopSlider() {
+//   clearInterval(timer); 
+// };
+// slider.addEventListener('mouseenter', startSlider);
+// slider.addEventListener('mouseleave', stopSlider);
 
 // Making slider for the menu section 
 
@@ -176,3 +176,14 @@ allSections.forEach(function(section) {
   sectionObserver.observe(section);
   section.classList.add('section__hidden');
 });
+
+
+// Tryna config delete button for the cartSamin page
+const deleteButton = document.querySelectorAll('.remove__item');
+
+deleteButton.forEach(button => {
+  button.addEventListener('click', function() {
+    console.log('did I click ?')
+  });
+});
+
