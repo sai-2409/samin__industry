@@ -799,10 +799,20 @@ section.pros {
     .avatar{
       width: 70px;
       height: 70px;
-      background-color: #ccc;
+      background-color: var(--main-orange);
       border-radius: 50%;
       margin: 10px auto;
       border: none;
+    }
+    .review__stars{
+        color: var(--star-orange);
+        margin-bottom: 1rem;
+        cursor: pointer;
+        font-size: 25px;
+    }
+    .review__stars:hover{
+        transform: scale(1.2);
+        transition: .4s ease-in-out;
     }
     .avatar__text{
       padding-top: 30%;
