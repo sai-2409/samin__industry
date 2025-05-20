@@ -178,22 +178,52 @@
             <div class="checkout__blocks">
                 <div class="checkout__block">
                     <h3 class="checkout__block-title">Способ доставки</h3>
-                    <p class="checkout__block-link">Выбрать адрес доставки</p>
+                    <p class="checkout__block-link checkout__block-link-address">Выбрать адрес доставки</p>
                 </div>
 
                 <div class="checkout__row">
                     <div class="checkout__block">
-                    <h3 class="checkout__block-title">Способ оплаты</h3>
-                    <p class="checkout__block-link">Войти или зарегистрироваться, <span>чтобы выбрать способ оплаты</span></p>
+                        <h3 class="checkout__block-title">Способ оплаты</h3>
+                        <p class="checkout__block-link" id="show__card-info">Выберите способ оплаты</p>
                     </div>
-
                     <div class="checkout__block">
-                    <h3 class="checkout__block-title">Мои данные</h3>
-                    <p class="checkout__block-link">Войти или зарегистрироваться, <span>чтобы оформить заказ</span></p>
+                        <h3 class="checkout__block-title">Мои данные</h3>
+                        <p class="checkout__block-link">Войти или зарегистрироваться, <span>чтобы оформить заказ</span></p>
                     </div>
                 </div>
             </div>
+            
         </div>
+        <div class="card-form-container section__hidden" id="cardFormSection">
+            <h4 class="card-form-title">Кредитная или дебетовая карта</h4>
+
+            <form class="card-form" id="cardForm">
+                <label>
+                <span>Полное имя и фамилия держателя карты</span>
+                <input type="text" name="cardHolder" placeholder="Введите полное имя" required />
+                </label>
+
+                <label>
+                <span>Номер карты</span>
+                <input type="text" name="cardNumber" placeholder="0000 0000 0000 0000" required />
+                </label>
+
+                <div class="card-form__row">
+                <label>
+                    <span>Дата окончания</span>
+                    <input type="text" name="expDate" placeholder="MM/YY" required />
+                </label>
+
+                <label>
+                    <span>CVV код</span>
+                    <input type="text" name="cvv" placeholder="CVV" required />
+                </label>
+                </div>
+
+                <button type="submit" class="checkout__submit-button common__button" style="margin-top: 15px;">Сохранить карту</button>
+            </form>
+        </div>
+
      </section>
     <!-- Coding choosing address for the cart page -->
 
