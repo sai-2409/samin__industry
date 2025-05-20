@@ -4,6 +4,8 @@ html {
   scroll-behavior: smooth;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
   /* overflow: hidden; Prevent scrolling */
 }
 
@@ -17,6 +19,7 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   /* display: flex; */
@@ -245,20 +248,21 @@ p {
 }
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   /* position: fixed; */
   width: 100%;
   height: 7rem;
-  z-index: 100;
+  /* z-index: 100; */
 }
+/* Bro, this is crazy, I was fixing this fucking small problem for fucking 3 days 😭 and finally I did it */
 .sticky {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.95);
   z-index: 999;
-  width: 80%; 
+  width: 100%;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  /* width: 100%; */
+  top: 0;
 }
 .header__logos {
   display: flex;
@@ -301,9 +305,15 @@ p {
   display: flex;
   align-items: center;
 }
-.header__order img {
+.header__cart {
   margin-right: 10px;
+  padding: 3px;
   cursor: pointer;
+}
+.header__cart:hover{
+    background-color: var(--ligherGray);
+    border-radius: 50%;
+    transition: .3s ease-in-out;
 }
 .header__button {
   font-size: 17px;
@@ -311,7 +321,9 @@ p {
 /* Coding styles for the header */
 
 /* Coding styles for the main page */
-
+.main{
+    margin-top: 5%;
+}
 .main__content {
   display: flex;
   justify-content: space-between;
@@ -765,7 +777,7 @@ section.pros {
     .slide-track {
       display: flex;
       width: calc(300px * 6);
-      animation: scroll 30s linear infinite;
+      animation: scroll 20s linear infinite;
     }
 
     .slide {
@@ -777,18 +789,25 @@ section.pros {
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       flex-shrink: 0;
       transition: transform 0.3s;
+      margin: 15px;
     }
 
     .slide:hover {
       transform: scale(1.05);
     }
 
-    .avatar {
-      width: 60px;
-      height: 60px;
+    .avatar{
+      width: 70px;
+      height: 70px;
       background-color: #ccc;
       border-radius: 50%;
-      margin: 10px 0;
+      margin: 10px auto;
+      border: none;
+    }
+    .avatar__text{
+      padding-top: 30%;
+      font-weight: 600;
+      font-size: 25px;
     }
 
     .reviewer {
@@ -800,6 +819,40 @@ section.pros {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
+
+.reviewsAll__header {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reviewsAll__header span {
+  color: var(--main-orange);
+  font-style: italic;
+  text-transform: uppercase;
+}
+.reviewsAll__icons{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+}
+.reviewsAll__icons img{
+    width: 150px;
+    height: 100%;
+}
+.reviewsAll__icons img:hover{
+    opacity: 0.5;
+    transition: .3s ease-in;
+}
 /* Coding styles for the reviews section */
 
 /* Coding styles for the footer of the website */
