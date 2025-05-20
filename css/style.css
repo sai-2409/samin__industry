@@ -777,7 +777,7 @@ section.pros {
     .slide-track {
       display: flex;
       width: calc(300px * 6);
-      animation: scroll 20s linear infinite;
+      animation: scroll 25s linear infinite;
     }
 
     .slide {
