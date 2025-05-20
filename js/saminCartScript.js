@@ -9,3 +9,25 @@ deleteButton.forEach(button => {
 });
 // card.classList.add('hide__card');
 // setTimeout(() => card.remove(), 300);
+
+
+// Writing JS for the checkout address section 
+const addressForm = document.getElementById('addressForm');
+const addressResult = document.getElementById('addressResult');
+
+addressForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const formData = new FormData(addressForm);
+  const data = {};
+
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  addressResult.textContent = `Адрес сохранён: ${data.name} ${data.surname}, ${data.street}, ${data.city}, ${data.zipcode}, ${data.country}`;
+  addressForm.reset();
+});
+
+
+// I don't know what am I doing 
