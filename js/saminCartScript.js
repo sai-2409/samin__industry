@@ -2,7 +2,15 @@
 const deleteButton = document.querySelectorAll('.remove__item');
 const showCardBtn = document.getElementById('show__card-info');
 const cardInformation = document.querySelector('.card-form-container')
+const addressFillForm = document.querySelector('.checkout__block-link-address');
+const addressForm = document.querySelector('.common__container-address-form')
 
+// Writing function for the toggling forms 
+const toggleForm = (formName, infoForm) => {
+  formName.addEventListener('click', function() {
+    infoForm.classList.toggle('section__hidden');
+  });
+};
 
 deleteButton.forEach(button => {
   button.addEventListener('click', function() {
@@ -10,14 +18,11 @@ deleteButton.forEach(button => {
     if (card) card.remove();
   });
 });
-// Showing card informaion in saminCart
-showCardBtn.addEventListener('click', function() {
-  cardInformation.classList.toggle('section__hidden');
-});
 
-if (!showCardBtn) {
-  
-}
+// Showing card informaion in saminCart
+toggleForm(showCardBtn, cardInformation);
+// Showing address fillout form
+toggleForm(addressFillForm, addressForm);
 
 
 // card.classList.add('hide__card');

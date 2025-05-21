@@ -1166,7 +1166,7 @@ section.pros {
 .checkout__blocks {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  /* gap: 30px; */
   margin-top: 40px;
 }
 
@@ -1197,6 +1197,7 @@ section.pros {
   color: var(--star-orange);
   font-weight: 500;
   cursor: pointer;
+  text-decoration: none;
 }
 .checkout__block-link span{
     color: var(--text-color);
@@ -1205,6 +1206,158 @@ section.pros {
     opacity: .6;
     transition: .3s ease-in-out;
 }
+/* Styles for the address form */
+.common__container-address-form {
+  max-width: 600px;
+  /* margin: 0 auto; */
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  margin: 30px 0 30px 0;
+}
+
+.address-form__title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.address-form__group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.address-form__label {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.address-form__input {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  transition: border-color 0.3s ease;
+}
+
+.address-form__input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.address-form__buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.address-form__button-save,
+.address-form__button-select {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.address-form__button-save {
+  background-color: #000;
+  color: #fff;
+}
+
+.address-form__button-save:hover {
+  background-color: #333;
+}
+
+.address-form__button-select {
+  background-color: #f1f1f1;
+  color: #000;
+}
+
+.address-form__button-select:hover {
+  background-color: #ddd;
+}
+.common__container-saved-address {
+  max-width: 600px;
+  margin: 40px auto;
+  font-family: sans-serif;
+}
+
+.saved-address__card {
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.saved-address__number {
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  background-color: #000;
+  color: #fff;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.saved-address__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.saved-address__name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.saved-address__text {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.saved-address__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.saved-address__button {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  color: #000;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.saved-address__button:hover {
+  background-color: #f8f8f8;
+  border-color: #888;
+}
+/* Styles for the address form */
 /* Styles for the cards information */
 .card-form-container {
   background-color: white;
@@ -1261,5 +1414,12 @@ section.pros {
 .card-form__row label {
   flex: 1;
 }
+.checkout__submit-div{
+  display: flex;
+  justify-content: space-between;
+}
+.checkout__submit-button {
+  width: 45%;
 
+}
 /* Coding for the checkout address section */
