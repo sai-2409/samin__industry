@@ -228,74 +228,85 @@
             </p>
           </div>
           <section class="common__container-address-form section__hidden">
-            <h2 class="address-form__title">Адрес доставки</h2>
+            <div class="address__form-container">
+              <div class="address__form-form-container">
+                <h2 class="address-form__title">Адрес доставки</h2>
+                <form class="address-form__form">
+                  <div class="address-form__group">
+                    <label for="fullName" class="address-form__label"
+                      >Полное имя</label
+                    >
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      class="address-form__input"
+                      placeholder="Павел Дуров"
+                      required
+                    />
+                  </div>
 
-            <form class="address-form__form">
-              <div class="address-form__group">
-                <label for="fullName" class="address-form__label"
-                  >Полное имя</label
-                >
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  class="address-form__input"
-                  placeholder="Павел Дуров"
-                  required
-                />
-              </div>
+                  <div class="address-form__group">
+                    <label for="streetAddress" class="address-form__label"
+                      >Улица</label
+                    >
+                    <input
+                      type="text"
+                      id="streetAddress"
+                      name="streetAddress"
+                      class="address-form__input"
+                      placeholder="Беверли Хилз"
+                      required
+                    />
+                  </div>
 
-              <div class="address-form__group">
-                <label for="streetAddress" class="address-form__label"
-                  >Улица</label
-                >
-                <input
-                  type="text"
-                  id="streetAddress"
-                  name="streetAddress"
-                  class="address-form__input"
-                  placeholder="Беверли Хилз"
-                  required
-                />
-              </div>
+                  <div class="address-form__group">
+                    <label for="city" class="address-form__label">Город</label>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      class="address-form__input"
+                      placeholder="Мухосранск"
+                      required
+                    />
+                  </div>
 
-              <div class="address-form__group">
-                <label for="city" class="address-form__label">Город</label>
-                <input
-                  type="text"
-                  id="city"
-                  name="city"
-                  class="address-form__input"
-                  placeholder="Мухосранск"
-                  required
-                />
-              </div>
+                  <div class="address-form__group">
+                    <label for="zipCode" class="address-form__label"
+                      >ZIP Code</label
+                    >
+                    <input
+                      type="text"
+                      id="zipCode"
+                      name="zipCode"
+                      class="address-form__input"
+                      placeholder="90001"
+                      required
+                    />
+                  </div>
 
-              <div class="address-form__group">
-                <label for="zipCode" class="address-form__label"
-                  >ZIP Code</label
-                >
-                <input
-                  type="text"
-                  id="zipCode"
-                  name="zipCode"
-                  class="address-form__input"
-                  placeholder="90001"
-                  required
-                />
+                  <div class="address-form__buttons">
+                    <button
+                      type="submit"
+                      class="address-form__button-save commont__button"
+                    >
+                      Сохранить адрес
+                    </button>
+                    <button type="button" class="address-form__button-select">
+                      Доставить сюда
+                    </button>
+                  </div>
+                </form>
               </div>
-
-              <div class="address-form__buttons">
-                <button type="submit" class="address-form__button-save">
-                  Сохранить адрес
-                </button>
-                <button type="button" class="address-form__button-select">
-                  Доставить сюда
-                </button>
+              <div
+                class="common__container-saved-address"
+                id="savedAddressList"
+              >
+                <!-- Address cards will be added here -->
               </div>
-            </form>
+            </div>
           </section>
-          
 
           <div class="checkout__row">
             <div class="checkout__block">
