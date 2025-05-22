@@ -170,23 +170,37 @@ allSections.forEach(function(section) {
 // });
 
 // Coding slider for the cardsM
-const slider = document.getElementById('cardmSlider');
-  const images = slider.querySelectorAll('.cardM__slider-img');
+
+const sliders = document.querySelectorAll('.cardM__slider');
+
+sliders.forEach((currentCard) => {
+  const images = currentCard.querySelectorAll('.cardM__slider-img');
   let currentIndex = 0;
+  let canSlide = true;
 
-  slider.addEventListener('mousemove', (e) => {
-    const rect = slider.getBoundingClientRect();
+  currentCard.addEventListener('mousemove', (e) => {
+    if (!canSlide) return; // Stop if not allowed yet
+
+    const rect = currentCard.getBoundingClientRect();
     const x = e.clientX - rect.left;
-
     const middle = rect.width / 2;
 
     if (x > middle && currentIndex < images.length - 1) {
       images[currentIndex].classList.remove('active');
       currentIndex++;
       images[currentIndex].classList.add('active');
+      canSlide = false;
     } else if (x < middle && currentIndex > 0) {
       images[currentIndex].classList.remove('active');
       currentIndex--;
       images[currentIndex].classList.add('active');
+      canSlide = false;
     }
+
+    // Cooldown: allow sliding again after 1 second (1000ms)
+    setTimeout(() => {
+      canSlide = true;
+    }, 400);
   });
+});
+
