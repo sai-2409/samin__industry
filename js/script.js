@@ -111,24 +111,6 @@ nav.addEventListener('mouseout', HandleHover.bind(1));
 
 
 // I should fix this code (slider for cards, functionalities, etc.)
-const cards = document.querySelectorAll('.card-card');
-let currentIndex = 1;
-
-function updateSlider() {
-  cards.forEach((card, index) => {
-    card.classList.remove('active');
-  });
-  cards[currentIndex].classList.add('active');
-}
-
-cards.forEach((card, index) => {
-  card.addEventListener('mouseenter', () => {
-    currentIndex = index;
-    updateSlider();
-  });
-});
-
-updateSlider();
 
 // Working with counter for the Cart and this shit is working man for now ! 
 const cartCounter = document.querySelector('.floating__cart-counter');
@@ -179,11 +161,32 @@ allSections.forEach(function(section) {
 
 
 // Tryna config delete button for the cartSamin page
-const deleteButton = document.querySelectorAll('.remove__item');
+// const deleteButton = document.querySelectorAll('.remove__item');
 
-deleteButton.forEach(button => {
-  button.addEventListener('click', function() {
-    console.log('did I click ?')
+// deleteButton.forEach(button => {
+//   button.addEventListener('click', function() {
+//     console.log('did I click ?')
+//   });
+// });
+
+// Coding slider for the cardsM
+const slider = document.getElementById('cardmSlider');
+  const images = slider.querySelectorAll('.cardM__slider-img');
+  let currentIndex = 0;
+
+  slider.addEventListener('mousemove', (e) => {
+    const rect = slider.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+
+    const middle = rect.width / 2;
+
+    if (x > middle && currentIndex < images.length - 1) {
+      images[currentIndex].classList.remove('active');
+      currentIndex++;
+      images[currentIndex].classList.add('active');
+    } else if (x < middle && currentIndex > 0) {
+      images[currentIndex].classList.remove('active');
+      currentIndex--;
+      images[currentIndex].classList.add('active');
+    }
   });
-});
-

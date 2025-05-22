@@ -479,10 +479,12 @@ section.pros {
   position: relative;
   transition: transform 0.3s;
   background: var(--white);
+  flex-wrap: wrap;
+  min-width: 250px;
 }
 .cardM__slider {
   width: 100%;
-  height: 250px;
+  height: 400px;
   overflow: hidden;
   position: relative; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -490,16 +492,17 @@ section.pros {
 .cardM__slider-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  /* object-fit: contain; */
   position: absolute;
   top: 0;
   left: 0;
-  /* opacity: 0; */
-  transition: opacity 0.3s;
+  opacity: 0;
+  transition: transform 1.5s ease-in-out;
   border-radius: 16px;
 }
-.cardM__slider img.active {
+.cardM__slider-img.active {
   opacity: 1;
+  pointer-events: auto;
 }
 .cardM__content {
   padding: 15px;
@@ -512,6 +515,14 @@ section.pros {
 }
 .cardM__title {
   font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  height: 2.8em; /* допустим 2 строки по 1.4 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* ограничение по количеству строк */
+  -webkit-box-orient: vertical;
 }
 .cardM__size-button {
   padding: 6px;
