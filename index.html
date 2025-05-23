@@ -183,11 +183,31 @@
                 src="./images/cards__image/kuragaK-1.png"
                 alt="Kuraga"
               />
-              <img class="cardM__slider-img" src="./images/cards__image/kuragaK-2.png" alt="Kuraga">
-              <img class="cardM__slider-img" src="./images/cards__image/kuragaK-3.png" alt="Kuraga">
-              <img class="cardM__slider-img" src="./images/cards__image/kuragaK-4.png" alt="Kuraga">
-              <img class="cardM__slider-img" src="./images/cards__image/kuragaK-5.png" alt="Kuraga">
-              <img class="cardM__slider-img" src="./images/cards__image/kuragaPackageEx1.png" alt="KuragaPackage">
+              <img
+                class="cardM__slider-img"
+                src="./images/cards__image/kuragaK-2.png"
+                alt="Kuraga"
+              />
+              <img
+                class="cardM__slider-img"
+                src="./images/cards__image/kuragaK-3.png"
+                alt="Kuraga"
+              />
+              <img
+                class="cardM__slider-img"
+                src="./images/cards__image/kuragaK-4.png"
+                alt="Kuraga"
+              />
+              <img
+                class="cardM__slider-img"
+                src="./images/cards__image/kuragaK-5.png"
+                alt="Kuraga"
+              />
+              <img
+                class="cardM__slider-img"
+                src="./images/cards__image/kuragaPackageEx1.png"
+                alt="KuragaPackage"
+              />
             </div>
             <div class="cardM__content">
               <div class="cardM__price">967 ₽</div>
@@ -203,6 +223,7 @@
               <div class="cardM__stars">★ 4.6 (1200 оценок)</div>
               <div class="cardM__availability">● Доставим по клику</div>
               <button class="card__cart">
+                <span class="card__cart-amount">0</span>
                 <p>в корзину</p>
                 <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
               </button>
@@ -252,7 +273,7 @@
               </button>
             </div>
           </div>
-          <!-- Card Number 1 -->
+          <!-- Card Number 2 -->
           <div class="cardM">
             <div class="cardM__slider">
               <img
@@ -278,9 +299,7 @@
             </div>
             <div class="cardM__content">
               <div class="cardM__price">759 ₽</div>
-              <div class="cardM__title">
-                Натуральная ореховая смесь...
-              </div>
+              <div class="cardM__title">Натуральная ореховая смесь...</div>
               <div class="cardM__size">
                 <button class="cardM__size-500 cardM__size-button">500</button>
                 <button class="cardM__size-1000 cardM__size-button">
@@ -295,7 +314,7 @@
               </button>
             </div>
           </div>
-          <!-- Card Number 1 -->
+          <!-- Card Number 3 -->
           <div class="cardM">
             <div class="cardM__slider">
               <img
@@ -338,7 +357,7 @@
               </button>
             </div>
           </div>
-          <!-- Card Number 1 -->
+          <!-- Card Number 4 -->
           <div class="cardM">
             <div class="cardM__slider">
               <img
@@ -381,7 +400,7 @@
               </button>
             </div>
           </div>
-          <!-- Card Number 1 -->
+          <!-- Card Number 5 -->
           <div class="cardM">
             <div class="cardM__slider">
               <img
@@ -434,7 +453,7 @@
               </button>
             </div>
           </div>
-          <!-- Card Number 1 -->
+          <!-- Card Number 6 -->
           <div class="cardM">
             <div class="cardM__slider">
               <img
@@ -482,7 +501,7 @@
               </button>
             </div>
           </div>
-          <!-- Card Number 1 -->
+          <!-- Card Number 7 -->
           <div class="cardM">
             <div class="cardM__slider">
               <img
@@ -520,7 +539,7 @@
               </button>
             </div>
           </div>
-          <!-- Card Number 1 -->
+          <!-- Card Number 8 -->
           <div class="cardM">
             <div class="cardM__slider">
               <img
@@ -542,9 +561,7 @@
             </div>
             <div class="cardM__content">
               <div class="cardM__price">1289 ₽</div>
-              <div class="cardM__title">
-                Миндаль сушёный крупный 1000 грамм
-              </div>
+              <div class="cardM__title">Миндаль сушёный крупный 1000 грамм</div>
               <div class="cardM__size">
                 <button class="cardM__size-500 cardM__size-button">500</button>
                 <button class="cardM__size-1000 cardM__size-button">
@@ -581,13 +598,19 @@
           id="name"
           placeholder="ваше имя"
         />
-        <input
-          class="input__full"
-          type="text"
-          name=""
-          id="phone"
-          placeholder="вид продукта"
-        />
+        <div class="common__container-gender">
+          <label class="custom__radio">
+            <input type="radio" name="gender" value="male" checked />
+            <span class="custom__radio-mark"></span>
+            Мужской
+          </label>
+
+          <label class="custom__radio">
+            <input type="radio" name="gender" value="female" />
+            <span class="custom__radio-mark"></span>
+            Женский
+          </label>
+        </div>
         <input
           type="text"
           class="input__full input__half"
@@ -601,6 +624,20 @@
           name=""
           id="weight"
           placeholder="ваш вес"
+        />
+        <input
+          type="text"
+          class="input__full input__half"
+          name=""
+          id="height"
+          placeholder="ваш рост в (см)"
+        />
+        <input
+          class="input__full"
+          type="text"
+          name=""
+          id="phone"
+          placeholder="вид продукта"
         />
         <div class="calc__button">
           <button id="show__btn1">Посчитать</button>
@@ -663,7 +700,8 @@
             <div class="slide">
               <p class="reviewer">Aleksey Kovalenok</p>
               <div class="avatar">
-                <p class="avatar__text">AK</p></div>
+                <p class="avatar__text">AK</p>
+              </div>
               <div class="review__stars">★★★★★</div>
               <p class="review-text">
                 "1. Вкус: шикарный. Ощущается вкус манго и аромат 2. Текстура:
@@ -682,9 +720,10 @@
             <div class="slide">
               <p class="reviewer">Роман Петров</p>
               <div class="avatar">
-                <p class="avatar__text">РП</p></div>
+                <p class="avatar__text">РП</p>
+              </div>
               <div class="review__stars">★★★★★</div>
-              <p class="review-text">
+              <p class="review-text"></p>
               <p class="review-text">
                 "Лучший сервис на Wildberries! Натуральный вкус и качество."
               </p>
@@ -707,8 +746,9 @@
             <div class="slide">
               <p class="reviewer">Алексей П.</p>
               <div class="avatar">
-                <p class="avatar__text">AП</p></div>
-              <p class="review-text">
+                <p class="avatar__text">AП</p>
+              </div>
+              <p class="review-text"></p>
               <div class="review__stars">★★★★★</div>
               <p class="review-text">
                 "Мягкая, мясистая, вкусная (сладкая с небольшой приятной
@@ -826,5 +866,6 @@
     <!-- Start building -->
 
     <script src="js/script.js"></script>
+    <script src="./js/calc.js"></script>
   </body>
 </html>

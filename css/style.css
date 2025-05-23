@@ -552,6 +552,12 @@ section.pros {
 }
 
 /* Fancy button which ll kill the perfomance  */
+.card__cart-amount{
+  position: relative;
+  bottom: 120%;
+  left: 45%;
+  opacity: 0;
+}
 .card__cart {
   background-color: var(--white);
   border: 2px solid var(--main-orange);
@@ -644,6 +650,11 @@ section.pros {
   border-radius: 30px;
   padding: 50px;
   margin-bottom: 10vh;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+.calc:hover{
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
 }
 .input__full {
   width: 100%;
@@ -655,6 +666,10 @@ section.pros {
   color: var(--gray);
   margin-bottom: 25px;
   background-color: var(--white);
+  transition: .3s;
+}
+.input__full:focus{
+  box-shadow: 0 0 0 2px var(--gray);
 }
 .calc__button button {
   margin-top: 50px;
@@ -674,7 +689,46 @@ section.pros {
   left: 50%;
   transform: translateX(20%);
 }
+.common__container-gender{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 25px;
+}
+.custom__radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  position: relative;
+  color: var(--ligherGray);
+}
 
+.custom__radio input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
+
+.custom__radio-mark {
+  height: 25px;
+  width: 25px;
+  border: 2px solid var(--ligherGray);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  transition: all 0.5 ease-in-out;
+}
+
+.custom__radio input:checked + .custom__radio-mark::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 15px;
+  height: 15px;
+  background-color: var(--ligherGray);
+  border-radius: 50%;
+}
 .calc__button button:hover {
   background-color: var(--primary-color); /* Change background color on hover */
   color: var(--white); /* Change text color on hover */

@@ -69,29 +69,5 @@
     </div>
   </div>
 
-  <script>
-    const slider = document.getElementById('slider');
-    const images = slider.querySelectorAll('img');
-    let current = 0;
-    let timer;
-
-    function showImage(index) {
-      images.forEach((img, i) => img.classList.toggle('active', i === index));
-    }
-
-    function startSlider() {
-      timer = setInterval(() => {
-        current = (current + 1) % images.length;
-        showImage(current);
-      }, 2000);
-    }
-
-    function stopSlider() {
-      clearInterval(timer);
-    }
-
-    slider.addEventListener('mouseenter', startSlider);
-    slider.addEventListener('mouseleave', stopSlider);
-  </script>
 </body>
 </html>

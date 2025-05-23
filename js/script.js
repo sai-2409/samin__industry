@@ -43,49 +43,9 @@ const stickyObserver = new IntersectionObserver(
     rootMargin: '-1px' // чтобы сработало сразу как ушло
   }
 );
-
 stickyObserver.observe(header);
 
-  // const stickyNav = function(entries) {
-  //   const [entry] = entries;
-
-  //   if (!entry.isIntersecting) nav.classList.add('sticky');
-  //   else nav.classList.remove('sticky');
-  // };
-
-  // const headerObserver = new IntersectionObserver(stickyNav, {
-  // root: null,
-  // threshold: 0,
-  // rootMargin: `-${navHeight}px`
-  // });
-
-  // headerObserver.observe(header);
-  // nav.classList.remove('sticky');
 // Fixing the header to be sticky
-
-// Making slider for the menu section 
-// const slider = document.querySelector('.cardM__slider')
-// const images = slider.querySelectorAll('.cardM__slider-img');
-// let current = 0;
-// let timer;
-
-// function showImage(index) {
-//   images.forEach((img, i) => img.classList.toggle('active', i === index));
-// };
-// function startSlider() {
-//   timer = setInterval(() => {
-//     current = (current + 1) % images.length;
-//     showImage(current);
-//   }, 400);
-// }
-// function stopSlider() {
-//   clearInterval(timer); 
-// };
-// slider.addEventListener('mouseenter', startSlider);
-// slider.addEventListener('mouseleave', stopSlider);
-
-// Making slider for the menu section 
-
 
 
 
@@ -123,54 +83,32 @@ btnCart.forEach((btnItem) => {
   });
 });
 
-// Making tracker of the website interactive
-
-// Here is coding for the cartSamin.js
-// const minusBtn = document.querySelectorAll('.product__cart-min');
-// const plusBtn = document.querySelectorAll('.product__cart-plus');
-
-// minusBtn.forEach(btn => {
-//   btn.addEventListener('click', () => {
-//     let currentCount = parseInt(cartCounter.textContent);
-//     cartCounter.textContent = currentCount - 1;
-//   });
-// });
-
 
 
 // Reveal sections 
-const allSections = document.querySelectorAll('.section')
+// const allSections = document.querySelectorAll('.section')
 
-const revealSection = function(entries, observer) {
-  const [entry] = entries;
-  console.log(entry);
+// const revealSection = function(entries, observer) {
+//   const [entry] = entries;
+//   console.log(entry);
 
-  if (!entry.isIntersecting) return;
-  entry.target.classList.remove('section__hidden');
-  observer.unobserve(entry.target);
-};
-const sectionObserver = new IntersectionObserver(revealSection, {
-  root: null,
-  threshold: 0,
+//   if (!entry.isIntersecting) return;
+//   entry.target.classList.remove('section__hidden');
+//   observer.unobserve(entry.target);
+// };
+// const sectionObserver = new IntersectionObserver(revealSection, {
+//   root: null,
+//   threshold: 0,
 
-});
-allSections.forEach(function(section) {
-  sectionObserver.observe(section);
-  section.classList.add('section__hidden');
-});
-
-
-// Tryna config delete button for the cartSamin page
-// const deleteButton = document.querySelectorAll('.remove__item');
-
-// deleteButton.forEach(button => {
-//   button.addEventListener('click', function() {
-//     console.log('did I click ?')
-//   });
+// });
+// allSections.forEach(function(section) {
+//   sectionObserver.observe(section);
+//   section.classList.add('section__hidden');
 // });
 
-// Coding slider for the cardsM
 
+
+// Coding slider for the cardsM
 const sliders = document.querySelectorAll('.cardM__slider');
 
 sliders.forEach((currentCard) => {
@@ -204,3 +142,14 @@ sliders.forEach((currentCard) => {
   });
 });
 
+
+// Playing with the cartCard Button
+const cartCardButton = document.querySelector('.card__cart');
+const cartCardAmount = document.querySelector('.card__cart-amount');
+
+cartCardButton.addEventListener('click', function() {
+  let currentCardAmount = parseInt(cartCardAmount.textContent);
+  cartCardAmount.textContent = currentCardAmount + 1;
+
+  cartCardAmount.style.opacity = 1;
+});
