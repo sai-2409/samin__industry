@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Грецкий орех",
+        "calories": 654,
+        "protein": 15.2,
+        "fat": 65.2,
+        "carbs": 13.7,
+        "origin": "Россия"
+    },
+    {
+        "name": "Миндаль",
+        "calories": 579,
+        "protein": 21.2,
+        "fat": 49.9,
+        "carbs": 21.6,
+        "origin": "США"
+    },
+    {
+        "name": "Фундук",
+        "calories": 628,
+        "protein": 15.0,
+        "fat": 60.8,
+        "carbs": 16.7,
+        "origin": "Турция"
+    },
+    {
+        "name": "Фисташки",
+        "calories": 562,
+        "protein": 20.6,
+        "fat": 45.4,
+        "carbs": 27.5,
+        "origin": "Иран"
+    },
+    {
+        "name": "Кешью",
+        "calories": 553,
+        "protein": 18.2,
+        "fat": 43.9,
+        "carbs": 30.2,
+        "origin": "Вьетнам"
+    },
+    {
+        "name": "Арахис",
+        "calories": 567,
+        "protein": 25.8,
+        "fat": 49.2,
+        "carbs": 16.1,
+        "origin": "Аргентина"
+    },
+    {
+        "name": "Курага",
+        "calories": 241,
+        "protein": 3.4,
+        "fat": 0.5,
+        "carbs": 62.6,
+        "origin": "Узбекистан"
+    },
+    {
+        "name": "Изюм",
+        "calories": 299,
+        "protein": 3.1,
+        "fat": 0.5,
+        "carbs": 79.2,
+        "origin": "Иран"
+    },
+    {
+        "name": "Финики",
+        "calories": 282,
+        "protein": 2.5,
+        "fat": 0.4,
+        "carbs": 75.0,
+        "origin": "ОАЭ"
+    },
+    {
+        "name": "Инжир сушёный",
+        "calories": 249,
+        "protein": 3.3,
+        "fat": 0.9,
+        "carbs": 63.9,
+        "origin": "Турция"
+    }
+]

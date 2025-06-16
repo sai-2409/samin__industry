@@ -590,7 +590,8 @@
     <!-- Start building the smart calculator -->
     <section class="section__calc section">
       <h1 class="common__header calc__header">Ореховый Калькулятор</h1>
-      <div class="calc" id="section__calc">
+      <div id="calc__wrapper">
+        <div class="calc" id="section__calc">
         <input
           class="input__full"
           type="text"
@@ -600,13 +601,13 @@
         />
         <div class="common__container-gender">
           <label class="custom__radio">
-            <input type="radio" name="gender" value="male" checked />
+            <input type="radio" name="gender" value="male" id="male" checked />
             <span class="custom__radio-mark"></span>
             Мужской
           </label>
 
           <label class="custom__radio">
-            <input type="radio" name="gender" value="female" />
+            <input type="radio" name="gender" value="female" id="female" />
             <span class="custom__radio-mark"></span>
             Женский
           </label>
@@ -615,7 +616,7 @@
           type="text"
           class="input__full input__half"
           name=""
-          id="number"
+          id="age"
           placeholder="ваш возраст"
         />
         <input
@@ -623,7 +624,7 @@
           class="input__full input__half"
           name=""
           id="weight"
-          placeholder="ваш вес"
+          placeholder="ваш вес в (кг)"
         />
         <input
           type="text"
@@ -636,12 +637,15 @@
           class="input__full"
           type="text"
           name=""
-          id="phone"
+          id="product__name"
           placeholder="вид продукта"
         />
         <div class="calc__button">
           <button id="show__btn1">Посчитать</button>
         </div>
+        <div id="error__calc-result"></div>
+      </div>
+      <div class="calc calc__result" id="result__calc-div"></div>
       </div>
     </section>
     <!-- Start building the smart calculator -->
@@ -866,6 +870,6 @@
     <!-- Start building -->
 
     <script src="js/script.js"></script>
-    <script src="./js/calc.js"></script>
+    <script src="js/calc.js"></script>
   </body>
 </html>
