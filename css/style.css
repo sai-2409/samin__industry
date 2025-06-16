@@ -785,7 +785,11 @@ section.pros {
 .calc__result p {
   margin: 0 0 12px 0;
 }
-
+.recommended-calories {
+  font-size: 25px;
+  color: green;
+  font-weight: 600;
+}
 .calc__result hr {
   border: none;
   border-top: 1px solid #ddd;

@@ -39,7 +39,7 @@ calcButton.addEventListener('click', function() {
       // Вывод
       resultCalcDiv.innerHTML = `
         <p><strong>${name}</strong>, ваша рекомендуемая норма потребления продукта <strong>${product.name}</strong>:</p>
-        <p style="font-size: 22px; color: green;"><strong>${recommendedCalories} ккал в день</strong></p>
+        <p class="recommended-calories">${recommendedCalories} ккал в день</p>
         <hr>
         <p><strong>КБЖУ (на 100 г):</strong></p>
         <ul>
