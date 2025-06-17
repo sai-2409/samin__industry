@@ -144,21 +144,54 @@ sliders.forEach((currentCard) => {
 
 // Wrirring code for changing card's product's size between 500 and 1000 gramms
 // ✅ Код для выбора граммов
-const sizeButtons = document.querySelectorAll('.cardM__size-button');
+function setupCardSizeSwitching() {
+  const sizeButtons = document.querySelectorAll('.cardM__size-button');
 
-sizeButtons.forEach(button => {
-  const parentCard = button.closest('.cardM');
-  const allSizeButtons = parentCard.querySelectorAll('.cardM__size-button');
+  sizeButtons.forEach(button => {
+    const parentCard = button.closest('.cardM');
+    const allSizeButtons = parentCard.querySelectorAll('.cardM__size-button');
+    const priceElement = parentCard.querySelector('.cardM__price');
+    const imageElements = parentCard.querySelectorAll('.cardM__slider-img');
 
-  // Устанавливаем активный по умолчанию (1000)
-  const defaultButton = parentCard.querySelector('.cardM__size-1000');
-  if (defaultButton) defaultButton.classList.add('cardM__size-active');
+    const price500 = parentCard.getAttribute('data-price-500');
+    const price1000 = parentCard.getAttribute('data-price-1000');
+    const img500 = parentCard.getAttribute('data-img-500');
+    const img1000 = parentCard.getAttribute('data-img-1000');
 
-  button.addEventListener('click', function () {
-    allSizeButtons.forEach(btn => btn.classList.remove('cardM__size-active'));
-    button.classList.add('cardM__size-active');
+    const defaultButton = parentCard.querySelector('.cardM__size-1000');
+    if (defaultButton) defaultButton.classList.add('cardM__size-active');
+
+    button.addEventListener('click', function () {
+      allSizeButtons.forEach(btn => btn.classList.remove('cardM__size-active'));
+      button.classList.add('cardM__size-active');
+
+      let newPrice = '';
+      let newImageSrc = '';
+
+      if (button.classList.contains('cardM__size-500')) {
+        if (price500) newPrice = `${price500} ₽`;
+        if (img500) newImageSrc = img500;
+      } else if (button.classList.contains('cardM__size-1000')) {
+        if (price1000) newPrice = `${price1000} ₽`;
+        if (img1000) newImageSrc = img1000;
+      }
+
+      if (newPrice) priceElement.textContent = newPrice;
+
+      // Replace the visible image
+      if (newImageSrc && imageElements.length > 0) {
+        imageElements.forEach(img => img.classList.remove('active'));
+        imageElements[0].src = newImageSrc;
+        imageElements[0].classList.add('active');
+      }
+    });
   });
-});
+}
+
+
+
+setupCardSizeSwitching();
+
 
 // Playing with the cartCard Button
 const cartCardButton = document.querySelector('.card__cart');

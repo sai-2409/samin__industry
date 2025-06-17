@@ -1,0 +1,15 @@
+[
+  {
+    "id": "kuraga1",
+    "title": "Курага Королевская",
+    "image": {
+      "500": "./images/cards__image/kuraga-500g.png",
+      "1000": "./images/cards__image/kuraga-1000g.png"
+    },
+    "price": {
+      "500": 799,
+      "1000": 1249
+    },
+    "availableSizes": [500, 1000]
+  }
+]
