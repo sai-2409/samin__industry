@@ -142,6 +142,23 @@ sliders.forEach((currentCard) => {
   });
 });
 
+// Wrirring code for changing card's product's size between 500 and 1000 gramms
+// ✅ Код для выбора граммов
+const sizeButtons = document.querySelectorAll('.cardM__size-button');
+
+sizeButtons.forEach(button => {
+  const parentCard = button.closest('.cardM');
+  const allSizeButtons = parentCard.querySelectorAll('.cardM__size-button');
+
+  // Устанавливаем активный по умолчанию (1000)
+  const defaultButton = parentCard.querySelector('.cardM__size-1000');
+  if (defaultButton) defaultButton.classList.add('cardM__size-active');
+
+  button.addEventListener('click', function () {
+    allSizeButtons.forEach(btn => btn.classList.remove('cardM__size-active'));
+    button.classList.add('cardM__size-active');
+  });
+});
 
 // Playing with the cartCard Button
 const cartCardButton = document.querySelector('.card__cart');
