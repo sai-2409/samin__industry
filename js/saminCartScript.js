@@ -12,12 +12,12 @@ const toggleForm = (formName, infoForm) => {
   });
 };
 
-deleteButton.forEach(button => {
-  button.addEventListener('click', function() {
-    const card = button.closest('.wall__card');
-    if (card) card.remove();
-  });
-});
+// deleteButton.forEach(button => {
+//   button.addEventListener('click', function() {
+//     const card = button.closest('.wall__card');
+//     if (card) card.remove();
+//   });
+// });
 
 // Showing card informaion in saminCart
 toggleForm(showCardBtn, cardInformation);
@@ -62,16 +62,6 @@ form.addEventListener('submit', function(event) {
 
 });
 
-
-
-
-
-
-
-
-
-
-
 // card.classList.add('hide__card');
 // setTimeout(() => card.remove(), 300);
 
@@ -95,4 +85,135 @@ form.addEventListener('submit', function(event) {
 // });
 
 
-// I don't know what am I doing 
+window.addEventListener('DOMContentLoaded', () => {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const container = document.querySelector('.wall');
+  const summaryTotal = document.querySelector('.order__summary-amount');
+
+  let total = 0;
+
+  cartItems.forEach((item, index) => {
+    total += item.price * item.quantity;
+
+    const card = document.createElement('div');
+    card.className = 'wall__card';
+    card.innerHTML = `
+      <label class="samin-checkbox">
+        <input type="checkbox" />
+        <span class="checkmark"></span>
+      </label>
+      <img class="wall__card-image" src="${item.image}" alt="Product" />
+      <div class="wall__text">
+        <h3 class="wall__title">${item.productName}</h3>
+        <p class="wall__when">Завтра по клику</p>
+      </div>
+      <div class="wall__amount">
+        <div class="wall__price">${item.price} ₽</div>
+        <div class="quantity">
+          <button class="quantity__minus" data-index="${index}">-</button>
+          <p class="quantity__amount">${item.quantity}</p>
+          <button class="quantity__plus" data-index="${index}">+</button>
+        </div>
+      </div>
+      <button class="remove__item" data-index="${index}">x</button>
+    `;
+
+    container.appendChild(card);
+  });
+
+  summaryTotal.textContent = `${total} ₽`;
+
+  // Вешаем обработчики на все кнопки удаления
+  document.querySelectorAll('.remove__item').forEach(button => {
+    button.addEventListener('click', function () {
+      const index = parseInt(button.dataset.index);
+
+      // Получаем и обновляем localStorage
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      cartItems.splice(index, 1);
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+      // Удаляем карточку из DOM
+      const cardElement = button.closest('.wall__card');
+      if (cardElement) cardElement.remove();
+
+      // Переназначаем индексы кнопкам после удаления
+      document.querySelectorAll('.remove__item').forEach((btn, i) => btn.dataset.index = i);
+      document.querySelectorAll('.quantity__plus').forEach((btn, i) => btn.dataset.index = i);
+      document.querySelectorAll('.quantity__minus').forEach((btn, i) => btn.dataset.index = i);
+
+      // ❗ Переназначаем обработчики кнопок + и - с новым массивом
+      refreshQuantityButtons(cartItems);
+
+      // Обновляем сумму и кол-во
+      updateCartSummary(cartItems);
+    });
+  });
+
+
+function refreshQuantityButtons() {
+  document.querySelectorAll('.quantity__plus').forEach(button => {
+    button.addEventListener('click', function () {
+      const index = parseInt(button.dataset.index);
+
+      // 🔥 Берём свежие данные
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      cartItems[index].quantity += 1;
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      updateQuantityAndPrice(index);
+      updateCartSummary(cartItems);
+    });
+  });
+
+  document.querySelectorAll('.quantity__minus').forEach(button => {
+    button.addEventListener('click', function () {
+      const index = parseInt(button.dataset.index);
+
+      let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity -= 1;
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        updateQuantityAndPrice(index);
+        updateCartSummary(cartItems);
+      }
+    });
+  });
+}
+
+
+function updateQuantityAndPrice(index) {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  const quantityElems = document.querySelectorAll('.quantity__amount');
+  const priceElems = document.querySelectorAll('.wall__price');
+
+  quantityElems[index].textContent = cartItems[index].quantity;
+  const totalItemPrice = cartItems[index].price * cartItems[index].quantity;
+  priceElems[index].textContent = `${totalItemPrice} ₽`;
+}
+
+// Обновить общую сумму
+function updateCartSummary(cartItems) {
+  const summaryTotal = document.querySelector('.order__summary-amount');
+  const summaryCount = document.querySelector('.order__items-quantity');
+  const summaryPrice = document.querySelector('.order__items-price');
+
+  let totalSum = 0;
+  let totalItems = 0;
+
+  cartItems.forEach(item => {
+    totalSum += item.price * item.quantity;
+    totalItems += item.quantity;
+  });
+
+  summaryTotal.textContent = `${totalSum} ₽`;
+  summaryCount.textContent = `${totalItems} товаров`;
+  summaryPrice.textContent = `${totalSum} ₽`;
+}
+
+  refreshQuantityButtons(cartItems);
+  updateCartSummary(cartItems);
+
+});
+

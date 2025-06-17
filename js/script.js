@@ -203,3 +203,38 @@ cartCardButton.addEventListener('click', function() {
 
   cartCardAmount.style.opacity = 1;
 });
+
+// I don't know what am I doing 
+function setupItemAdding() {
+  document.querySelectorAll('.card__cart').forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.cardM');
+    const productName = card.querySelector('.cardM__title').textContent.trim();
+    const image = card.querySelector('.cardM__slider-img-first').src;
+    const size = card.querySelector('.cardM__size-active')?.textContent || '1000гр';
+    const price = parseInt(card.querySelector('.cardM__price').textContent);
+
+    const newItem = { productName, image, size, price, quantity: 1 };
+
+    // Получаем текущую корзину
+    let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // 🔍 Проверим, есть ли уже такой товар (по productName + size)
+    const existingIndex = cartItems.findIndex(item => item.productName === newItem.productName && item.size === newItem.size);
+
+    if (existingIndex !== -1) {
+      // ✅ Такой товар уже есть — увеличиваем количество
+      cartItems[existingIndex].quantity += 1;
+    } else {
+      // 🆕 Новый товар — добавляем
+      cartItems.push(newItem);
+    }
+
+    // Сохраняем
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  });
+});
+
+};
+setupItemAdding();
+
