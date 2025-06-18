@@ -4,6 +4,7 @@ const showCardBtn = document.getElementById("show__card-info");
 const cardInformation = document.querySelector(".card-form-container");
 const addressFillForm = document.querySelector(".checkout__block-link-address");
 const addressForm = document.querySelector(".common__container-address-form");
+const checkoutFormButton = document.querySelector(".order__button")
 
 // Writing function for the toggling forms
 const toggleForm = (formName, infoForm) => {
@@ -11,6 +12,11 @@ const toggleForm = (formName, infoForm) => {
     infoForm.classList.toggle("section__hidden");
   });
 };
+
+// Moving to Order Checkout
+checkoutFormButton.addEventListener("click", function() {
+  document.querySelector(".checkout__header-h1").scrollIntoView({behavior: 'smooth'});
+});
 
 // deleteButton.forEach(button => {
 //   button.addEventListener('click', function() {

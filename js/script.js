@@ -9,11 +9,17 @@ const headerButton2 = document.querySelector('.mbutton1');
 const headerButtonCalc = document.querySelector('.mbutton2');
 const section3 = document.getElementById('section__3');
 const sectionCalc = document.getElementById('section__calc');
+const floatingCart = document.querySelector('.floating-cart');
 
 // Going to the cart with headerCart
 headerCart.addEventListener('click', function() {
   window.location.href = 'cartSamin.html';
 });
+// Going to the cart with floating cart
+floatingCart.addEventListener('click', function() {
+  window.location.href = 'cartSamin.html';
+});
+
 
 // Scrolling to Menu section with headerButton 
 headerButton.addEventListener('click', function() {
