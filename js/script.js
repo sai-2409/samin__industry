@@ -73,15 +73,15 @@ nav.addEventListener('mouseout', HandleHover.bind(1));
 // I should fix this code (slider for cards, functionalities, etc.)
 
 // Working with counter for the Cart and this shit is working man for now ! 
-const cartCounter = document.querySelector('.floating__cart-counter');
-const btnCart = document.querySelectorAll('.card__cart');
+// const cartCounter = document.querySelector('.floating__cart-counter');
+// const btnCart = document.querySelectorAll('.card__cart');
 
-btnCart.forEach((btnItem) => {
-  btnItem.addEventListener('click', () => {
-    let currentCount = parseInt(cartCounter.textContent);
-    cartCounter.textContent = currentCount + 1;
-  });
-});
+// btnCart.forEach((btnItem) => {
+//   btnItem.addEventListener('click', () => {
+//     let currentCount = parseInt(cartCounter.textContent);
+//     cartCounter.textContent = currentCount + 1;
+//   });
+// });
 
 
 
@@ -232,9 +232,25 @@ function setupItemAdding() {
 
     // Сохраняем
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    updateFloatingCartCounter();
+
+    const counter = document.querySelector('.floating__cart-counter');
+    if (counter) {
+      counter.classList.add('bump');
+      setTimeout(() => counter.classList.remove('bump'), 400);
+    }
   });
 });
 
 };
 setupItemAdding();
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  const cartCounter = document.querySelector('.floating__cart-counter');
+  if (cartCounter) {
+    cartCounter.textContent = getTotalCartQuantity();
+  }
+});
+
+getTotalCartQuantity();
