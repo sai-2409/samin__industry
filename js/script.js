@@ -254,3 +254,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 getTotalCartQuantity();
+
+

@@ -267,6 +267,13 @@ p {
   /* z-index: 100; */
 }
 /* Bro, this is crazy, I was fixing this fucking small problem for fucking 3 days 😭 and finally I did it */
+.sticky__checkout-form{
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  right: unset;
+  left: unset;
+}
 .sticky {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.95);
@@ -1123,9 +1130,19 @@ section.pros {
   align-items: end;
   margin-bottom: 50px;
 }
-.cardCart__container {
+/* .cardCart__container {
   display: flex;
   justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  position: relative;
+} */
+.cart__wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  position: relative;
 }
 /* Animation for the deleting wall Card */
 @keyframes fadeOutSlide {
@@ -1138,7 +1155,10 @@ section.pros {
     transform: translateX(-50px);
   }
 }
-
+.cart-bottom-observer {
+  height: 1px;
+  /* margin-top: 100px; */
+}
 .wall__card.fade-out {
   animation: fadeOutSlide 300ms forwards;
 }
@@ -1283,7 +1303,7 @@ section.pros {
   border-radius: 25px;
   background-color: var(--ligherGray);
   padding: 25px;
-  width: 30%;
+  width: 400px;
   height: 50%;
 }
 .order__input {

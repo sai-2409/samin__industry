@@ -241,4 +241,61 @@ window.addEventListener("DOMContentLoaded", () => {
   updateCartSummary(cartItems);
 });
 
-console.log(totalItems);
+// Making the Checkout form to be sticky
+const checkout = document.querySelector('.order');
+const startTrigger = document.querySelector('.sticky__form-start-trigger');
+const stopTrigger = document.querySelector('.cart-bottom-observer');
+
+const startObserver = new IntersectionObserver(([entry]) => {
+  if (!entry.isIntersecting) {
+    const rect = checkout.getBoundingClientRect();
+    checkout.style.width = `${rect.width}px`;
+    checkout.style.left = `${rect.left}px`;
+    checkout.style.height = `${checkout.offsetHeight}px`;
+    checkout.style.position = 'fixed';
+    checkout.style.top = '20px';
+    checkout.style.zIndex = '999';
+    checkout.classList.add('sticky__checkout-form');
+  } else {
+    checkout.classList.remove('sticky__checkout-form');
+    checkout.style.width = '';
+    checkout.style.left = '';
+    checkout.style.height = '';
+    checkout.style.position = '';
+    checkout.style.top = '';
+    checkout.style.zIndex = '';
+  }
+}, {
+  root: null,
+  threshold: 0,
+  rootMargin: "0px"
+});
+
+startObserver.observe(startTrigger);
+
+// Stop observer (чтобы отлипала при достижении низа)
+window.addEventListener("scroll", () => {
+  const checkout = document.querySelector(".order");
+  const cartBottom = document.querySelector(".cart-bottom-observer");
+
+  if (!checkout.classList.contains("sticky__checkout-form")) return;
+
+  const checkoutBottom = checkout.getBoundingClientRect().bottom;
+  const cartBottomTop = cartBottom.getBoundingClientRect().top;
+
+  // Если нижняя граница формы доходит до нижнего конца контента — убираем fixed
+  if (checkoutBottom >= cartBottomTop) {
+    checkout.classList.remove("sticky__checkout-form");
+    checkout.style.position = '';
+    checkout.style.top = '';
+    checkout.style.width = '';
+    checkout.style.left = '';
+    checkout.style.height = '';
+    checkout.style.zIndex = '';
+  }
+});
+
+
+
+
+
