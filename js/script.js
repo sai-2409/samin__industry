@@ -189,7 +189,9 @@ function setupCardSizeSwitching() {
         imageElements.forEach(img => img.classList.remove('active'));
         imageElements[0].src = newImageSrc;
         imageElements[0].classList.add('active');
-      }
+      };
+      // Recalculating the total certain item in the cart
+      updateCardItemCounters();
     });
   });
 }
@@ -197,6 +199,7 @@ function setupCardSizeSwitching() {
 
 
 setupCardSizeSwitching();
+updateCardItemCounters();
 
 
 // Playing with the cartCard Button
@@ -239,6 +242,7 @@ function setupItemAdding() {
     // Сохраняем
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     updateFloatingCartCounter();
+    updateCardItemCounters();
 
     const counter = document.querySelector('.floating__cart-counter');
     if (counter) {
@@ -261,4 +265,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
 getTotalCartQuantity();
 
+// Recalculating the total certain item in the cart
+function updateCardItemCounters() {
+  const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+  document.querySelectorAll('.cardM').forEach(card => {
+    const productName = card.querySelector('.cardM__title').textContent.trim();
+    const size = card.querySelector('.cardM__size-active')?.textContent || '1000гр';
+    const counterElem = card.querySelector('.card__cart-amount');
+
+    const matchingItem = cartItems.find(item => item.productName === productName && item.size === size);
+
+    if (counterElem) {
+      counterElem.textContent = matchingItem ? matchingItem.quantity : 0;
+      counterElem.style.opacity = matchingItem ? 1 : 0;
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateCardItemCounters();
+});
 

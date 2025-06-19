@@ -576,12 +576,6 @@ section.pros {
 }
 
 /* Fancy button which ll kill the perfomance  */
-.card__cart-amount{
-  position: relative;
-  bottom: 120%;
-  left: 45%;
-  opacity: 0;
-}
 .card__cart {
   background-color: var(--white);
   border: 2px solid var(--main-orange);
@@ -609,10 +603,18 @@ section.pros {
   right: 0.5em;
   margin: 0;
   padding: 0;
-  opacity: 0;
+  /* opacity: 0; */
   transition: 0.5s;
   height: 1em;
-  fill: var(--white);
+  fill: var(--main-orange);
+  /* background-color: var(--main-orange); */
+}
+.card__cart-amount{
+  position: absolute;
+  top: 0.35em;
+  right: 2em;
+  /* opacity: 0; */
+  color: var(--primary-color);
 }
 .card__cart:hover p {
   left: 0.3em;
@@ -836,7 +838,7 @@ section.pros {
   font-weight: 700;
 }
 
-@keyframes slideInLeft {
+/* @keyframes slideInLeft {
   from {
     opacity: 0;
     transform: translateX(-50px);
@@ -845,7 +847,7 @@ section.pros {
     opacity: 1;
     transform: translateX(0);
   }
-}
+} */
 
 /* Calc result styles */
 
@@ -1145,7 +1147,7 @@ section.pros {
   position: relative;
 }
 /* Animation for the deleting wall Card */
-@keyframes fadeOutSlide {
+/* @keyframes fadeOutSlide {
   0% {
     opacity: 1;
     transform: translateX(0);
@@ -1154,7 +1156,7 @@ section.pros {
     opacity: 0;
     transform: translateX(-50px);
   }
-}
+} */
 .cart-bottom-observer {
   height: 1px;
   /* margin-top: 100px; */
@@ -1516,6 +1518,9 @@ section.pros {
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
+}
+.saved-address__card.fade-out{
+  animation: fadeOutSlide 300ms forwards;
 }
 
 .saved-address__number {

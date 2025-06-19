@@ -57,13 +57,20 @@ form.addEventListener("submit", function (event) {
         </div>
         <div class="saved-address__actions">
           <button class="saved-address__button common__button">Изменить</button>
-          <button class="saved-address__button common__button">Удалить</button>
+          <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
         </div>
       </div>
   `;
   savedAddressList.insertAdjacentHTML("beforeend", cardHTML);
   addressCount++;
   form.reset();
+  document.querySelector('.saved__address-button-delete').addEventListener('click', function() {
+    const card = this.closest('.saved-address__card');
+    if (card) {
+      card.classList.add('hide__card');
+      setTimeout(() => card.remove(), 300);
+    }
+  });
 });
 
 // card.classList.add('hide__card');
