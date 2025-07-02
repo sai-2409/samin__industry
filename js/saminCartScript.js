@@ -371,6 +371,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
           updateCartSummary(cartItems);
           updateFloatingCartCounter();
+          renderCartProductLine();
+          updatePaymentSummaryAndDelivery();
         }, 300);
       }
 
@@ -385,12 +387,10 @@ window.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll(".quantity__minus")
         .forEach((btn, i) => (btn.dataset.index = i));
 
-      // ❗ Переназначаем обработчики кнопок + и - с новым массивом
-      // setupQuantityListeners();
-
       // Обновляем сумму и кол-во
       updateCartSummary(cartItems);
       updateFloatingCartCounter();
+      renderCartProductLine();
     });
   });
 
@@ -425,6 +425,8 @@ window.addEventListener("DOMContentLoaded", () => {
         updateQuantityAndPrice(index);
         updateCartSummary(cartItems);
         updateFloatingCartCounter();
+        renderCartProductLine();
+        updatePaymentSummaryAndDelivery();
       }
     });
   }
@@ -680,3 +682,285 @@ if (addCardModal) {
     overlay.addEventListener("click", hideAddCardModal);
   }
 }
+
+// Delivery price calculation and update
+function updateDeliveryPrice(total) {
+  let delivery = 0;
+  if (total > 5000) {
+    delivery = 0;
+  } else if (total > 0) {
+    delivery = Math.ceil(total * 0.15);
+  }
+  // Calculate original delivery for strikethrough
+  const originalDelivery = Math.ceil(total * 0.15);
+  // Update delivery cost in payment summary
+  const deliveryCostSpan = document.getElementById(
+    "payment-summary-delivery-cost"
+  );
+  if (deliveryCostSpan) {
+    if (delivery === 0 && total > 5000) {
+      deliveryCostSpan.innerHTML = `<span style='text-decoration: line-through; color: #999;'>${originalDelivery}₽</span> <span style='color: #1dbf73; font-weight: 600;'>бесплатно</span>`;
+    } else {
+      deliveryCostSpan.innerHTML = `${delivery}₽`;
+    }
+  }
+  // Update delivery cost in delivery method block
+  const deliveryMethodCost = document.getElementById("payment-delivery-cost");
+  if (deliveryMethodCost) {
+    if (delivery === 0 && total > 5000) {
+      deliveryMethodCost.innerHTML = `<span style='text-decoration: line-through; color: #999;'>${originalDelivery}₽</span> <span style='color: #1dbf73; font-weight: 600;'>бесплатно</span>`;
+    } else {
+      deliveryMethodCost.innerHTML = `${delivery}₽`;
+    }
+  }
+  // Update delivery date buttons with new delivery cost
+  updateDeliveryDateButtons(delivery, total);
+  return delivery;
+}
+
+// Update delivery date buttons with current delivery cost
+function updateDeliveryDateButtons(delivery, total) {
+  const dateButtons = document.querySelectorAll(".payment__date-btn");
+
+  dateButtons.forEach((button) => {
+    const priceSpan = button.querySelector("span");
+    if (priceSpan) {
+      if (delivery === 0 && total > 5000) {
+        // Calculate what the delivery cost would be (15% of total)
+        const originalDelivery = Math.ceil(total * 0.15);
+        priceSpan.innerHTML = `<span style="text-decoration: line-through; color: #999;">${originalDelivery}₽</span><br><span style="color: #1dbf73; font-weight: 600;">бесплатно</span>`;
+      } else {
+        priceSpan.textContent = delivery + "₽";
+      }
+    }
+  });
+}
+
+// Helper to get promocode discount (stub, replace with real logic if needed)
+function getPromocodeDiscount() {
+  // Example: get value from input or state
+  const promoInput = document.querySelector(".payment__summary-promo");
+  // For demo, let's say promo 'SAVE500' gives 500₽ off
+  if (promoInput && promoInput.value.trim().toUpperCase() === "SAVE500") {
+    return 500;
+  }
+  return 0;
+}
+
+// Update payment summary and delivery when cart changes
+function updatePaymentSummaryAndDelivery() {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  let total = 0;
+  let count = 0;
+  cartItems.forEach((item) => {
+    total += item.price * (item.quantity || 1);
+    count += item.quantity || 1;
+  });
+  // Update product count and total
+  const summaryProductsCount = document.getElementById(
+    "payment-summary-products-count"
+  );
+  const summaryProductsTotal = document.getElementById(
+    "payment-summary-products-total"
+  );
+  if (summaryProductsCount) {
+    summaryProductsCount.textContent = count
+      ? `${count} товар${count === 1 ? "" : count < 5 ? "а" : "ов"}`
+      : "";
+  }
+  if (summaryProductsTotal) {
+    summaryProductsTotal.textContent = total ? `${total}₽` : "";
+  }
+  // Update delivery
+  const delivery = updateDeliveryPrice(total) || 0;
+  // Get promocode discount
+  const discount = getPromocodeDiscount();
+  // Update discount display
+  const discountSpan = document.querySelector(".payment__summary-discount");
+  if (discountSpan) {
+    discountSpan.textContent = discount ? `-${discount}₽` : "0₽";
+    discountSpan.style.color = discount ? "#e53935" : "#888";
+  }
+  // Calculate final total
+  let finalTotal = total - discount + delivery;
+  if (finalTotal < 0) finalTotal = 0;
+  // Update total in payment summary
+  const summaryTotal = document.querySelector(".payment__summary-total");
+  if (summaryTotal) {
+    summaryTotal.textContent = `${finalTotal}₽`;
+  }
+}
+
+// Listen for promocode input changes
+const promoInput = document.querySelector(".payment__summary-promo");
+if (promoInput) {
+  promoInput.addEventListener("input", updatePaymentSummaryAndDelivery);
+}
+
+// Call on page load
+updatePaymentSummaryAndDelivery();
+// Also call after cart changes (add to your cart update logic if needed)
+window.addEventListener("storage", updatePaymentSummaryAndDelivery);
+
+// If you have cart update logic elsewhere, call updatePaymentSummaryAndDelivery() after cart changes.
+
+// Render small product images, quantity, and total below delivery date block
+function renderCartProductLine() {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  let productLine = document.getElementById("cart-product-line");
+  if (!productLine) {
+    // Create the container if it doesn't exist
+    const deliveryDateBlock = document.querySelector(".payment__date-block");
+    if (!deliveryDateBlock) return;
+    productLine = document.createElement("div");
+    productLine.id = "cart-product-line";
+    productLine.style.display = "flex";
+    productLine.style.gap = "22px";
+    productLine.style.margin = "22px 0 0 0";
+    productLine.style.alignItems = "center";
+    deliveryDateBlock.parentNode.insertBefore(
+      productLine,
+      deliveryDateBlock.nextSibling
+    );
+  }
+  productLine.innerHTML = "";
+  cartItems.forEach((item) => {
+    const itemDiv = document.createElement("div");
+    itemDiv.style.display = "flex";
+    itemDiv.style.flexDirection = "column";
+    itemDiv.style.alignItems = "center";
+    itemDiv.style.minWidth = "80px";
+    // itemDiv.style.border = "2px solid #fff";
+    // itemDiv.style.padding = "6px";
+    itemDiv.innerHTML = `
+      <img src="${item.image}" alt="${
+      item.productName
+    }" style="width: 60px; height: 60px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); margin-bottom: 6px;">
+      <span style="font-size: 15px; color: #222; font-weight: 500;">x${
+        item.quantity
+      }</span>
+      <span style="font-size: 15px; color: #888;">${
+        item.price * item.quantity
+      }₽</span>
+    `;
+    productLine.appendChild(itemDiv);
+  });
+}
+
+// Call on page load and after cart changes
+renderCartProductLine();
+window.addEventListener("storage", renderCartProductLine);
+// If you update the cart elsewhere, call renderCartProductLine() after changes.
+
+// --- Delivery Date Block Dynamic Generation and Selection ---
+function renderDeliveryDateOptions() {
+  const dateBlock = document.querySelector(".payment__date-options");
+  if (!dateBlock) return;
+  dateBlock.innerHTML = "";
+  const daysOfWeek = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+  const today = new Date();
+
+  // Get current delivery cost
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+  let delivery = 0;
+  if (total > 5000) {
+    delivery = 0;
+  } else if (total > 0) {
+    delivery = Math.ceil(total * 0.15);
+  }
+
+  for (let i = 1; i <= 5; i++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + i);
+    const day = daysOfWeek[date.getDay()];
+    const dayNum = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+
+    // Create display text with actual dates
+    let displayText = "";
+    if (i === 1) {
+      displayText = `Завтра, ${day} ${dayNum}.${month}`;
+    } else if (i === 2) {
+      displayText = `Послезавтра, ${day} ${dayNum}.${month}`;
+    } else {
+      displayText = `${day}, ${dayNum}.${month}`;
+    }
+
+    const button = document.createElement("button");
+    button.className = "payment__date-btn";
+
+    // Set delivery cost display
+    if (delivery === 0 && total > 5000) {
+      // Calculate what the delivery cost would be (15% of total)
+      const originalDelivery = Math.ceil(total * 0.15);
+      button.innerHTML = `${displayText}<br><span style="text-decoration: line-through; color: #999;">${originalDelivery}₽</span><br><span style="color: #1dbf73; font-weight: 600;">бесплатно</span>`;
+    } else {
+      button.innerHTML = `${displayText}<br><span>${delivery}₽</span>`;
+    }
+
+    button.dataset.date = `${dayNum}.${month}`;
+
+    // Add click event for selection
+    button.addEventListener("click", function () {
+      // Remove active class and checkmark from all buttons
+      document.querySelectorAll(".payment__date-btn").forEach((btn) => {
+        btn.classList.remove("payment__date-btn--active");
+        // Remove checkmark if exists
+        const existingCheck = btn.querySelector(".payment__date-btn-check");
+        if (existingCheck) {
+          existingCheck.remove();
+        }
+        // Reset to original state
+        btn.style.background = "#f7f7f7";
+        btn.style.border = "none";
+      });
+
+      // Add active class to clicked button
+      this.classList.add("payment__date-btn--active");
+      this.style.background = "#e8f5e8";
+      this.style.border = "2px solid #1dbf73";
+
+      // Add checkmark in top right corner
+      const check = document.createElement("span");
+      check.className = "payment__date-btn-check";
+      check.textContent = "✅";
+      check.style.cssText =
+        "position: absolute; top: -8px; right: -8px; font-size: 0.85em; z-index: 2;";
+      this.appendChild(check);
+    });
+
+    // Add hover effect
+    button.addEventListener("mouseenter", function () {
+      if (!this.classList.contains("payment__date-btn--active")) {
+        this.style.background = "#f0f8f0";
+        this.style.boxShadow = "0 2px 8px rgba(29, 191, 115, 0.15)";
+      }
+      // Add movement effect on hover
+      this.style.transform = "translateY(-2px)";
+      this.style.transition = "all 0.2s ease";
+    });
+
+    button.addEventListener("mouseleave", function () {
+      if (!this.classList.contains("payment__date-btn--active")) {
+        this.style.background = "#f7f7f7";
+        this.style.boxShadow = "none";
+      }
+      // Remove movement effect
+      this.style.transform = "translateY(0)";
+    });
+
+    dateBlock.appendChild(button);
+  }
+
+  // Set first option as active by default
+  const firstButton = dateBlock.querySelector(".payment__date-btn");
+  if (firstButton) {
+    firstButton.click();
+  }
+}
+
+document.addEventListener("DOMContentLoaded", renderDeliveryDateOptions);

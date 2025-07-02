@@ -45,6 +45,7 @@ body {
   --gray: #ccc;
   --ligherGray: #f5f3f1;
   --font-family: "Roboto", sans-serif;
+  --greenMain: #1dbf73;
 }
 
 /* Setting up common colors */
@@ -1371,7 +1372,7 @@ section.pros {
 .order__summary-amount {
   font-size: 30px;
   font-weight: 500;
-  color: var(--green);
+  color: var(--greenMain);
 }
 .order__button {
   width: 100%;
@@ -1828,7 +1829,7 @@ section.pros {
   color: #888;
 }
 .payment__delivery-green {
-  color: #1dbf73;
+  color: var(--greenMain);
   font-weight: 500;
 }
 .payment__delivery-check {
@@ -1836,7 +1837,7 @@ section.pros {
   right: 12px;
   bottom: 12px;
   font-size: 20px;
-  color: #1dbf73;
+  color: var(--greenMain);
 }
 .payment__address-row {
   display: flex;
@@ -1881,7 +1882,7 @@ section.pros {
   margin-right: 6px;
 }
 .payment__toggle input[type="checkbox"]:checked + .payment__toggle-slider {
-  background: #1dbf73;
+  background: var(--greenMain);
 }
 .payment__toggle-slider::before {
   content: "";
@@ -1919,29 +1920,66 @@ section.pros {
 }
 .payment__date-options {
   display: flex;
-  gap: 10px;
+  gap: 14px;
+  margin-top: 10px;
+  width: 100%;
 }
 .payment__date-btn {
-  background: #f5f5f5;
-  border: 1.5px solid #eee;
+  flex: 1 1 0;
+  min-width: 70px;
+  max-width: none;
+  margin: 0;
+  background: #f7f7f7;
+  border: none;
   border-radius: 12px;
-  padding: 10px 18px;
-  font-size: 15px;
+  font-size: 1em;
+  font-weight: 500;
   color: #222;
-  cursor: pointer;
-  min-width: 80px;
-  transition: border 0.2s, background 0.2s;
+  padding: 10px 0 6px 0;
   text-align: center;
-}
-.payment__date-btn--active,
-.payment__date-btn:hover {
+  cursor: pointer;
+  transition: background 0.18s, border 0.18s, color 0.18s;
+  position: relative;
+  box-shadow: none;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border: 2px solid #1dbf73;
-  background: #eafff3;
 }
 .payment__date-btn span {
+  font-size: 0.95em;
+  font-weight: 400;
   color: #888;
-  font-size: 13px;
-  display: block;
+  margin-top: 2px;
+}
+.payment__date-btn--active,
+.payment__date-btn--hover {
+  background: #eafff3;
+  /* border: 2px solid #1dbf73; */
+  color: #1dbf73;
+  box-shadow: 0 2px 8px rgba(29, 191, 115, 0.07);
+}
+.payment__date-btn--active {
+  font-weight: 700;
+}
+.payment__date-btn-check {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 1.1em;
+  pointer-events: none;
+}
+@media (max-width: 700px) {
+  .payment__date-btn {
+    min-width: 60px;
+    font-size: 1em;
+    padding: 12px 0 8px 0;
+  }
+  .payment__date-options {
+    gap: 8px;
+  }
 }
 .payment__products-row {
   display: flex;
@@ -1955,7 +1993,7 @@ section.pros {
   margin-left: auto;
   font-size: 20px;
   font-weight: 700;
-  color: #1dbf73;
+  color: var(--greenMain);
   padding-left: 32px;
 }
 .payment__product {
@@ -2142,8 +2180,8 @@ section.pros {
 
 .payment__add-card-btn {
   background: #f7faff;
-  border: 2px dashed #1dbf73;
-  color: #1dbf73;
+  border: 2px dashed var(--greenMain);
+  color: var(--greenMain);
   font-size: 18px;
   font-weight: 700;
   border-radius: 14px;
@@ -2157,8 +2195,8 @@ section.pros {
 }
 .payment__add-card-btn:hover {
   background: #eafff3;
-  border: 2px solid #1dbf73;
-  color: #179b3d;
+  border: 2px solid var(--greenMain);
+  color: var(--greenMain);
 }
 .payment__add-card-btn span {
   font-size: 1.5em;
@@ -2201,16 +2239,33 @@ section.pros {
   flex-direction: column;
   align-items: center;
 }
-.add-card-modal__close.modal-animate-in {
+.add-card-modal__close {
   position: absolute;
-  top: 18px;
-  right: 24px;
-  background: none;
-  border: none;
-  font-size: 2.2em;
-  color: #888;
+  top: -22px;
+  right: -22px;
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border: 2px solid #1dbf73;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(29, 191, 115, 0.07);
+  color: #1dbf73;
+  font-size: 1.7em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  z-index: 2;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, border 0.18s;
+  z-index: 10;
+}
+.add-card-modal__close:hover,
+.add-card-modal__close:focus {
+  background: #1dbf73;
+  color: #fff;
+  border: 2px solid #1dbf73;
+  box-shadow: 0 4px 16px rgba(29, 191, 115, 0.13);
+  outline: none;
 }
 .add-card-modal__title {
   font-size: 2em;
