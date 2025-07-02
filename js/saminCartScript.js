@@ -53,6 +53,7 @@ form.addEventListener("submit", function (event) {
   const building = document.getElementById("building").value;
   const flat = document.getElementById("flat").value;
   const zipCode = document.getElementById("zipCode").value;
+  const phone = document.getElementById("phone").value;
 
   // Create address object
   const addressData = {
@@ -63,6 +64,7 @@ form.addEventListener("submit", function (event) {
     building,
     flat,
     zipCode,
+    phone,
     number: addressCount,
   };
 
@@ -73,29 +75,28 @@ form.addEventListener("submit", function (event) {
   localStorage.setItem("savedAddresses", JSON.stringify(savedAddresses));
 
   const cardHTML = `
-  
-  <div class="saved-address__card" width = "100%" data-address-id="${
-    addressData.id
-  }">
-        <div class="saved-address__number">${addressCount}</div>
-        <div class="saved-address__info">
-          <div class="saved-address__name-row" style="display: flex; justify-content: space-between; align-items: center;">
-            <div class="saved-address__name">${fullName}</div>
-            ${
-              addressData.phone
-                ? `<span class="saved-address__phone" style="color: #888; font-size: 0.98em; margin-left: 16px;">${addressData.phone}</span>`
-                : ""
-            }
-          </div>
-          <div class="saved-address__text">${street}</div>
-          <div class="saved-address__text">${city}, ${zipCode}</div>
-          <div class="saved-address__text">д${building}, кв${flat}</div>
+    <div class="saved-address__card" width="100%" data-address-id="${
+      addressData.id
+    }">
+      <div class="saved-address__number">${addressCount}</div>
+      <div class="saved-address__info">
+        <div class="saved-address__name-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+          <div class="saved-address__name" style="font-weight: bold; font-size: 1.08em;">Имя: ${fullName}</div>
+          ${
+            phone
+              ? `<span class="saved-address__phone" style="color: #888; font-size: 0.98em; margin-left: 16px;">Телефон: ${phone}</span>`
+              : ""
+          }
         </div>
-        <div class="saved-address__actions">
-          <button class="saved-address__button saved__address-button-select common__button">Выбрать</button>
-          <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
-        </div>
+        <div class="saved-address__text" style="margin-bottom: 2px;"><span style="color:#888;">Адрес:</span> ${street}, д${building}, кв${flat}</div>
+        <div class="saved-address__text" style="margin-bottom: 2px;"><span style="color:#888;">Город:</span> ${city}</div>
+        <div class="saved-address__text"><span style="color:#888;">Индекс:</span> ${zipCode}</div>
       </div>
+      <div class="saved-address__actions" style="margin-top: 8px;">
+        <button class="saved-address__button saved__address-button-select common__button">Выбрать</button>
+        <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
+      </div>
+    </div>
   `;
   savedAddressList.insertAdjacentHTML("beforeend", cardHTML);
   addressCount++;
@@ -199,12 +200,13 @@ function setupDeleteButtons() {
         // Update localStorage
         localStorage.setItem("savedAddresses", JSON.stringify(savedAddresses));
 
-        card.classList.add("slideInRight");
+        // Animate and remove card
+        card.classList.add("fade-out-slide");
         setTimeout(() => {
           card.remove();
           // Renumber all remaining cards after deletion
           renumberAddressCards();
-        }, 300);
+        }, 500);
       }
     });
   });
@@ -721,17 +723,27 @@ function updateDeliveryPrice(total) {
 // Update delivery date buttons with current delivery cost
 function updateDeliveryDateButtons(delivery, total) {
   const dateButtons = document.querySelectorAll(".payment__date-btn");
-
-  dateButtons.forEach((button) => {
-    const priceSpan = button.querySelector("span");
-    if (priceSpan) {
-      if (delivery === 0 && total > 5000) {
-        // Calculate what the delivery cost would be (15% of total)
-        const originalDelivery = Math.ceil(total * 0.15);
-        priceSpan.innerHTML = `<span style="text-decoration: line-through; color: #999;">${originalDelivery}₽</span><br><span style="color: #1dbf73; font-weight: 600;">бесплатно</span>`;
-      } else {
-        priceSpan.textContent = delivery + "₽";
-      }
+  const daysOfWeek = ["вс", "пн", "вт", "ср", "чт", "пт", "сб"];
+  const today = new Date();
+  dateButtons.forEach((button, i) => {
+    const date = new Date(today);
+    date.setDate(today.getDate() + i + 1); // i+1 because buttons start from tomorrow
+    const day = daysOfWeek[date.getDay()];
+    const dayNum = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    let displayText = "";
+    if (i === 0) {
+      displayText = `Завтра, ${day} ${dayNum}.${month}`;
+    } else if (i === 1) {
+      displayText = `Послезавтра, ${day} ${dayNum}.${month}`;
+    } else {
+      displayText = `${day}, ${dayNum}.${month}`;
+    }
+    if (delivery === 0 && total > 5000) {
+      const originalDelivery = Math.ceil(total * 0.15);
+      button.innerHTML = `${displayText}<br><span style="text-decoration: line-through; color: #999;">${originalDelivery}₽</span><br><span style="color: #1dbf73; font-weight: 600;">бесплатно</span>`;
+    } else {
+      button.innerHTML = `${displayText}<br><span>${delivery}₽</span>`;
     }
   });
 }
@@ -810,18 +822,17 @@ function renderCartProductLine() {
   let productLine = document.getElementById("cart-product-line");
   if (!productLine) {
     // Create the container if it doesn't exist
-    const deliveryDateBlock = document.querySelector(".payment__date-block");
-    if (!deliveryDateBlock) return;
+    const togglesBlock = document.querySelector(".payment__toggles");
+    if (!togglesBlock) return;
     productLine = document.createElement("div");
     productLine.id = "cart-product-line";
     productLine.style.display = "flex";
     productLine.style.gap = "22px";
     productLine.style.margin = "22px 0 0 0";
     productLine.style.alignItems = "center";
-    deliveryDateBlock.parentNode.insertBefore(
-      productLine,
-      deliveryDateBlock.nextSibling
-    );
+    productLine.style.flexWrap = "wrap";
+    productLine.style.rowGap = "22px";
+    togglesBlock.parentNode.insertBefore(productLine, togglesBlock.nextSibling);
   }
   productLine.innerHTML = "";
   cartItems.forEach((item) => {

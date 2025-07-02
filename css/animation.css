@@ -41,7 +41,7 @@ img {
   }
   100% {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(50px);
   }
 }
 @keyframes slideInLeft {
@@ -88,4 +88,8 @@ Usage:
 }
 .modal-animate-out {
   animation: modalFadeOut 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.fade-out-slide {
+  animation: fadeOutSlide 0.5s forwards;
 }
