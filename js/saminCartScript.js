@@ -4,7 +4,7 @@ const showCardBtn = document.getElementById("show__card-info");
 const cardInformation = document.querySelector(".card-form-container");
 const addressFillForm = document.querySelector(".checkout__block-link-address");
 const addressForm = document.querySelector(".common__container-address-form");
-const checkoutFormButton = document.querySelector(".order__button")
+const checkoutFormButton = document.querySelector(".order__button");
 
 // Writing function for the toggling forms
 const toggleForm = (formName, infoForm) => {
@@ -14,8 +14,10 @@ const toggleForm = (formName, infoForm) => {
 };
 
 // Moving to Order Checkout
-checkoutFormButton.addEventListener("click", function() {
-  document.querySelector(".checkout__header-h1").scrollIntoView({behavior: 'smooth'});
+checkoutFormButton.addEventListener("click", function () {
+  document
+    .querySelector(".checkout__header-h1")
+    .scrollIntoView({ behavior: "smooth" });
 });
 
 // deleteButton.forEach(button => {
@@ -38,25 +40,59 @@ const form = document.querySelector(".address-form__form");
 const savedAddressList = document.getElementById("savedAddressList");
 let addressCount = 1;
 
+// Load saved addresses from localStorage on page load
+let savedAddresses = JSON.parse(localStorage.getItem("savedAddresses")) || [];
+let selectedAddressId = localStorage.getItem("selectedAddressId") || null;
+
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const fullName = document.getElementById("fullName").value;
   const street = document.getElementById("streetAddress").value;
   const city = document.getElementById("city").value;
+  const building = document.getElementById("building").value;
+  const flat = document.getElementById("flat").value;
   const zipCode = document.getElementById("zipCode").value;
+
+  // Create address object
+  const addressData = {
+    id: Date.now(), // Unique ID for each address
+    fullName,
+    street,
+    city,
+    building,
+    flat,
+    zipCode,
+    number: addressCount,
+  };
+
+  // Add to savedAddresses array
+  savedAddresses.push(addressData);
+
+  // Save to localStorage
+  localStorage.setItem("savedAddresses", JSON.stringify(savedAddresses));
 
   const cardHTML = `
   
-  <div class="saved-address__card" width = "100%">
+  <div class="saved-address__card" width = "100%" data-address-id="${
+    addressData.id
+  }">
         <div class="saved-address__number">${addressCount}</div>
         <div class="saved-address__info">
-          <div class="saved-address__name">${fullName}</div>
+          <div class="saved-address__name-row" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="saved-address__name">${fullName}</div>
+            ${
+              addressData.phone
+                ? `<span class="saved-address__phone" style="color: #888; font-size: 0.98em; margin-left: 16px;">${addressData.phone}</span>`
+                : ""
+            }
+          </div>
           <div class="saved-address__text">${street}</div>
           <div class="saved-address__text">${city}, ${zipCode}</div>
+          <div class="saved-address__text">д${building}, кв${flat}</div>
         </div>
         <div class="saved-address__actions">
-          <button class="saved-address__button common__button">Изменить</button>
+          <button class="saved-address__button saved__address-button-select common__button">Выбрать</button>
           <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
         </div>
       </div>
@@ -64,14 +100,186 @@ form.addEventListener("submit", function (event) {
   savedAddressList.insertAdjacentHTML("beforeend", cardHTML);
   addressCount++;
   form.reset();
-  document.querySelector('.saved__address-button-delete').addEventListener('click', function() {
-    const card = this.closest('.saved-address__card');
-    if (card) {
-      card.classList.add('hide__card');
-      setTimeout(() => card.remove(), 300);
+
+  // Setup event listeners for the new card
+  setupSelectButtons();
+  setupDeleteButtons();
+});
+
+// Helper to update payment section address/recipient
+function updatePaymentAddressRecipient(addressObj) {
+  const addressSpan = document.getElementById("payment-address-value");
+  const recipientSpan = document.getElementById("payment-recipient-value");
+  const phoneSpan = document.getElementById("payment-recipient-phone");
+  if (addressObj) {
+    // Compose address string
+    let addressStr = "";
+    if (addressObj.city) addressStr += addressObj.city + ", ";
+    if (addressObj.street) addressStr += addressObj.street + ", ";
+    if (addressObj.building) addressStr += "д" + addressObj.building + ", ";
+    if (addressObj.flat) addressStr += "кв" + addressObj.flat + ", ";
+    if (addressObj.zipCode) addressStr += addressObj.zipCode;
+    addressStr = addressStr.replace(/, $/, "");
+    addressSpan.textContent = addressStr || "—";
+    recipientSpan.textContent = addressObj.fullName || "—";
+    phoneSpan.textContent = addressObj.phone ? ", " + addressObj.phone : "";
+  } else {
+    addressSpan.textContent = "—";
+    recipientSpan.textContent = "—";
+    phoneSpan.textContent = "";
+  }
+}
+
+// On page load, show the selected address in payment section if exists
+function showSelectedAddressInPayment() {
+  const selectedId = parseInt(localStorage.getItem("selectedAddressId"));
+  if (!selectedId) {
+    updatePaymentAddressRecipient(null);
+    return;
+  }
+  const selectedAddress = savedAddresses.find((addr) => addr.id === selectedId);
+  if (selectedAddress) {
+    updatePaymentAddressRecipient(selectedAddress);
+  } else {
+    updatePaymentAddressRecipient(null);
+  }
+}
+
+// Update: When user selects a different address, update payment section
+function setupSelectButtons() {
+  document.querySelectorAll(".saved__address-button-select").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const card = this.closest(".saved-address__card");
+      const addressId = parseInt(card.dataset.addressId);
+
+      // Remove 'selected' from all buttons
+      document
+        .querySelectorAll(".saved__address-button-select")
+        .forEach((b) => {
+          b.classList.remove("selected");
+          b.textContent = "Выбрать";
+        });
+      // Add 'selected' to the clicked button
+      this.classList.add("selected");
+      this.textContent = "Выбран";
+
+      // Save selected address ID to localStorage
+      localStorage.setItem("selectedAddressId", addressId);
+
+      // Update payment section with this address
+      const selectedAddress = savedAddresses.find(
+        (addr) => addr.id === addressId
+      );
+      if (selectedAddress) {
+        updatePaymentAddressRecipient(selectedAddress);
+      } else {
+        updatePaymentAddressRecipient(null);
+      }
+    });
+  });
+}
+
+// When deleting an address, if it was selected, clear payment section
+function setupDeleteButtons() {
+  document.querySelectorAll(".saved__address-button-delete").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const card = this.closest(".saved-address__card");
+      if (card) {
+        const addressId = parseInt(card.dataset.addressId);
+
+        // Remove from savedAddresses array
+        savedAddresses = savedAddresses.filter((addr) => addr.id !== addressId);
+
+        // If the deleted address was selected, clear the selection
+        if (parseInt(localStorage.getItem("selectedAddressId")) === addressId) {
+          localStorage.removeItem("selectedAddressId");
+          updatePaymentAddressRecipient(null);
+        }
+
+        // Update localStorage
+        localStorage.setItem("savedAddresses", JSON.stringify(savedAddresses));
+
+        card.classList.add("slideInRight");
+        setTimeout(() => {
+          card.remove();
+          // Renumber all remaining cards after deletion
+          renumberAddressCards();
+        }, 300);
+      }
+    });
+  });
+}
+
+// Function to renumber all address cards
+function renumberAddressCards() {
+  const cards = document.querySelectorAll(".saved-address__card");
+  cards.forEach((card, index) => {
+    const numberElement = card.querySelector(".saved-address__number");
+    if (numberElement) {
+      numberElement.textContent = index + 1;
     }
   });
-});
+  // Update the addressCount to match the new total
+  addressCount = cards.length + 1;
+
+  // Update savedAddresses array with new numbers
+  savedAddresses.forEach((address, index) => {
+    address.number = index + 1;
+  });
+  localStorage.setItem("savedAddresses", JSON.stringify(savedAddresses));
+}
+
+// After loading saved addresses, restore selection
+function loadSavedAddresses() {
+  if (savedAddresses.length > 0) {
+    savedAddresses.forEach((address) => {
+      const isSelected =
+        parseInt(localStorage.getItem("selectedAddressId")) === address.id;
+      const cardHTML = `
+        <div class="saved-address__card" width="100%" data-address-id="${
+          address.id
+        }">
+          <div class="saved-address__number">${address.number}</div>
+          <div class="saved-address__info">
+            <div class="saved-address__name-row" style="display: flex; justify-content: space-between; align-items: center;">
+              <div class="saved-address__name">${address.fullName}</div>
+              ${
+                address.phone
+                  ? `<span class="saved-address__phone" style="color: #888; font-size: 0.98em; margin-left: 16px;">${address.phone}</span>`
+                  : ""
+              }
+            </div>
+            <div class="saved-address__text">${address.street}</div>
+            <div class="saved-address__text">${address.city}, ${
+        address.zipCode
+      }</div>
+            <div class="saved-address__text">д${address.building}, кв${
+        address.flat
+      }</div>
+          </div>
+          <div class="saved-address__actions">
+            <button class="saved-address__button saved__address-button-select common__button ${
+              isSelected ? "selected" : ""
+            }">${isSelected ? "Выбран" : "Выбрать"}</button>
+            <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
+          </div>
+        </div>
+      `;
+      savedAddressList.insertAdjacentHTML("beforeend", cardHTML);
+    });
+
+    // Update addressCount to continue from the last number
+    addressCount = savedAddresses.length + 1;
+
+    // Setup event listeners for loaded cards
+    setupSelectButtons();
+    setupDeleteButtons();
+    showSelectedAddressInPayment();
+  }
+}
+
+// Load saved addresses when page loads
+document.addEventListener("DOMContentLoaded", loadSavedAddresses);
 
 // card.classList.add('hide__card');
 // setTimeout(() => card.remove(), 300);
@@ -255,34 +463,37 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 // Making the Checkout form to be sticky
-const checkout = document.querySelector('.order');
-const startTrigger = document.querySelector('.sticky__form-start-trigger');
-const stopTrigger = document.querySelector('.cart-bottom-observer');
+const checkout = document.querySelector(".order");
+const startTrigger = document.querySelector(".sticky__form-start-trigger");
+const stopTrigger = document.querySelector(".cart-bottom-observer");
 
-const startObserver = new IntersectionObserver(([entry]) => {
-  if (!entry.isIntersecting) {
-    const rect = checkout.getBoundingClientRect();
-    checkout.style.width = `${rect.width}px`;
-    checkout.style.left = `${rect.left}px`;
-    checkout.style.height = `${checkout.offsetHeight}px`;
-    checkout.style.position = 'fixed';
-    checkout.style.top = '20px';
-    checkout.style.zIndex = '999';
-    checkout.classList.add('sticky__checkout-form');
-  } else {
-    checkout.classList.remove('sticky__checkout-form');
-    checkout.style.width = '';
-    checkout.style.left = '';
-    checkout.style.height = '';
-    checkout.style.position = '';
-    checkout.style.top = '';
-    checkout.style.zIndex = '';
+const startObserver = new IntersectionObserver(
+  ([entry]) => {
+    if (!entry.isIntersecting) {
+      const rect = checkout.getBoundingClientRect();
+      checkout.style.width = `${rect.width}px`;
+      checkout.style.left = `${rect.left}px`;
+      checkout.style.height = `${checkout.offsetHeight}px`;
+      checkout.style.position = "fixed";
+      checkout.style.top = "20px";
+      checkout.style.zIndex = "999";
+      checkout.classList.add("sticky__checkout-form");
+    } else {
+      checkout.classList.remove("sticky__checkout-form");
+      checkout.style.width = "";
+      checkout.style.left = "";
+      checkout.style.height = "";
+      checkout.style.position = "";
+      checkout.style.top = "";
+      checkout.style.zIndex = "";
+    }
+  },
+  {
+    root: null,
+    threshold: 0,
+    rootMargin: "0px",
   }
-}, {
-  root: null,
-  threshold: 0,
-  rootMargin: "0px"
-});
+);
 
 startObserver.observe(startTrigger);
 
@@ -299,16 +510,173 @@ window.addEventListener("scroll", () => {
   // Если нижняя граница формы доходит до нижнего конца контента — убираем fixed
   if (checkoutBottom >= cartBottomTop) {
     checkout.classList.remove("sticky__checkout-form");
-    checkout.style.position = '';
-    checkout.style.top = '';
-    checkout.style.width = '';
-    checkout.style.left = '';
-    checkout.style.height = '';
-    checkout.style.zIndex = '';
+    checkout.style.position = "";
+    checkout.style.top = "";
+    checkout.style.width = "";
+    checkout.style.left = "";
+    checkout.style.height = "";
+    checkout.style.zIndex = "";
   }
 });
 
+// Trying to make a map
+function initYandexMap() {
+  const map = new ymaps.Map("yamap", {
+    center: [55.751574, 37.573856],
+    zoom: 10,
+    controls: [],
+  });
 
+  let placemark;
 
+  const updateMapByAddress = (address) => {
+    ymaps.geocode(address).then((res) => {
+      const geoObject = res.geoObjects.get(0);
+      if (!geoObject) return;
 
+      const coords = geoObject.geometry.getCoordinates();
+      if (placemark) {
+        placemark.geometry.setCoordinates(coords);
+      } else {
+        placemark = new ymaps.Placemark(
+          coords,
+          {},
+          {
+            preset: "islands#icon",
+            iconColor: "#0095b6",
+            draggable: true,
+          }
+        );
+        map.geoObjects.add(placemark);
+      }
+      map.setCenter(coords, 16);
+    });
+  };
 
+  // Автозаполнение по выбору подсказки
+  const addressInput = document.getElementById("yamap-address");
+  addressInput.addEventListener("change", () => {
+    updateMapByAddress(addressInput.value);
+  });
+}
+ymaps.ready(() => {
+  initYandexMap();
+});
+
+// Connecting daData API for the address suggestion
+const addressInput = document.getElementById("yamap-address");
+const suggestBox = document.createElement("div");
+suggestBox.classList.add("dadata-suggest-box");
+document.body.appendChild(suggestBox);
+
+// Стили (можно перенести в CSS)
+Object.assign(suggestBox.style, {
+  position: "absolute",
+  border: "1px solid #ccc",
+  background: "#fff",
+  zIndex: 9999,
+  display: "none",
+  maxHeight: "200px",
+  overflowY: "auto",
+  fontSize: "14px",
+  cursor: "pointer",
+});
+
+addressInput.addEventListener("input", async () => {
+  const query = addressInput.value;
+  if (query.length < 3) {
+    suggestBox.style.display = "none";
+    return;
+  }
+
+  const response = await fetch(
+    "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
+    {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: "Token 955c063e8c0a23970f308ba7658ee1ccb9c0f958",
+      },
+      body: JSON.stringify({ query }),
+    }
+  );
+
+  const data = await response.json();
+  suggestBox.innerHTML = "";
+
+  data.suggestions.forEach((item) => {
+    const div = document.createElement("div");
+    div.textContent = item.value;
+    div.style.padding = "8px 10px";
+    div.addEventListener("click", () => {
+      addressInput.value = item.value;
+      document.getElementById("streetAddress").value =
+        item.data.street_with_type || "";
+      document.getElementById("city").value =
+        item.data.city || item.data.settlement || "";
+      document.getElementById("building").value = item.data.building || "";
+      document.getElementById("flat").value = item.data.flat || "";
+      document.getElementById("zipCode").value = item.data.postal_code || "";
+      suggestBox.style.display = "none";
+    });
+    suggestBox.appendChild(div);
+  });
+
+  const rect = addressInput.getBoundingClientRect();
+  suggestBox.style.top = `${rect.bottom + window.scrollY}px`;
+  suggestBox.style.left = `${rect.left + window.scrollX}px`;
+  suggestBox.style.width = `${rect.width}px`;
+  suggestBox.style.display = "block";
+});
+
+// Скрытие подсказок при клике вне
+document.addEventListener("click", (e) => {
+  if (!suggestBox.contains(e.target) && e.target !== addressInput) {
+    suggestBox.style.display = "none";
+  }
+});
+// Writing JS for the add card modal
+const addCardBtn = document.getElementById("add-card-btn");
+const addCardModal = document.getElementById("add-card-modal");
+const cardNumberInput = document.getElementById("card-number");
+const addCardModalClose = document.getElementById("add-card-modal-close");
+const addCardModalContent = addCardModal
+  ? addCardModal.querySelector(".add-card-modal__content")
+  : null;
+
+function showAddCardModal() {
+  if (!addCardModal || !addCardModalContent) return;
+  addCardModal.style.display = "flex";
+  addCardModalContent.classList.remove("modal-animate-out");
+  addCardModalContent.classList.add("modal-animate-in");
+  setTimeout(() => cardNumberInput && cardNumberInput.focus(), 100);
+}
+
+function hideAddCardModal() {
+  if (!addCardModal || !addCardModalContent) return;
+  addCardModalContent.classList.remove("modal-animate-in");
+  addCardModalContent.classList.add("modal-animate-out");
+  // Wait for animation to finish before hiding
+  addCardModalContent.addEventListener("animationend", function handler(e) {
+    if (e.animationName === "modalFadeOut") {
+      addCardModal.style.display = "none";
+      addCardModalContent.classList.remove("modal-animate-out");
+      addCardModalContent.removeEventListener("animationend", handler);
+    }
+  });
+}
+
+if (addCardBtn && addCardModal) {
+  addCardBtn.addEventListener("click", showAddCardModal);
+}
+if (addCardModalClose && addCardModal) {
+  addCardModalClose.addEventListener("click", hideAddCardModal);
+}
+if (addCardModal) {
+  const overlay = addCardModal.querySelector(".add-card-modal__overlay");
+  if (overlay) {
+    overlay.addEventListener("click", hideAddCardModal);
+  }
+}

@@ -1,32 +1,36 @@
 /* animation.css - Basic CSS settings */
-html, body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #fff;
-    color: #222;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: #222;
 }
 
-*, *::before, *::after {
-    box-sizing: inherit;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
-ul, ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 img {
-    max-width: 100%;
-    display: block;
-    height: auto;
+  max-width: 100%;
+  display: block;
+  height: auto;
 }
 
 /* Animations for elements */
@@ -49,4 +53,39 @@ img {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+/* Modal open/close animations */
+@keyframes modalFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes modalFadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/*
+Usage:
+- Add .modal-animate-in to the modal content for opening (fade in)
+- Add .modal-animate-out to the modal content for closing (fade out)
+- Remove the animation class after animation ends
+*/
+.modal-animate-in {
+  animation: modalFadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+.modal-animate-out {
+  animation: modalFadeOut 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }

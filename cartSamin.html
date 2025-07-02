@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Connecting the Yandex Maps API Key -->
+    <!-- <script
+      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=59a06a96-3b35-4621-8e54-c0287ff7edc8"
+      type="text/javascript"
+    ></script> -->
+
     <!-- Google fonts and icons-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,7 +24,7 @@
     />
 
     <!-- CSS -->
-     <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/animation.css" />
     <link rel="stylesheet" href="css/style.css" />
     <!-- Title icon for the website -->
     <title>Samin</title>
@@ -185,7 +191,7 @@
             <button class="remove__item">x</button>
           </div> -->
           </div>
-          <div class="sticky__form-start-trigger" style="height:1px"></div>
+          <div class="sticky__form-start-trigger" style="height: 1px"></div>
           <div class="order">
             <div class="order__input-div">
               <input class="order__input" type="text" placeholder="Промокод" />
@@ -199,7 +205,7 @@
             </div>
             <div class="order__discount">
               <p class="order__discount-text order__common-text">Скидки</p>
-              <p class="order__discount-amount">–1760 ₽</p>
+              <p class="order__discount-amount">при оформлении</p>
             </div>
             <div class="order__delivery">
               <p class="order__delivery-text order__common-text">
@@ -218,7 +224,10 @@
             </button>
           </div>
         </div>
-        <div class="cart-bottom-observer" style="height: 1px; margin-top: 50px;"></div>
+        <div
+          class="cart-bottom-observer"
+          style="height: 1px; margin-top: 50px"
+        ></div>
       </div>
     </section>
     <!-- Adding cards for the cart section -->
@@ -226,6 +235,299 @@
     <!-- Coding choosing address for the cart page -->
     <section class="address">
       <h1 class="common__header checkout__header-h1">Оформление заказа</h1>
+      <div class="yamap__container">
+        <div class="yamap__left">
+          <div class="address__form-form-container">
+            <h2 class="address-form__title">Адрес доставки</h2>
+            <form class="address-form__form">
+              <div class="address-form__group">
+                <label for="fullName" class="address-form__label"
+                  >Полное имя</label
+                >
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="address-form__input"
+                  placeholder="Павел Дуров"
+                  required
+                />
+              </div>
+              <div class="address-form__group">
+                <label for="phone" class="address-form__label">Телефон</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="address-form__input"
+                  placeholder="+7 (999) 999-99-99"
+                  required
+                />
+              </div>
+              <div class="address-form__group">
+                <label for="yamap-address" class="address-form__label"
+                  >Поиск адреса</label
+                >
+                <input
+                  type="text"
+                  id="yamap-address"
+                  class="address-form__input"
+                  placeholder="Введите адрес"
+                />
+              </div>
+              <div class="address-form__group">
+                <label for="streetAddress" class="address-form__label"
+                  >Улица</label
+                >
+                <input
+                  type="text"
+                  id="streetAddress"
+                  name="streetAddress"
+                  class="address-form__input"
+                  placeholder="Беверли Хилз"
+                  required
+                />
+              </div>
+              <div class="address-form__group address-form__group-flex">
+                <input
+                  type="text"
+                  id="building"
+                  name="building"
+                  class="address-form__input"
+                  placeholder="Дом"
+                  required
+                />
+                <input
+                  type="text"
+                  id="flat"
+                  name="flat"
+                  class="address-form__input"
+                  placeholder="Квартира"
+                  required
+                />
+              </div>
+
+              <div class="address-form__group">
+                <label for="city" class="address-form__label">Город</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  class="address-form__input"
+                  placeholder="Мухосранск"
+                  required
+                />
+              </div>
+
+              <div class="address-form__group">
+                <label for="zipCode" class="address-form__label"
+                  >ZIP Code</label
+                >
+                <input
+                  type="text"
+                  id="zipCode"
+                  name="zipCode"
+                  class="address-form__input"
+                  placeholder="90001"
+                  required
+                />
+              </div>
+
+              <div class="address-form__buttons">
+                <button
+                  type="submit"
+                  class="address-form__button-save commont__button"
+                >
+                  Сохранить адрес
+                </button>
+                <button type="button" class="address-form__button-select">
+                  Доставить сюда
+                </button>
+              </div>
+            </form>
+          </div>
+          <div
+            class="common__container-saved-address"
+            id="savedAddressList"
+          ></div>
+        </div>
+        <div class="yamap__right">
+          <div id="yamap" class="yamap__map"></div>
+          <!-- <div
+            class="common__container-saved-address"
+            id="savedAddressList"
+          ></div> -->
+        </div>
+      </div>
+
+      <section class="payment">
+        <div class="payment__container">
+          <div class="payment__delivery-methods">
+            <div
+              class="payment__delivery-method payment__delivery-method--active"
+            >
+              <div class="payment__delivery-title">Курьер Samin</div>
+              <div class="payment__delivery-desc">Завтра или позже</div>
+              <div class="payment__delivery-free" id="payment-delivery-cost">
+                99₽
+              </div>
+              <div class="payment__delivery-check"><span>✔</span></div>
+            </div>
+          </div>
+          <div class="payment__address-row">
+            <div class="payment__address-info">
+              <span class="payment__address-label">Адрес</span>
+              <span class="payment__address-value" id="payment-address-value"
+                >—</span
+              >
+            </div>
+            <div class="payment__recipient-info">
+              <span class="payment__recipient-label">Получатель</span>
+              <span
+                class="payment__recipient-value"
+                id="payment-recipient-value"
+                >—</span
+              >
+              <span
+                class="payment__recipient-phone"
+                id="payment-recipient-phone"
+              ></span>
+            </div>
+          </div>
+          <div class="payment__toggles">
+            <label class="payment__toggle">
+              <input type="checkbox" />
+              <span class="payment__toggle-slider"></span>
+              Оставить у двери
+            </label>
+            <label class="payment__toggle">
+              <input type="checkbox" />
+              <span class="payment__toggle-slider"></span>
+              Не звонить
+            </label>
+          </div>
+          <div class="payment__date-block">
+            <div class="payment__date-title">
+              Завтра, курьером по клику
+              <span class="payment__date-info"
+                >Курьер Яндекс Маркета • 1,1кг • 0₽</span
+              >
+            </div>
+            <div class="payment__date-options">
+              <button class="payment__date-btn payment__date-btn--active">
+                Сегодня<br /><span>0₽</span>
+              </button>
+              <button class="payment__date-btn">
+                Завтра<br /><span>0₽</span>
+              </button>
+              <button class="payment__date-btn">
+                Послезавтра<br /><span>0₽</span>
+              </button>
+              <button class="payment__date-btn">
+                сб, 05.07<br /><span>0₽</span>
+              </button>
+              <button class="payment__date-btn">
+                вс, 06.07<br /><span>0₽</span>
+              </button>
+              <button class="payment__date-btn">
+                пн, 07.07<br /><span>0₽</span>
+              </button>
+            </div>
+          </div>
+          <div class="payment__products-row" id="payment-products-row">
+            <!-- JS will render cart items here -->
+            <span
+              class="payment__products-total"
+              id="payment-products-total"
+            ></span>
+          </div>
+        </div>
+        <div class="payment__summary">
+          <div class="payment__summary-header">
+            <div class="payment__summary-cards">
+              <div
+                id="payment-added-cards"
+                style="display: flex; gap: 8px"
+              ></div>
+              <button
+                class="payment__summary-card payment__add-card-btn"
+                id="add-card-btn"
+              >
+                <span
+                  style="
+                    font-size: 1.3em;
+                    margin-right: 8px;
+                    vertical-align: middle;
+                  "
+                  >＋</span
+                >Добавить карту
+              </button>
+            </div>
+            <!-- <div class="payment__summary-info">
+              <div>1398₽</div>
+            </div> -->
+          </div>
+          <div
+            class="payment__summary-products-row"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              font-size: 16px;
+              font-weight: 600;
+              margin-bottom: 8px;
+              color: #222;
+            "
+          >
+            <span id="payment-summary-products-count">2 товара</span>
+            <span id="payment-summary-products-total">1398₽</span>
+          </div>
+          <div class="payment__summary-row">
+            <span>Выгода</span>
+            <span class="payment__summary-discount">-741₽</span>
+          </div>
+          <div class="payment__summary-row">
+            <span>Доставка и сервисы</span>
+            <span id="payment-summary-delivery-cost">0₽</span>
+          </div>
+          <div class="payment__summary-row">
+            <span>Промокод</span>
+            <input
+              class="payment__summary-promo"
+              type="text"
+              placeholder="Промокод"
+            />
+          </div>
+          <div class="payment__summary-row payment__summary-row--total">
+            <span>Оплата онлайн</span>
+            <span class="payment__summary-total">657₽</span>
+          </div>
+          <div class="payment__split">
+            <span>4×165₽ в сплит</span>
+            <span class="payment__split-desc">На 2 месяца без переплаты</span>
+            <div class="payment__split-progress">
+              <div class="payment__split-bar" style="width: 25%"></div>
+            </div>
+            <div class="payment__split-dates">
+              <span>01.07 165₽</span>
+              <span>Ещё 3 платежа раз в 2 недели</span>
+            </div>
+          </div>
+          <button class="payment__pay-btn">
+            Оплатить картой <span class="payment__pay-card">••0042</span>
+          </button>
+          <div class="payment__secure">
+            Безопасная оплата с
+            <img
+              src="images/logos/yapay.svg"
+              alt="ЯPay"
+              style="height: 1em; vertical-align: middle"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Yandex Market API -->
       <div class="common__container checkout__container-address">
         <div class="checkout__blocks">
           <div class="checkout__block">
@@ -234,7 +536,7 @@
               Выбрать адрес доставки
             </p>
           </div>
-          <section class="common__container-address-form section__hidden">
+          <!-- <section class="common__container-address-form section__hidden">
             <div class="address__form-container">
               <div class="address__form-form-container">
                 <h2 class="address-form__title">Адрес доставки</h2>
@@ -310,10 +612,10 @@
                 class="common__container-saved-address"
                 id="savedAddressList"
               >
-                <!-- Address cards will be added here -->
-              </div>
+                 Address cards will be added here -->
+          <!-- </div>
             </div>
-          </section>
+          </section> -->
 
           <div class="checkout__row">
             <div class="checkout__block">
@@ -449,7 +751,71 @@
     </footer>
     <!-- Coding for the footer of the website  -->
 
+    <!-- Writing html structure for the payment modal -->
+
+    <!-- Card Add Modal -->
+    <div id="add-card-modal" class="add-card-modal" style="display: none">
+      <div class="add-card-modal__overlay"></div>
+      <div class="add-card-modal__content">
+        <button class="add-card-modal__close" id="add-card-modal-close">
+          ×
+        </button>
+        <h2 class="add-card-modal__title">Добавьте карту любого банка</h2>
+        <form id="add-card-form" class="add-card-modal__form">
+          <input
+            type="text"
+            id="card-number"
+            maxlength="19"
+            placeholder="Номер карты"
+            required
+          />
+          <div class="add-card-modal__row">
+            <input
+              type="text"
+              id="card-expiry"
+              maxlength="5"
+              placeholder="Действует до"
+              required
+            />
+            <input
+              type="text"
+              id="card-cvv"
+              maxlength="4"
+              placeholder="Код"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            id="add-card-submit"
+            class="add-card-modal__submit"
+            disabled
+          >
+            Добавить карту
+          </button>
+        </form>
+        <div class="add-card-modal__note">
+          Для проверки спишем и вернём небольшую сумму
+        </div>
+      </div>
+    </div>
+
     <!-- Connecting JS to the HTML -->
+    <script
+      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=8891bddc-5383-4ef2-a49e-5ff720368e7b"
+      type="text/javascript"
+    ></script>
+    <script src="js/commonScript.js"></script>
     <script src="js/saminCartScript.js"></script>
+
+    <!-- <script>
+      ymaps.ready(() => {
+        if (typeof initYandexMap === "function") {
+          initYandexMap();
+        } else {
+          console.error("initYandexMap is not defined");
+        }
+      });
+    </script> -->
   </body>
 </html>
