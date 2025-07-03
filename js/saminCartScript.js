@@ -8,17 +8,30 @@ const checkoutFormButton = document.querySelector(".order__button");
 
 // Writing function for the toggling forms
 const toggleForm = (formName, infoForm) => {
-  formName.addEventListener("click", function () {
-    infoForm.classList.toggle("section__hidden");
-  });
+  if (formName && infoForm) {
+    formName.addEventListener("click", function () {
+      infoForm.classList.toggle("section__hidden");
+    });
+  }
 };
 
 // Moving to Order Checkout
-checkoutFormButton.addEventListener("click", function () {
-  document
-    .querySelector(".checkout__header-h1")
-    .scrollIntoView({ behavior: "smooth" });
-});
+if (checkoutFormButton) {
+  checkoutFormButton.addEventListener("click", function () {
+    const header = document.querySelector(".checkout__header-h1");
+    if (header) {
+      header.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+}
+
+// Moving back to the home page
+const homePageBack = document.querySelector(".home__page-back");
+if (homePageBack) {
+  homePageBack.addEventListener("click", function () {
+    window.location.href = "index.html";
+  });
+}
 
 // deleteButton.forEach(button => {
 //   button.addEventListener('click', function() {
@@ -28,9 +41,13 @@ checkoutFormButton.addEventListener("click", function () {
 // });
 
 // Showing card informaion in saminCart
-toggleForm(showCardBtn, cardInformation);
+if (showCardBtn && cardInformation) {
+  toggleForm(showCardBtn, cardInformation);
+}
 // Showing address fillout form
-toggleForm(addressFillForm, addressForm);
+if (addressFillForm && addressForm) {
+  toggleForm(addressFillForm, addressForm);
+}
 
 // Bro, you know the filling when it seems that everything is going amazing, and you have a lot of stuff to do, at the same moment you wanna
 // chill and enjoy your life. I can not chill, not now !
@@ -44,68 +61,72 @@ let addressCount = 1;
 let savedAddresses = JSON.parse(localStorage.getItem("savedAddresses")) || [];
 let selectedAddressId = localStorage.getItem("selectedAddressId") || null;
 
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
+if (form) {
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  const fullName = document.getElementById("fullName").value;
-  const street = document.getElementById("streetAddress").value;
-  const city = document.getElementById("city").value;
-  const building = document.getElementById("building").value;
-  const flat = document.getElementById("flat").value;
-  const zipCode = document.getElementById("zipCode").value;
-  const phone = document.getElementById("phone").value;
+    const fullName = document.getElementById("fullName")?.value || "";
+    const street = document.getElementById("streetAddress")?.value || "";
+    const city = document.getElementById("city")?.value || "";
+    const building = document.getElementById("building")?.value || "";
+    const flat = document.getElementById("flat")?.value || "";
+    const zipCode = document.getElementById("zipCode")?.value || "";
+    const phone = document.getElementById("phone")?.value || "";
 
-  // Create address object
-  const addressData = {
-    id: Date.now(), // Unique ID for each address
-    fullName,
-    street,
-    city,
-    building,
-    flat,
-    zipCode,
-    phone,
-    number: addressCount,
-  };
+    // Create address object
+    const addressData = {
+      id: Date.now(), // Unique ID for each address
+      fullName,
+      street,
+      city,
+      building,
+      flat,
+      zipCode,
+      phone,
+      number: addressCount,
+    };
 
-  // Add to savedAddresses array
-  savedAddresses.push(addressData);
+    // Add to savedAddresses array
+    savedAddresses.push(addressData);
 
-  // Save to localStorage
-  localStorage.setItem("savedAddresses", JSON.stringify(savedAddresses));
+    // Save to localStorage
+    localStorage.setItem("savedAddresses", JSON.stringify(savedAddresses));
 
-  const cardHTML = `
-    <div class="saved-address__card" width="100%" data-address-id="${
-      addressData.id
-    }">
-      <div class="saved-address__number">${addressCount}</div>
-      <div class="saved-address__info">
-        <div class="saved-address__name-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-          <div class="saved-address__name" style="font-weight: bold; font-size: 1.08em;">Имя: ${fullName}</div>
-          ${
-            phone
-              ? `<span class="saved-address__phone" style="color: #888; font-size: 0.98em; margin-left: 16px;">Телефон: ${phone}</span>`
-              : ""
-          }
+    if (savedAddressList) {
+      const cardHTML = `
+        <div class="saved-address__card" width="100%" data-address-id="${
+          addressData.id
+        }">
+          <div class="saved-address__number">${addressCount}</div>
+          <div class="saved-address__info">
+            <div class="saved-address__name-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <div class="saved-address__name" style="font-weight: bold; font-size: 1.08em;">Имя: ${fullName}</div>
+              ${
+                phone
+                  ? `<span class="saved-address__phone" style="color: #888; font-size: 0.98em; margin-left: 16px;">Телефон: ${phone}</span>`
+                  : ""
+              }
+            </div>
+            <div class="saved-address__text" style="margin-bottom: 2px;"><span style="color:#888;">Адрес:</span> ${street}, д${building}, кв${flat}</div>
+            <div class="saved-address__text" style="margin-bottom: 2px;"><span style="color:#888;">Город:</span> ${city}</div>
+            <div class="saved-address__text"><span style="color:#888;">Индекс:</span> ${zipCode}</div>
+          </div>
+          <div class="saved-address__actions" style="margin-top: 8px;">
+            <button class="saved-address__button saved__address-button-select common__button">Выбрать</button>
+            <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
+          </div>
         </div>
-        <div class="saved-address__text" style="margin-bottom: 2px;"><span style="color:#888;">Адрес:</span> ${street}, д${building}, кв${flat}</div>
-        <div class="saved-address__text" style="margin-bottom: 2px;"><span style="color:#888;">Город:</span> ${city}</div>
-        <div class="saved-address__text"><span style="color:#888;">Индекс:</span> ${zipCode}</div>
-      </div>
-      <div class="saved-address__actions" style="margin-top: 8px;">
-        <button class="saved-address__button saved__address-button-select common__button">Выбрать</button>
-        <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
-      </div>
-    </div>
-  `;
-  savedAddressList.insertAdjacentHTML("beforeend", cardHTML);
-  addressCount++;
-  form.reset();
+      `;
+      savedAddressList.insertAdjacentHTML("beforeend", cardHTML);
+      addressCount++;
+      form.reset();
 
-  // Setup event listeners for the new card
-  setupSelectButtons();
-  setupDeleteButtons();
-});
+      // Setup event listeners for the new card
+      setupSelectButtons();
+      setupDeleteButtons();
+    }
+  });
+}
 
 // Helper to update payment section address/recipient
 function updatePaymentAddressRecipient(addressObj) {
@@ -309,6 +330,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".wall");
   const summaryTotal = document.querySelector(".order__summary-amount");
 
+  if (!container) {
+    console.warn("Cart container not found");
+    return;
+  }
+
   let total = 0;
 
   cartItems.forEach((item, index) => {
@@ -340,7 +366,9 @@ window.addEventListener("DOMContentLoaded", () => {
     container.appendChild(card);
   });
 
-  summaryTotal.textContent = `${total} ₽`;
+  if (summaryTotal) {
+    summaryTotal.textContent = `${total} ₽`;
+  }
 
   setupQuantityListeners();
   // Вешаем обработчики на все кнопки удаления
@@ -398,10 +426,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function setupQuantityListeners() {
     const container = document.querySelector(".wall");
+    if (!container) return;
 
     // Удаляем предыдущие обработчики, если есть
     container.replaceWith(container.cloneNode(true));
     const newContainer = document.querySelector(".wall");
+    if (!newContainer) return;
 
     newContainer.addEventListener("click", function (event) {
       if (
@@ -438,9 +468,11 @@ window.addEventListener("DOMContentLoaded", () => {
     const quantityElems = document.querySelectorAll(".quantity__amount");
     const priceElems = document.querySelectorAll(".wall__price");
 
-    quantityElems[index].textContent = cartItems[index].quantity;
-    const totalItemPrice = cartItems[index].price * cartItems[index].quantity;
-    priceElems[index].textContent = `${totalItemPrice} ₽`;
+    if (quantityElems[index] && priceElems[index]) {
+      quantityElems[index].textContent = cartItems[index].quantity;
+      const totalItemPrice = cartItems[index].price * cartItems[index].quantity;
+      priceElems[index].textContent = `${totalItemPrice} ₽`;
+    }
   }
 
   // Обновить общую сумму
@@ -457,9 +489,9 @@ window.addEventListener("DOMContentLoaded", () => {
       totalItems += item.quantity;
     });
 
-    summaryTotal.textContent = `${totalSum} ₽`;
-    summaryCount.textContent = `${totalItems} товаров`;
-    summaryPrice.textContent = `${totalSum} ₽`;
+    if (summaryTotal) summaryTotal.textContent = `${totalSum} ₽`;
+    if (summaryCount) summaryCount.textContent = `${totalItems} товаров`;
+    if (summaryPrice) summaryPrice.textContent = `${totalSum} ₽`;
   }
 
   // setupQuantityListeners();
@@ -525,6 +557,12 @@ window.addEventListener("scroll", () => {
 
 // Trying to make a map
 function initYandexMap() {
+  const mapElement = document.getElementById("yamap");
+  if (!mapElement) {
+    console.warn("Map element not found");
+    return;
+  }
+
   const map = new ymaps.Map("yamap", {
     center: [55.751574, 37.573856],
     zoom: 10,
@@ -559,88 +597,107 @@ function initYandexMap() {
 
   // Автозаполнение по выбору подсказки
   const addressInput = document.getElementById("yamap-address");
-  addressInput.addEventListener("change", () => {
-    updateMapByAddress(addressInput.value);
+  if (addressInput) {
+    addressInput.addEventListener("change", () => {
+      updateMapByAddress(addressInput.value);
+    });
+  }
+}
+
+// Initialize map only if ymaps is available
+if (typeof ymaps !== "undefined") {
+  ymaps.ready(() => {
+    initYandexMap();
   });
 }
-ymaps.ready(() => {
-  initYandexMap();
-});
 
 // Connecting daData API for the address suggestion
 const addressInput = document.getElementById("yamap-address");
-const suggestBox = document.createElement("div");
-suggestBox.classList.add("dadata-suggest-box");
-document.body.appendChild(suggestBox);
+if (addressInput) {
+  const suggestBox = document.createElement("div");
+  suggestBox.classList.add("dadata-suggest-box");
+  document.body.appendChild(suggestBox);
 
-// Стили (можно перенести в CSS)
-Object.assign(suggestBox.style, {
-  position: "absolute",
-  border: "1px solid #ccc",
-  background: "#fff",
-  zIndex: 9999,
-  display: "none",
-  maxHeight: "200px",
-  overflowY: "auto",
-  fontSize: "14px",
-  cursor: "pointer",
-});
-
-addressInput.addEventListener("input", async () => {
-  const query = addressInput.value;
-  if (query.length < 3) {
-    suggestBox.style.display = "none";
-    return;
-  }
-
-  const response = await fetch(
-    "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
-    {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: "Token 955c063e8c0a23970f308ba7658ee1ccb9c0f958",
-      },
-      body: JSON.stringify({ query }),
-    }
-  );
-
-  const data = await response.json();
-  suggestBox.innerHTML = "";
-
-  data.suggestions.forEach((item) => {
-    const div = document.createElement("div");
-    div.textContent = item.value;
-    div.style.padding = "8px 10px";
-    div.addEventListener("click", () => {
-      addressInput.value = item.value;
-      document.getElementById("streetAddress").value =
-        item.data.street_with_type || "";
-      document.getElementById("city").value =
-        item.data.city || item.data.settlement || "";
-      document.getElementById("building").value = item.data.building || "";
-      document.getElementById("flat").value = item.data.flat || "";
-      document.getElementById("zipCode").value = item.data.postal_code || "";
-      suggestBox.style.display = "none";
-    });
-    suggestBox.appendChild(div);
+  // Стили (можно перенести в CSS)
+  Object.assign(suggestBox.style, {
+    position: "absolute",
+    border: "1px solid #ccc",
+    background: "#fff",
+    zIndex: 9999,
+    display: "none",
+    maxHeight: "200px",
+    overflowY: "auto",
+    fontSize: "14px",
+    cursor: "pointer",
   });
 
-  const rect = addressInput.getBoundingClientRect();
-  suggestBox.style.top = `${rect.bottom + window.scrollY}px`;
-  suggestBox.style.left = `${rect.left + window.scrollX}px`;
-  suggestBox.style.width = `${rect.width}px`;
-  suggestBox.style.display = "block";
-});
+  addressInput.addEventListener("input", async () => {
+    const query = addressInput.value;
+    if (query.length < 3) {
+      suggestBox.style.display = "none";
+      return;
+    }
 
-// Скрытие подсказок при клике вне
-document.addEventListener("click", (e) => {
-  if (!suggestBox.contains(e.target) && e.target !== addressInput) {
-    suggestBox.style.display = "none";
-  }
-});
+    try {
+      const response = await fetch(
+        "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address",
+        {
+          method: "POST",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: "Token 955c063e8c0a23970f308ba7658ee1ccb9c0f958",
+          },
+          body: JSON.stringify({ query }),
+        }
+      );
+
+      const data = await response.json();
+      suggestBox.innerHTML = "";
+
+      data.suggestions.forEach((item) => {
+        const div = document.createElement("div");
+        div.textContent = item.value;
+        div.style.padding = "8px 10px";
+        div.addEventListener("click", () => {
+          addressInput.value = item.value;
+          const streetAddress = document.getElementById("streetAddress");
+          const city = document.getElementById("city");
+          const building = document.getElementById("building");
+          const flat = document.getElementById("flat");
+          const zipCode = document.getElementById("zipCode");
+
+          if (streetAddress)
+            streetAddress.value = item.data.street_with_type || "";
+          if (city) city.value = item.data.city || item.data.settlement || "";
+          if (building) building.value = item.data.building || "";
+          if (flat) flat.value = item.data.flat || "";
+          if (zipCode) zipCode.value = item.data.postal_code || "";
+
+          suggestBox.style.display = "none";
+        });
+        suggestBox.appendChild(div);
+      });
+
+      const rect = addressInput.getBoundingClientRect();
+      suggestBox.style.top = `${rect.bottom + window.scrollY}px`;
+      suggestBox.style.left = `${rect.left + window.scrollX}px`;
+      suggestBox.style.width = `${rect.width}px`;
+      suggestBox.style.display = "block";
+    } catch (error) {
+      console.warn("Error fetching address suggestions:", error);
+    }
+  });
+
+  // Скрытие подсказок при клике вне
+  document.addEventListener("click", (e) => {
+    if (!suggestBox.contains(e.target) && e.target !== addressInput) {
+      suggestBox.style.display = "none";
+    }
+  });
+}
+
 // Writing JS for the add card modal
 const addCardBtn = document.getElementById("add-card-btn");
 const addCardModal = document.getElementById("add-card-modal");

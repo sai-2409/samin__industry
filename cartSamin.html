@@ -30,6 +30,14 @@
     <title>Samin</title>
   </head>
   <body>
+
+
+    <!-- I will put the main cart here for a moment --><!-- I will put the main cart here for a moment -->
+    <div class="floating-cart home__page-back">
+      <img src="images/icons/House_01.svg" alt="HomePage" />
+    </div>
+    <!-- I will put the main cart here for a moment -->
+
     <!-- Start building -->
     <section class="items">
       <div class="common__container">
@@ -360,6 +368,9 @@
         </div>
       </div>
 
+    </section>
+    <!-- Coding choosing address for the cart page -->
+
       <section class="payment">
         <div class="payment__container">
           <div class="payment__delivery-methods">
@@ -517,179 +528,16 @@
           <button class="payment__pay-btn">
             Оплатить картой <span class="payment__pay-card">••0042</span>
           </button>
-          <div class="payment__secure">
+          <!-- <div class="payment__secure">
             Безопасная оплата с
             <img
               src="images/logos/yapay.svg"
               alt="ЯPay"
               style="height: 1em; vertical-align: middle"
-            />
+            /> -->
           </div>
         </div>
       </section>
-
-      <!-- Yandex Market API -->
-      <div class="common__container checkout__container-address">
-        <div class="checkout__blocks">
-          <div class="checkout__block">
-            <h3 class="checkout__block-title">Способ доставки</h3>
-            <p class="checkout__block-link checkout__block-link-address">
-              Выбрать адрес доставки
-            </p>
-          </div>
-          <!-- <section class="common__container-address-form section__hidden">
-            <div class="address__form-container">
-              <div class="address__form-form-container">
-                <h2 class="address-form__title">Адрес доставки</h2>
-                <form class="address-form__form">
-                  <div class="address-form__group">
-                    <label for="fullName" class="address-form__label"
-                      >Полное имя</label
-                    >
-                    <input
-                      type="text"
-                      id="fullName"
-                      name="fullName"
-                      class="address-form__input"
-                      placeholder="Павел Дуров"
-                      required
-                    />
-                  </div>
-
-                  <div class="address-form__group">
-                    <label for="streetAddress" class="address-form__label"
-                      >Улица</label
-                    >
-                    <input
-                      type="text"
-                      id="streetAddress"
-                      name="streetAddress"
-                      class="address-form__input"
-                      placeholder="Беверли Хилз"
-                      required
-                    />
-                  </div>
-
-                  <div class="address-form__group">
-                    <label for="city" class="address-form__label">Город</label>
-                    <input
-                      type="text"
-                      id="city"
-                      name="city"
-                      class="address-form__input"
-                      placeholder="Мухосранск"
-                      required
-                    />
-                  </div>
-
-                  <div class="address-form__group">
-                    <label for="zipCode" class="address-form__label"
-                      >ZIP Code</label
-                    >
-                    <input
-                      type="text"
-                      id="zipCode"
-                      name="zipCode"
-                      class="address-form__input"
-                      placeholder="90001"
-                      required
-                    />
-                  </div>
-
-                  <div class="address-form__buttons">
-                    <button
-                      type="submit"
-                      class="address-form__button-save commont__button"
-                    >
-                      Сохранить адрес
-                    </button>
-                    <button type="button" class="address-form__button-select">
-                      Доставить сюда
-                    </button>
-                  </div>
-                </form>
-              </div>
-              <div
-                class="common__container-saved-address"
-                id="savedAddressList"
-              >
-                 Address cards will be added here -->
-          <!-- </div>
-            </div>
-          </section> -->
-
-          <div class="checkout__row">
-            <div class="checkout__block">
-              <h3 class="checkout__block-title">Способ оплаты</h3>
-              <p class="checkout__block-link" id="show__card-info">
-                Выберите способ оплаты
-              </p>
-            </div>
-            <div class="checkout__block">
-              <h3 class="checkout__block-title">Мои данные</h3>
-              <a href="./welcome__page.html" class="checkout__block-link"
-                >Войти или зарегистрироваться,
-                <span>чтобы оформить заказ</span></a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-form-container section__hidden" id="cardFormSection">
-        <h4 class="card-form-title">Кредитная или дебетовая карта</h4>
-
-        <form class="card-form" id="cardForm">
-          <label>
-            <span>Полное имя и фамилия держателя карты</span>
-            <input
-              type="text"
-              name="cardHolder"
-              placeholder="Введите полное имя"
-              required
-            />
-          </label>
-
-          <label>
-            <span>Номер карты</span>
-            <input
-              type="text"
-              name="cardNumber"
-              placeholder="0000 0000 0000 0000"
-              required
-            />
-          </label>
-
-          <div class="card-form__row">
-            <label>
-              <span>Дата окончания</span>
-              <input type="text" name="expDate" placeholder="MM/YY" required />
-            </label>
-
-            <label>
-              <span>CVV код</span>
-              <input type="text" name="cvv" placeholder="CVV" required />
-            </label>
-          </div>
-          <div class="checkout__submit-div">
-            <button
-              type="submit"
-              class="checkout__submit-button common__button"
-              style="margin-top: 15px"
-            >
-              Оплатить
-            </button>
-            <button
-              type="submit"
-              class="checkout__submit-button common__button"
-              style="margin-top: 15px"
-            >
-              Сохранить карту
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-    <!-- Coding choosing address for the cart page -->
 
     <!-- Coding for the footer of the website  -->
     <footer class="footer">
@@ -802,6 +650,7 @@
     </div>
 
     <!-- Connecting JS to the HTML -->
+    <!-- Connecting the Yandex Maps API Key -->
     <script
       src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=8891bddc-5383-4ef2-a49e-5ff720368e7b"
       type="text/javascript"

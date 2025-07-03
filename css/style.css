@@ -98,7 +98,7 @@ p {
   bottom: 20px;
   right: 20px;
   background-color: var(--primary-color);
-  padding: 8px;
+  padding: 15px;
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
@@ -106,8 +106,8 @@ p {
 }
 
 .floating-cart img {
-  width: 60px;
-  height: 60px;
+  width: 35px;
+  height: 35px;
   filter: brightness(0) invert(1);
 }
 
@@ -1198,117 +1198,147 @@ section.pros {
 }
 .wall__card {
   display: flex;
-  justify-content: space-between;
-  align-items: start;
-  margin: 30px 0;
-}
-.samin-checkbox {
-  display: inline-flex;
   align-items: center;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  user-select: none;
-}
-
-.samin-checkbox input {
-  display: none; /* Скрываем стандартный чекбокс */
-}
-
-.checkmark {
-  width: 22px;
-  height: 22px;
-  background-color: #f1f1f1;
-  border: 2px solid var(--star-orange);
-  border-radius: 6px;
-  margin-right: 10px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  padding: 22px 28px 22px 18px;
+  margin-bottom: 22px;
+  gap: 22px;
+  min-height: 140px;
   position: relative;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.18s, transform 0.18s, background 0.18s;
+  margin-top: 28px;
+  cursor: pointer;
 }
-
-/* Галочка при выборе */
-.samin-checkbox input:checked + .checkmark::after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 6px;
-  height: 12px;
-  border: solid var(--star-orange);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
+.wall__card:hover {
+  box-shadow: 0 12px 36px rgba(29, 191, 115, 0.13);
+  background: #f7fff9;
+  transform: scale(1.018);
 }
-/* Ховер эффект */
-.samin-checkbox:hover .checkmark {
-  background-color: #ffe5d0;
+.wall__card:active {
+  background: #eafff3;
+  transform: scale(0.99);
 }
 .wall__card-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 20px;
-  margin-right: 20px;
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 16px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: #f7f7f7;
+}
+.wall__text {
+  flex: 1 1 0;
+  margin-left: 18px;
+  margin-right: 18px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .wall__title {
-  font-size: 17px;
-  max-width: 440px;
-  margin-bottom: 15px;
-  font-weight: 500;
+  font-size: 1.13em;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 7px;
+  line-height: 1.25;
+  max-width: 340px;
+  word-break: break-word;
 }
 .wall__when {
-  color: var(--dark-bg);
+  color: #888;
+  font-size: 1em;
+  margin-bottom: 2px;
+}
+.wall__amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  min-width: 120px;
+  margin-left: 18px;
 }
 .wall__price {
-  color: var(--darkGreen);
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 1.45em;
+  font-weight: 700;
+  color: #1dbf73;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
 }
 .quantity {
-  background-color: var(--gray);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: 50px;
-  /* padding: 5px; */
-  border-radius: 10px;
-  width: 100px;
-  height: 35px;
-}
-.quantity:hover {
-  transform: scale(1.05);
-  transition: 0.3s;
+  background: #f0f0f0;
+  border-radius: 18px;
+  padding: 5px 16px;
+  gap: 14px;
+  font-size: 1.1em;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 .quantity__minus,
 .quantity__plus {
-  border: none;
-  font-size: 23px;
-  background: none;
+  background: #fff;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1.25em;
+  color: #1dbf73;
   cursor: pointer;
-}
-.quantity__minus {
-  padding-left: 10px;
-}
-.quantity__plus {
-  padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s, border 0.18s, color 0.18s;
 }
 .quantity__minus:hover,
 .quantity__plus:hover {
-  color: var(--ligherGray);
-  transition: 0.2s;
+  background: #eafff3;
+  border-color: #1dbf73;
+  color: #179b3d;
+}
+.quantity__amount {
+  min-width: 24px;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #222;
 }
 .remove__item {
+  font-size: 2em;
+  color: #bbb;
   background: none;
   border: none;
-  font-size: 30px;
-  color: var(--gray);
-  padding: 5px 15px;
   cursor: pointer;
+  margin-left: 22px;
+  transition: color 0.18s, transform 0.18s, background 0.18s;
+  align-self: flex-start;
+  border-radius: 50%;
+  padding: 2px 8px 2px 8px;
 }
 .remove__item:hover {
-  background-color: #333;
-  border-radius: 50%;
-  transition: 0.3s;
+  color: #fff;
+  background: #e53935;
+  transform: scale(1.18);
+  box-shadow: 0 2px 8px rgba(229, 57, 53, 0.13);
 }
-
+@media (max-width: 700px) {
+  .wall__card {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 8px;
+    gap: 12px;
+  }
+  .wall__card-image {
+    margin: 0 auto 8px auto;
+  }
+  .wall__amount {
+    align-items: flex-start;
+    margin-left: 0;
+  }
+}
 /* coding for the order of the website */
 .order {
   border-radius: 25px;
@@ -1777,6 +1807,7 @@ section.pros {
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+  margin-bottom: 5%;
 }
 .payment__container {
   background: #fafafa;
@@ -2392,4 +2423,63 @@ section.pros {
 }
 .added-card__icon--unknown {
   background-image: url("images/logos/card.svg");
+}
+
+.samin-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin-right: 10px;
+  position: relative;
+}
+.samin-checkbox input[type="checkbox"] {
+  display: none;
+}
+.samin-checkbox .checkmark {
+  width: 26px;
+  height: 26px;
+  background: #fff;
+  border: 2.5px solid #ffb300;
+  border-radius: 8px;
+  display: inline-block;
+  position: relative;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  box-shadow: 0 1px 4px rgba(255, 179, 0, 0.07);
+}
+.samin-checkbox:hover .checkmark {
+  border-color: #ff9800;
+  box-shadow: 0 2px 8px rgba(255, 179, 0, 0.13);
+}
+.samin-checkbox input[type="checkbox"]:checked + .checkmark {
+  background: #ffe600;
+  border-color: #1dbf73;
+  box-shadow: 0 2px 8px rgba(29, 191, 115, 0.13);
+}
+.samin-checkbox .checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.samin-checkbox input[type="checkbox"]:checked + .checkmark::after {
+  display: block;
+  left: 7px;
+  top: 3px;
+  width: 7px;
+  height: 13px;
+  border: solid #1dbf73;
+  border-width: 0 3px 3px 0;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  animation: checkmarkFadeIn 0.18s;
+}
+@keyframes checkmarkFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.7) rotate(45deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
 }

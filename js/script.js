@@ -9,7 +9,7 @@ const headerButton2 = document.querySelector('.mbutton1');
 const headerButtonCalc = document.querySelector('.mbutton2');
 const section3 = document.getElementById('section__3');
 const sectionCalc = document.getElementById('section__calc');
-const floatingCart = document.querySelector('.floating-cart');
+const floatingCart = document.querySelector('.floating__cart-go');
 
 // Going to the cart with headerCart
 headerCart.addEventListener('click', function() {
