@@ -975,3 +975,151 @@ function renderDeliveryDateOptions() {
 }
 
 document.addEventListener("DOMContentLoaded", renderDeliveryDateOptions);
+
+// --- Automatic Split Tracker ---
+(function setupAutoSplitTracker() {
+  // Insert tracker if not present in both payment summary and order block
+  function ensureTracker() {
+    // Payment summary tracker
+    if (!document.getElementById("auto-split-tracker")) {
+      const summary = document.querySelector(".payment__summary");
+      if (summary) {
+        const tracker = document.createElement("div");
+        tracker.id = "auto-split-tracker";
+        tracker.style =
+          "background: #fafafa; border-radius: 14px; margin: 18px 0 18px 0; padding: 18px 18px 12px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);";
+        tracker.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 1.1em; font-weight: 700; color: #222;">Ваш прогресс оформления заказа</span>
+          </div>
+          <div id="auto-split-progress-bar" style="position: relative; height: 12px; background: #e5e5e5; border-radius: 6px; margin: 12px 0 8px 0; overflow: visible;">
+            <div id="auto-split-progress-fill" style="height: 100%; background: #1dbf73; border-radius: 6px; width: 0%; transition: width 0.4s;"></div>
+            <img src="images/logo__walnuts-print-version.svg" id="auto-split-progress-logo" style="position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); width: 28px; height: 28px; background: #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: left 0.4s; z-index: 2; border: 2px solid #1dbf73;" alt="Progress logo" />
+          </div>
+          <div style="display: flex; justify-content: space-between; color: #888; font-size: 1em;">
+            <span id="auto-split-date">Улыбайтесь!</span>
+            <span id="auto-split-remaining">Ещё 3 шага до оплаты</span>
+          </div>
+        `;
+        summary.insertBefore(tracker, summary.firstChild);
+      }
+    }
+    // Checkout form tracker
+    if (!document.getElementById("auto-split-tracker-order")) {
+      const order = document.querySelector(".order");
+      if (order) {
+        const tracker = document.createElement("div");
+        tracker.id = "auto-split-tracker-order";
+        tracker.style =
+          "background: #fafafa; border-radius: 14px; margin: 0 0 18px 0; padding: 18px 18px 12px 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);";
+        tracker.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span style="font-size: 1.1em; font-weight: 700; color: #222;">Ваш прогресс оформления заказа</span>
+          </div>
+          <div id="auto-split-progress-bar-order" style="position: relative; height: 12px; background: #e5e5e5; border-radius: 6px; margin: 12px 0 8px 0; overflow: visible;">
+            <div id="auto-split-progress-fill-order" style="height: 100%; background: #1dbf73; border-radius: 6px; width: 0%; transition: width 0.4s;"></div>
+            <img src="images/logo__walnuts-print-version.svg" id="auto-split-progress-logo-order" style="position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); width: 28px; height: 28px; background: #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: left 0.4s; z-index: 2; border: 2px solid #1dbf73;" alt="Progress logo" />
+          </div>
+          <div style="display: flex; justify-content: space-between; color: #888; font-size: 1em;">
+            <span style="margin-top: 10px;" id="auto-split-date-order">Улыбайтесь!</span>
+            <span id="auto-split-remaining-order">Ещё 3 шага до оплаты</span>
+          </div>
+        `;
+        order.insertBefore(tracker, order.firstChild);
+      }
+    }
+  }
+
+  ensureTracker();
+
+  // Tracker logic
+  const steps = 4;
+  const fill = () => document.getElementById("auto-split-progress-fill");
+  const logo = () => document.getElementById("auto-split-progress-logo");
+  const remaining = () => document.getElementById("auto-split-remaining");
+  // For order block
+  const fillOrder = () =>
+    document.getElementById("auto-split-progress-fill-order");
+  const logoOrder = () =>
+    document.getElementById("auto-split-progress-logo-order");
+  const remainingOrder = () =>
+    document.getElementById("auto-split-remaining-order");
+
+  function getStep() {
+    let completed = 0;
+    // Step 1: Cart has items
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    if (cartItems.length) completed++;
+    // Step 2: Address selected
+    const selectedAddressId = localStorage.getItem("selectedAddressId");
+    if (selectedAddressId) completed++;
+    // Step 3: Delivery date selected
+    const activeDateBtn = document.querySelector(".payment__date-btn--active");
+    if (activeDateBtn) completed++;
+    // Step 4: Paid (simulate with .payment__pay-card click)
+    if (window.__splitPaid) completed++;
+    return completed;
+  }
+
+  function updateTracker() {
+    ensureTracker();
+    const step = getStep();
+    const percent = (step / steps) * 100;
+    // Payment summary tracker
+    if (fill()) fill().style.width = percent + "%";
+    if (logo()) logo().style.left = percent + "%";
+    if (remaining()) {
+      if (step < 4) {
+        remaining().textContent = `Шаг ${step} из 4`;
+      } else {
+        remaining().textContent = "Выполнено!";
+      }
+    }
+    // Order block tracker
+    if (fillOrder()) fillOrder().style.width = percent + "%";
+    if (logoOrder()) logoOrder().style.left = percent + "%";
+    if (remainingOrder()) {
+      if (step < 4) {
+        remainingOrder().textContent = `Шаг ${step} из 4`;
+      } else {
+        remainingOrder().textContent = "Выполнено!";
+      }
+    }
+  }
+
+  // Listen for cart, address, date, and pay events
+  window.addEventListener("storage", updateTracker);
+  document.addEventListener("DOMContentLoaded", updateTracker);
+  document.addEventListener("click", function (e) {
+    // Address select or delivery date select
+    if (
+      e.target.classList.contains("saved__address-button-select") ||
+      e.target.classList.contains("payment__date-btn")
+    ) {
+      setTimeout(updateTracker, 100);
+    }
+    // Pay button
+    if (e.target.classList.contains("payment__pay-card")) {
+      window.__splitPaid = true;
+      updateTracker();
+    }
+  });
+  // Also update on cart changes
+  [
+    "updateCartSummary",
+    "updatePaymentSummaryAndDelivery",
+    "renderCartProductLine",
+    "setupSelectButtons",
+    "setupDeleteButtons",
+    "renderDeliveryDateOptions",
+  ].forEach((fn) => {
+    if (window[fn]) {
+      const orig = window[fn];
+      window[fn] = function (...args) {
+        const res = orig.apply(this, args);
+        updateTracker();
+        return res;
+      };
+    }
+  });
+})();
