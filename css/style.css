@@ -201,6 +201,7 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 40px;
 }
 .button__welcome {
   background: var(--primary-color);
@@ -210,11 +211,14 @@ p {
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
-  width: 200px;
+  width: 100%;
   margin-top: 10px;
   transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
 }
-
+.login__link {
+  margin-top: 20px;
+  text-align: end;
+}
 .button__welcome:hover {
   background-color: var(--primary-color);
   color: var(--white);

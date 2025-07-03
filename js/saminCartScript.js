@@ -97,8 +97,8 @@ if (form) {
         <div class="saved-address__card" width="100%" data-address-id="${
           addressData.id
         }">
-          <div class="saved-address__number">${addressCount}</div>
-          <div class="saved-address__info">
+        <div class="saved-address__number">${addressCount}</div>
+        <div class="saved-address__info">
             <div class="saved-address__name-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
               <div class="saved-address__name" style="font-weight: bold; font-size: 1.08em;">Имя: ${fullName}</div>
               ${
@@ -110,13 +110,13 @@ if (form) {
             <div class="saved-address__text" style="margin-bottom: 2px;"><span style="color:#888;">Адрес:</span> ${street}, д${building}, кв${flat}</div>
             <div class="saved-address__text" style="margin-bottom: 2px;"><span style="color:#888;">Город:</span> ${city}</div>
             <div class="saved-address__text"><span style="color:#888;">Индекс:</span> ${zipCode}</div>
-          </div>
+        </div>
           <div class="saved-address__actions" style="margin-top: 8px;">
             <button class="saved-address__button saved__address-button-select common__button">Выбрать</button>
-            <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
-          </div>
+          <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
         </div>
-      `;
+      </div>
+  `;
       savedAddressList.insertAdjacentHTML("beforeend", cardHTML);
       addressCount++;
       form.reset();
