@@ -105,6 +105,7 @@ p {
   background: var(--main-orange);
   color: var(--primary-color);
   transform: scale(0.98);
+  /* border: none; */
 }
 /* Here is the styles for the main cart */
 .floating-cart {
@@ -285,6 +286,12 @@ p {
   height: 7rem;
   /* z-index: 100; */
 }
+.sidebar {
+  display: none;
+}
+#toggleBtn {
+  display: none;
+}
 /* Bro, this is crazy, I was fixing this fucking small problem for fucking 3 days 😭 and finally I did it */
 .sticky__checkout-form {
   position: fixed;
@@ -385,7 +392,7 @@ p {
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  margin-top: 10vh;
+  margin-top: 5vh;
   width: 50%;
   min-width: 320px;
   max-width: 600px;
@@ -450,7 +457,7 @@ p {
 }
 /* Coding styles for the commitment section */
 .commitment {
-  height: 480px;
+  height: 25rem;
   background-color: var(--main-orange);
   border-radius: 240px 0;
 }
@@ -460,6 +467,7 @@ p {
   align-items: center;
   height: 100%;
   flex-wrap: wrap;
+  margin: 0 auto;
 }
 .commitment__header {
   color: var(--text-color);
@@ -777,7 +785,6 @@ section.pros {
   opacity: 0;
   transform: translateX(20px);
   transition: all 0.5s ease;
-  max-width: 500px;
   min-height: 100px;
 }
 .calc__wrapper {
@@ -908,7 +915,7 @@ section.pros {
 
 .calc__result ul {
   padding-left: 20px;
-  margin: 0 0 15px 0;
+  margin: 0 0 15px;
 }
 
 .calc__result ul li {

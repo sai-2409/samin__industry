@@ -282,3 +282,32 @@ function updateCardItemCounters() {
 document.addEventListener("DOMContentLoaded", () => {
   updateCardItemCounters();
 });
+
+// Making the sideBar menu
+const toggleBtn = document.getElementById("toggleBtn");
+const closeBtn = document.getElementById("closeBtn");
+const sidebar = document.getElementById("sidebar");
+const overlay = document.getElementById("overlay");
+
+// Close sidebar when a link is clicked
+sidebar.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("show");
+  });
+});
+
+toggleBtn.addEventListener("click", () => {
+  sidebar.classList.add("open");
+  overlay.classList.add("show");
+});
+
+closeBtn.addEventListener("click", () => {
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+});
+
+overlay.addEventListener("click", () => {
+  sidebar.classList.remove("open");
+  overlay.classList.remove("show");
+});

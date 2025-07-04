@@ -84,6 +84,16 @@ img {
     transform: rotate(360deg);
   }
 }
+@keyframes slideInFromTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 /*
 Usage:
 - Add .modal-animate-in to the modal content for opening (fade in)
