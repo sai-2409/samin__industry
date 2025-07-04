@@ -76,7 +76,14 @@ img {
     transform: scale(0.95);
   }
 }
-
+@keyframes rotate360 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 /*
 Usage:
 - Add .modal-animate-in to the modal content for opening (fade in)
