@@ -370,13 +370,20 @@ p {
 }
 .main__pic {
   animation: rotate360 20s linear infinite;
+  transform-origin: center center;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main__pic img {
   width: 35%;
   margin: 0 auto;
   animation: none;
-  overflow: hidden;
+  transform-origin: center center;
 }
 
 /* .main__content {
