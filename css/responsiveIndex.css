@@ -455,6 +455,15 @@
   }
 }
 @media (max-width: 560px) {
+  body {
+    overflow-x: hidden;
+  }
+  .main__content {
+    display: block;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 10vh;
+  }
   .header__logos img {
     width: 50px;
     height: 50px;
