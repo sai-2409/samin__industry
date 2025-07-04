@@ -368,31 +368,45 @@ p {
 .main {
   margin-top: 5%;
 }
-.main__pic {
-  animation: rotate360 20s linear infinite;
-  transform-origin: center center;
-  overflow: hidden;
-  position: relative;
+.main__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20vh;
   width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+.main__pic {
+  width: 50%;
+  aspect-ratio: 1 / 1;
+  min-width: 320px;
+  max-width: 500px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+  animation: rotate360 20s linear infinite;
+  transform-origin: center center;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
-
 .main__pic img {
-  width: 35%;
-  margin: 0 auto;
+  width: 90%;
+  height: 90%;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
   animation: none;
   transform-origin: center center;
+  display: block;
 }
 
-/* .main__content {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  margin-top: 30px;
-  margin-bottom: 20vh;
-} */
 .content__right {
   display: flex;
   flex-direction: column;
