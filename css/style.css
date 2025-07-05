@@ -1426,7 +1426,7 @@ section.pros {
   transform: scale(1.18);
   box-shadow: 0 2px 8px rgba(229, 57, 53, 0.13);
 }
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
   .wall__card {
     flex-direction: column;
     align-items: stretch;
@@ -1440,7 +1440,7 @@ section.pros {
     align-items: flex-start;
     margin-left: 0;
   }
-}
+} */
 /* coding for the order of the website */
 .order {
   border-radius: 25px;
@@ -1718,6 +1718,7 @@ section.pros {
 .address-form__button-select {
   flex: 1;
   padding: 0.8rem 1rem;
+  width: 100%;
   font-size: 1rem;
   border: none;
   border-radius: 12px;

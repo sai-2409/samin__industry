@@ -281,10 +281,10 @@ function loadSavedAddresses() {
       }</div>
           </div>
           <div class="saved-address__actions">
-            <button class="saved-address__button saved__address-button-select common__button ${
+            <button class="saved-address__button saved__address-button-select saved__address-button common__button ${
               isSelected ? "selected" : ""
             }">${isSelected ? "Выбран" : "Выбрать"}</button>
-            <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
+            <button class="saved-address__button saved__address-button-delete saved__address-button common__button">Удалить</button>
           </div>
         </div>
       `;
