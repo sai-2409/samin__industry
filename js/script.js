@@ -84,25 +84,28 @@ nav.addEventListener("mouseout", HandleHover.bind(1));
 // });
 
 // Reveal sections
-// const allSections = document.querySelectorAll('.section')
+const allSections = document.querySelectorAll(".section");
 
-// const revealSection = function(entries, observer) {
-//   const [entry] = entries;
-//   console.log(entry);
-
-//   if (!entry.isIntersecting) return;
-//   entry.target.classList.remove('section__hidden');
-//   observer.unobserve(entry.target);
-// };
-// const sectionObserver = new IntersectionObserver(revealSection, {
-//   root: null,
-//   threshold: 0,
-
-// });
-// allSections.forEach(function(section) {
-//   sectionObserver.observe(section);
-//   section.classList.add('section__hidden');
-// });
+if (window.scrollY > 0) {
+  // User is not at the top: show all sections immediately
+  allSections.forEach((section) => section.classList.remove("section__hidden"));
+} else {
+  // User is at the top: use reveal animation
+  const revealSection = function (entries, observer) {
+    const [entry] = entries;
+    if (!entry.isIntersecting) return;
+    entry.target.classList.remove("section__hidden");
+    observer.unobserve(entry.target);
+  };
+  const sectionObserver = new IntersectionObserver(revealSection, {
+    root: null,
+    threshold: 0,
+  });
+  allSections.forEach(function (section) {
+    sectionObserver.observe(section);
+    section.classList.add("section__hidden");
+  });
+}
 
 // Coding slider for the cardsM
 const sliders = document.querySelectorAll(".cardM__slider");
