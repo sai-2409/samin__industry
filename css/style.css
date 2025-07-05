@@ -1243,6 +1243,9 @@ section.pros {
   align-items: end;
   margin-bottom: 50px;
 }
+.head h1 {
+  /* margin-top: 2rem; */
+}
 /* .cardCart__container {
   display: flex;
   justify-content: space-between;
@@ -2285,33 +2288,6 @@ section.pros {
   margin-top: 18px;
 }
 
-@media (max-width: 1100px) {
-  .payment {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 24px;
-    margin: 32px 0 32px 0;
-  }
-  .payment__container,
-  .payment__summary {
-    min-width: unset;
-    max-width: 100%;
-    margin-left: 0;
-    padding: 24px 12px 20px 12px;
-  }
-  .payment__container {
-    margin-bottom: 32px;
-    gap: 16px;
-  }
-  .payment__summary {
-    gap: 14px;
-  }
-  .payment__products-row {
-    gap: 16px;
-    margin-top: 12px;
-  }
-}
-
 .payment__add-card-btn {
   background: #f7faff;
   border: 2px dashed var(--greenMain);
@@ -2584,5 +2560,29 @@ section.pros {
   to {
     opacity: 1;
     transform: scale(1) rotate(45deg);
+  }
+}
+
+@media (max-width: 900px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  .main__pic {
+    width: 100%;
+    max-width: 100%;
+    height: min(100vw, 400px);
+    aspect-ratio: unset;
+    min-width: unset;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate360 20s linear infinite;
+    transform-origin: center center;
+    flex-shrink: 0;
+    flex-grow: 0;
+    margin-bottom: 2rem;
   }
 }
