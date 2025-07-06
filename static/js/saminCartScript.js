@@ -1051,7 +1051,7 @@ document.addEventListener("DOMContentLoaded", renderDeliveryDateOptions);
           </div>
           <div id="auto-split-progress-bar" style="position: relative; height: 12px; background: #e5e5e5; border-radius: 6px; margin: 12px 0 8px 0; overflow: visible;">
             <div id="auto-split-progress-fill" style="height: 100%; background: #1dbf73; border-radius: 6px; width: 0%; transition: width 0.4s;"></div>
-            <img src="images/logo__walnuts-print-version.svg" id="auto-split-progress-logo" style="position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); width: 28px; height: 28px; background: #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: left 0.4s; z-index: 2; border: 2px solid #1dbf73;" alt="Progress logo" />
+            <img src="/static/images/logo__walnuts-print-version.svg" id="auto-split-progress-logo" style="position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); width: 28px; height: 28px; background: #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: left 0.4s; z-index: 2; border: 2px solid #1dbf73;" alt="Progress logo" />
           </div>
           <div style="display: flex; justify-content: space-between; color: #888; font-size: 1em;">
             <span id="auto-split-date">Улыбайтесь!</span>
@@ -1075,7 +1075,7 @@ document.addEventListener("DOMContentLoaded", renderDeliveryDateOptions);
           </div>
           <div id="auto-split-progress-bar-order" style="position: relative; height: 12px; background: #e5e5e5; border-radius: 6px; margin: 12px 0 8px 0; overflow: visible;">
             <div id="auto-split-progress-fill-order" style="height: 100%; background: #1dbf73; border-radius: 6px; width: 0%; transition: width 0.4s;"></div>
-            <img src="images/logo__walnuts-print-version.svg" id="auto-split-progress-logo-order" style="position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); width: 28px; height: 28px; background: #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: left 0.4s; z-index: 2; border: 2px solid #1dbf73;" alt="Progress logo" />
+            <img src="/static/images/logo__walnuts-print-version.svg" id="auto-split-progress-logo-order" style="position: absolute; top: 50%; left: 0%; transform: translate(-50%, -50%); width: 28px; height: 28px; background: #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: left 0.4s; z-index: 2; border: 2px solid #1dbf73;" alt="Progress logo" />
           </div>
           <div style="display: flex; justify-content: space-between; color: #888; font-size: 1em;">
             <span style="margin-top: 10px;" id="auto-split-date-order">Улыбайтесь!</span>

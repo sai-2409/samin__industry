@@ -25,3 +25,9 @@ def welcome():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# Coding for going to the cart from saminCart page
+@app.route('/cart')
+def cart():
+    return render_template('cartSamin.html')

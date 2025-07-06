@@ -13,11 +13,11 @@ const floatingCart = document.querySelector(".floating__cart-go");
 
 // Going to the cart with headerCart
 headerCart.addEventListener("click", function () {
-  window.location.href = "cartSamin.html";
+  window.location.href = "/cart";
 });
 // Going to the cart with floating cart
 floatingCart.addEventListener("click", function () {
-  window.location.href = "cartSamin.html";
+  window.location.href = "/cart";
 });
 
 // Scrolling to Menu section with headerButton
