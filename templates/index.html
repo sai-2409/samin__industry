@@ -13,14 +13,14 @@
     />
     <link
       rel="shortcut icon"
-      href="images/logo__walnuts-print-version.svg"
+      href="{{ url_for('static', filename='images/logo__walnuts-print-version.svg') }}"
       type="image/x-icon"
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/animation.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsiveIndex.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsiveIndex.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
     <!-- Title icon for the website -->
     <title>Samin</title>
   </head>
@@ -31,7 +31,7 @@
 
     <!-- I will put the main cart here for a moment -->
     <div class="floating-cart floating__cart-go">
-      <img src="images/icons/Shopping_Cart_01.svg" alt="Корзина" />
+      <img src="{{ url_for('static', filename='images/icons/Shopping_Cart_01.svg') }}" alt="Корзина" />
       <span class="floating__cart-counter">0</span>
     </div>
     <!-- I will put the main cart here for a moment -->
@@ -41,7 +41,7 @@
         <nav class="nav">
           <div class="header__logos">
             <img
-              src="./images/logoWalnuts-welcome-page.svg"
+              src="{{ url_for('static', filename='images/logoWalnuts-welcome-page.svg') }}"
               alt="SAMIN логотип"
               class="header__logo"
             />
@@ -87,7 +87,7 @@
           </div>
           <div class="header__order">
             <img
-              src="./images/icons/cart__icon.svg"
+              src="{{ url_for('static', filename='images/icons/cart__icon.svg') }}"
               alt="Cart"
               class="header__cart"
             />
@@ -104,7 +104,7 @@
     <section class="main" id="section__1">
       <div class="main__content">
         <div class="main__pic">
-          <img src="./images/mainNewPicAssorti 1.png" alt="Nuts" />
+          <img src="{{ url_for('static', filename='images/mainNewPicAssorti 1.png') }}" alt="Nuts" />
         </div>
         <div class="content__right">
           <h1 class="mright__header">Добро пожаловать!</h1>
@@ -154,7 +154,7 @@
         </div>
         <div class="pros-cards">
           <div class="card">
-            <img src="images/prosPic1.jpg" alt="Свежие сухофрукты" />
+            <img src="{{ url_for('static', filename='images/prosPic1.jpg') }}" alt="Свежие сухофрукты" />
             <h3>Свежесть гарантирована</h3>
             <p>
               Измените свои заказы в соответствии с вашими предпочтениями. Если
@@ -164,7 +164,7 @@
           </div>
           <div class="card">
             <img
-              src="images/prosPic2.jpg"
+              src="{{ url_for('static', filename='images/prosPic2.jpg') }}"
               alt="Персонализированные сухофрукты"
             />
             <h3>Персонализированные заказы</h3>
@@ -175,7 +175,7 @@
             </p>
           </div>
           <div class="card">
-            <img src="images/prosPic3.jpg" alt="Калькулятор питания" />
+            <img src="{{ url_for('static', filename='images/prosPic3.jpg') }}" alt="Калькулятор питания" />
             <h3>Калькулятор Питания</h3>
             <p>
               Откройте для себя идеальное потребление орехов для ваших
@@ -200,38 +200,38 @@
             class="cardM"
             data-price-500="729"
             data-price-1000="967"
-            data-img-500="./images/cards__image/kuragaK-2-500.png"
-            data-img-1000="./images/cards__image/kuragaK-1.png"
+            data-img-500="{{ url_for('static', filename='images/cards__image/kuragaK-2-500.png') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/kuragaK-1.png') }}"
           >
             <div class="cardM__slider" id="cardmSlider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/kuragaK-1.png"
+                src="{{ url_for('static', filename='images/cards__image/kuragaK-1.png') }}"
                 alt="Kuraga"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/kuragaK-2.png"
+                src="{{ url_for('static', filename='images/cards__image/kuragaK-2.png') }}"
                 alt="Kuraga"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/kuragaK-3.png"
+                src="{{ url_for('static', filename='images/cards__image/kuragaK-3.png') }}"
                 alt="Kuraga"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/kuragaK-4.png"
+                src="{{ url_for('static', filename='images/cards__image/kuragaK-4.png') }}"
                 alt="Kuraga"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/kuragaK-5.png"
+                src="{{ url_for('static', filename='images/cards__image/kuragaK-5.png') }}"
                 alt="Kuraga"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/kuragaPackageEx1.png"
+                src="{{ url_for('static', filename='images/cards__image/kuragaPackageEx1.png') }}"
                 alt="KuragaPackage"
               />
             </div>
@@ -259,7 +259,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -268,27 +268,27 @@
           <div
             class="cardM"
             data-price-1000="989"
-            data-img-1000="./images/cards__image/gresSamin1.webp"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/gresSamin1.webp') }}"
           >
             <div class="cardM__slider" id="cardmSlider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/gresSamin1.webp"
+                src="{{ url_for('static', filename='images/cards__image/gresSamin1.webp') }}"
                 alt="Walnuts"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/gresSamin2.webp"
+                src="{{ url_for('static', filename='images/cards__image/gresSamin2.webp') }}"
                 alt="Walnuts"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/gresSamin3.webp"
+                src="{{ url_for('static', filename='images/cards__image/gresSamin3.webp') }}"
                 alt="Walnuts"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/pinkPagckaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/pinkPagckaging.webp') }}"
                 alt="Walnuts"
               />
             </div>
@@ -307,7 +307,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -316,28 +316,28 @@
             class="cardM"
             data-price-500="459"
             data-price-1000="759"
-            data-img-500="./images/cards__image/smesOreh500.webp"
-            data-img-1000="./images/cards__image/smesOreh-1000.webp"
+            data-img-500="{{ url_for('static', filename='images/cards__image/smesOreh500.webp') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/smesOreh-1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/smesOreh-1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/smesOreh-1000.webp') }}"
                 alt="Kiwi"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/smesOreh-2.webp"
+                src="{{ url_for('static', filename='images/cards__image/smesOreh-2.webp') }}"
                 alt="Kiwi"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/smesOreh-3.webp"
+                src="{{ url_for('static', filename='images/cards__image/smesOreh-3.webp') }}"
                 alt="Kiwi"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
                 alt="Kiwi"
               />
             </div>
@@ -359,7 +359,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -367,27 +367,27 @@
           <div
             class="cardM"
             data-price-1000="599"
-            data-img-1000="./images/cards__image/sOreh-1000.webp"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/sOreh-1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/sOreh-1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/sOreh-1000.webp') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/sOreh2.webp"
+                src="{{ url_for('static', filename='images/cards__image/sOreh2.webp') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/sOreh3.webp"
+                src="{{ url_for('static', filename='images/cards__image/sOreh3.webp') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
                 alt="Sukati"
               />
             </div>
@@ -406,7 +406,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -414,27 +414,27 @@
           <div
             class="cardM"
             data-price-1000="454"
-            data-img-1000="./images/cards__image/izum__1000.png"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/izum__1000.png') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/izum__1000.png"
+                src="{{ url_for('static', filename='images/cards__image/izum__1000.png') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/izum1.png"
+                src="{{ url_for('static', filename='images/cards__image/izum1.png') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/izum2.png"
+                src="{{ url_for('static', filename='images/cards__image/izum2.png') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
                 alt="Sukati"
               />
             </div>
@@ -453,7 +453,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -462,38 +462,38 @@
             class="cardM"
             data-price-500="399"
             data-price-1000="699"
-            data-img-500="./images/cards__image/sukati__500.png"
-            data-img-1000="./images/cards__image/sukati__1000.png"
+            data-img-500="{{ url_for('static', filename='images/cards__image/sukati__500.png') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/sukati__1000.png') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/sukati__1000.png"
+                src="{{ url_for('static', filename='images/cards__image/sukati__1000.png') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/sukati1.png"
+                src="{{ url_for('static', filename='images/cards__image/sukati1.png') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/sukati2.png"
+                src="{{ url_for('static', filename='images/cards__image/sukati2.png') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/sukati3.png"
+                src="{{ url_for('static', filename='images/cards__image/sukati3.png') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/sukati4.png"
+                src="{{ url_for('static', filename='images/cards__image/sukati4.png') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
                 alt="Sukati"
               />
             </div>
@@ -515,7 +515,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -524,33 +524,33 @@
             class="cardM"
             data-price-500="499"
             data-price-1000="899"
-            data-img-500="./images/cards__image/tikva500.webp"
-            data-img-1000="./images/cards__image/ tikvaWalnuts-1000.webp"
+            data-img-500="{{ url_for('static', filename='images/cards__image/tikva500.webp') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/ tikvaWalnuts-1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/ tikvaWalnuts-1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/ tikvaWalnuts-1000.webp') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/tikvaSamin1.webp"
+                src="{{ url_for('static', filename='images/cards__image/tikvaSamin1.webp') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/tikvaSamin2.webp"
+                src="{{ url_for('static', filename='images/cards__image/tikvaSamin2.webp') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/tikvaSamin3.webp"
+                src="{{ url_for('static', filename='images/cards__image/tikvaSamin3.webp') }}"
                 alt="Sukati"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
                 alt="Sukati"
               />
             </div>
@@ -572,7 +572,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -580,22 +580,22 @@
           <div
             class="cardM"
             data-price-1000="1019"
-            data-img-1000="./images/cards__image/kuragaMixWalnuts-1000.webp"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/kuragaMixWalnuts-1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/kuragaMixWalnuts-1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/kuragaMixWalnuts-1000.webp') }}"
                 alt="KuragaMix"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/kuragaMixSamin2.webp"
+                src="{{ url_for('static', filename='images/cards__image/kuragaMixSamin2.webp') }}"
                 alt="KuragaMix"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/pinkPagckaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/pinkPagckaging.webp') }}"
                 alt="KuragaMix"
               />
             </div>
@@ -614,7 +614,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -623,25 +623,25 @@
             class="cardM"
             data-price-500="799"
             data-price-1000="1289"
-            data-img-500="./images/cards__image/almondWalnuts-500.jpeg"
-            data-img-1000="./images/cards__image/almondSamin-1000.jpeg"
+            data-img-500="{{ url_for('static', filename='images/cards__image/almondWalnuts-500.jpeg') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/almondSamin-1000.jpeg') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/almondSamin-1000.jpeg"
+                src="{{ url_for('static', filename='images/cards__image/almondSamin-1000.jpeg') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/almondSamin2.jpeg"
+                src="{{ url_for('static', filename='images/cards__image/almondSamin2.jpeg') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/almondSamin3.jpeg"
+                src="{{ url_for('static', filename='images/cards__image/almondSamin3.jpeg') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
               />
             </div>
             <div class="cardM__content">
@@ -662,7 +662,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -672,25 +672,25 @@
             class="cardM"
             data-price-500="899"
             data-price-1000="1389"
-            data-img-500="./images/cards__image/keshS500.webp"
-            data-img-1000="./images/cards__image/keshS1000.webp"
+            data-img-500="{{ url_for('static', filename='images/cards__image/keshS500.webp') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/keshS1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/keshS1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/keshS1000.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/keshS2.webp"
+                src="{{ url_for('static', filename='images/cards__image/keshS2.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/keshS3.webp"
+                src="{{ url_for('static', filename='images/cards__image/keshS3.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
               />
             </div>
             <div class="cardM__content">
@@ -711,7 +711,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -721,25 +721,25 @@
             class="cardM"
             data-price-500="949"
             data-price-1000="1489"
-            data-img-500="./images/cards__image/keshJ500.webp"
-            data-img-1000="./images/cards__image/keshJ1000.webp"
+            data-img-500="{{ url_for('static', filename='images/cards__image/keshJ500.webp') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/keshJ1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/keshJ1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/keshJ1000.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/keshJ2.webp"
+                src="{{ url_for('static', filename='images/cards__image/keshJ2.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/keshJ3.webp"
+                src="{{ url_for('static', filename='images/cards__image/keshJ3.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
               />
             </div>
             <div class="cardM__content">
@@ -761,7 +761,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -771,25 +771,25 @@
             class="cardM"
             data-price-500="969"
             data-price-1000="1589"
-            data-img-500="./images/cards__image/smesP500.webp"
-            data-img-1000="./images/cards__image/smesP1000.webp"
+            data-img-500="{{ url_for('static', filename='images/cards__image/smesP500.webp') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/smesP1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/smesP1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/smesP1000.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/smesP2.webp"
+                src="{{ url_for('static', filename='images/cards__image/smesP2.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/smesP3.webp"
+                src="{{ url_for('static', filename='images/cards__image/smesP3.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
               />
             </div>
             <div class="cardM__content">
@@ -811,7 +811,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -821,25 +821,25 @@
             class="cardM"
             data-price-500="799"
             data-price-1000="1289"
-            data-img-500="./images/cards__image/makad500.webp"
-            data-img-1000="./images/cards__image/makad1000.webp"
+            data-img-500="{{ url_for('static', filename='images/cards__image/makad500.webp') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/makad1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/makad1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/makad1000.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/makad2.webp"
+                src="{{ url_for('static', filename='images/cards__image/makad2.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/makad3.webp"
+                src="{{ url_for('static', filename='images/cards__image/makad3.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
               />
             </div>
             <div class="cardM__content">
@@ -860,7 +860,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -870,25 +870,25 @@
             class="cardM"
             data-price-500="999"
             data-price-1000="1789"
-            data-img-500="./images/cards__image/fisJ500.webp"
-            data-img-1000="./images/cards__image/fisJ1000.webp"
+            data-img-500="{{ url_for('static', filename='images/cards__image/fisJ500.webp') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/fisJ1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/fisJ1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/fisJ1000.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/fisJ2.webp"
+                src="{{ url_for('static', filename='images/cards__image/fisJ2.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/fisJ3.webp"
+                src="{{ url_for('static', filename='images/cards__image/fisJ3.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/pinkPagckaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/pinkPagckaging.webp') }}"
               />
             </div>
             <div class="cardM__content">
@@ -910,7 +910,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -920,25 +920,25 @@
             class="cardM"
             data-price-500="999"
             data-price-1000="1789"
-            data-img-500="./images/cards__image/fisS500.webp"
-            data-img-1000="./images/cards__image/fisS1000.webp"
+            data-img-500="{{ url_for('static', filename='images/cards__image/fisS500.webp') }}"
+            data-img-1000="{{ url_for('static', filename='images/cards__image/fisS1000.webp') }}"
           >
             <div class="cardM__slider">
               <img
                 class="cardM__slider-img cardM__slider-img-first active"
-                src="./images/cards__image/fisS1000.webp"
+                src="{{ url_for('static', filename='images/cards__image/fisS1000.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/fisS2.webp"
+                src="{{ url_for('static', filename='images/cards__image/fisS2.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/fisS3.webp"
+                src="{{ url_for('static', filename='images/cards__image/fisS3.webp') }}"
               />
               <img
                 class="cardM__slider-img"
-                src="./images/cards__image/orangePackaging.webp"
+                src="{{ url_for('static', filename='images/cards__image/orangePackaging.webp') }}"
               />
             </div>
             <div class="cardM__content">
@@ -960,7 +960,7 @@
               <button class="card__cart">
                 <span class="card__cart-amount"></span>
                 <p>в корзину</p>
-                <img src="./images/Shopping__cart-icon-button.svg" alt="Cart" />
+                <img src="{{ url_for('static', filename='images/Shopping__cart-icon-button.svg') }}" alt="Cart" />
               </button>
             </div>
           </div>
@@ -1055,7 +1055,7 @@
               <p class="reviewer">Лариса Сапунова</p>
               <img
                 class="avatar"
-                src="./images/avatars/larisa.png"
+                src="{{ url_for('static', filename='images/avatars/larisa.png') }}"
                 alt="Avatar"
               />
               <div class="review__stars">★★★★★</div>
@@ -1069,7 +1069,7 @@
               <p class="reviewer">Борис Васильевич</p>
               <img
                 class="avatar"
-                src="./images/avatars/boris.png"
+                src="{{ url_for('static', filename='images/avatars/boris.png') }}"
                 alt="Avatar"
               />
               <div class="review__stars">★★★★★</div>
@@ -1085,7 +1085,7 @@
               <p class="reviewer">Сергей Копытов</p>
               <img
                 class="avatar"
-                src="./images/avatars/sergey.png"
+                src="{{ url_for('static', filename='images/avatars/sergey.png') }}"
                 alt="Avatar"
               />
               <div class="review__stars">★★★★★</div>
@@ -1131,7 +1131,7 @@
               <p class="reviewer">Людмила З</p>
               <img
                 class="avatar"
-                src="./images/avatars/ludmila.png"
+                src="{{ url_for('static', filename='images/avatars/ludmila.png') }}"
                 alt="Avatar"
               />
               <div class="review__stars">★★★★★</div>
@@ -1181,16 +1181,16 @@
           <div class="reviewsAll__icons">
             <a
               href="https://market.yandex.ru/business--walnuts/1043529?generalContext=t%3DshopInShop%3Bi%3D1%3Bbi%3D1043529%3B&rs=eJwzkvvEKM3BKLDwEKsEg8a3k6waUybvZ9f4tnmVrMa2fatkAahfC_Q%2C&searchContext=sins_ctx&fullGeneralContext="
-              ><img src="./images/logos/yandex-market-seeklogo.svg"
+              ><img src="{{ url_for('static', filename='images/logos/yandex-market-seeklogo.svg') }}"
             /></a>
             <a href="https://www.wildberries.ru/seller/4247276"
               ><img
-                src="./images/logos/wildberries-seeklogo-2.svg"
+                src="{{ url_for('static', filename='images/logos/wildberries-seeklogo-2.svg') }}"
                 alt="Wildberries Logo"
             /></a>
             <a
               href="https://www.ozon.ru/seller/sr-market-2136694/?miniapp=seller_2136694"
-              ><img src="./images/logos/ozon-seeklogo.svg" alt="Ozon Logo"
+              ><img src="{{ url_for('static', filename='images/logos/ozon-seeklogo.svg') }}" alt="Ozon Logo"
             /></a>
           </div>
         </div>
@@ -1202,7 +1202,7 @@
     <footer class="footer">
       <div class="footer__container common__container">
         <img
-          src="images/logoWalnuts-welcome-page.svg"
+          src="{{ url_for('static', filename='images/logoWalnuts-welcome-page.svg') }}"
           alt="Logotype"
           class="footer__logo"
         />
@@ -1260,8 +1260,8 @@
     <!-- Coding for the footer of the website  -->
 
     <!-- Connecting scripts -->
-    <script src="js/commonScript.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/calc.js"></script>
+    <script src="{{ url_for('static', filename='js/commonScript.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/calc.js') }}"></script>
   </body>
 </html>

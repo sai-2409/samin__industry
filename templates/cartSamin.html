@@ -24,9 +24,9 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/animation.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsiveCart.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsiveCart.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
     <!-- Title icon for the website -->
     <title>Samin</title>
   </head>
@@ -35,7 +35,7 @@
 
     <!-- I will put the main cart here for a moment --><!-- I will put the main cart here for a moment -->
     <div class="floating-cart home__page-back">
-      <img src="images/icons/House_01.svg" alt="HomePage" />
+      <img src="{{ url_for('static', filename='images/icons/House_01.svg') }}" alt="HomePage" />
     </div>
     <!-- I will put the main cart here for a moment -->
 
@@ -43,9 +43,9 @@
     <section class="items">
       <div class="common__container">
         <div class="head">
-          <img src="./images/logoWalnuts-welcome-page.svg" alt="Logotype" />
+          <img src="{{ url_for('static', filename='images/logoWalnuts-welcome-page.svg') }}" alt="Logotype" />
           <h1 class="common__header head__header">Корзина</h1>
-          <img src="./images/logoWalnuts-welcome-page.svg" alt="Logotype" />
+          <img src="{{ url_for('static', filename='images/logoWalnuts-welcome-page.svg') }}" alt="Logotype" />
         </div>
       </div>
     </section>
@@ -58,7 +58,7 @@
             <div class="wall__brand">
               <img
                 class="brand__logo"
-                src="./images/logo__walnuts-print-version.svg"
+                src="{{ url_for('static', filename='images/logo__walnuts-print-version.svg') }}"
                 alt="Logotype"
               />
               <p class="wall__name1">SAMIN</p>
@@ -544,7 +544,7 @@
     <footer class="footer">
       <div class="footer__container common__container">
         <img
-          src="images/logoWalnuts-welcome-page.svg"
+          src="{{ url_for('static', filename='images/logoWalnuts-welcome-page.svg') }}"
           alt="Logotype"
           class="footer__logo"
         />
@@ -656,8 +656,8 @@
       src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=8891bddc-5383-4ef2-a49e-5ff720368e7b"
       type="text/javascript"
     ></script>
-    <script src="js/commonScript.js"></script>
-    <script src="js/saminCartScript.js"></script>
+    <script src="{{ url_for('static', filename='js/commonScript.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/saminCartScript.js') }}"></script>
 
     <!-- <script>
       ymaps.ready(() => {
