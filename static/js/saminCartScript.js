@@ -29,7 +29,7 @@ if (checkoutFormButton) {
 const homePageBack = document.querySelector(".home__page-back");
 if (homePageBack) {
   homePageBack.addEventListener("click", function () {
-    window.location.href = "index.html";
+    window.location.href = "/";
   });
 }
 

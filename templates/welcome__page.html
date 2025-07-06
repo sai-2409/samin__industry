@@ -47,8 +47,11 @@
                 <button class="button button__welcome">Зарегистрироваться</button>
                 <button class="button button__welcome" href="#">Войти</button>   
             </div> 
-            <a class="button__welcome-yandexID-link" href="https://oauth.yandex.com/authorize?response_type=code&client_id=cb0aaca9b73140c4b8fd5d279875b8c0&redirect_uri=https://sai-2409.github.io/samin__industry/index.html">
-                <button class="button__welcome button__welcome-yandexID"><img src="{{ url_for('static', filename='images/logos/yandex-market-svg-logo-white.svg') }}" width="30px" height="30px" alt="Yandex ID">Войти с Яндекс ID</button>
+            <a class="button__welcome button__welcome-yandexID"
+            href="/login"
+            style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;">
+                <img src="{{ url_for('static', filename='images/logos/yandex-market-svg-logo-white.svg') }}" width="30px" height="30px" alt="Yandex ID">
+                Войти с Яндекс ID
             </a>
             </div>
             <div class="welcome">

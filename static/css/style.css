@@ -239,7 +239,6 @@ p {
   align-items: center;
   justify-content: center;
   gap: 10px;
-
 }
 .button__welcome-yandexID img {
   display: block;
@@ -360,6 +359,59 @@ p {
 }
 .header__list-item a:hover {
   /* text-decoration: underline; */
+}
+.header__button-yandexID {
+  background-color: var(--dark-bg);
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: var(--white);
+  margin-right: 10px;
+}
+.header__button-yandexID:hover {
+  background-color: var(--main-orange);
+  transition: 0.3s ease-in-out;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.header__profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(245, 245, 245, 0.7);
+  border-radius: 2rem;
+  padding: 6px 16px 6px 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.header__profile:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  background: var(--main-orange);
+  transition: 0.3s ease-in-out;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header__profile img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e0e0e0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.header__profile span {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #222;
+  letter-spacing: 0.01em;
+  margin-right: 4px;
+  white-space: nowrap;
 }
 .header__order {
   display: flex;

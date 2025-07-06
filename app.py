@@ -1,33 +1,68 @@
-# 🔥 Этот код запускает мини-сервер Flask и показывает index.html на странице http://localhost:5000
-from flask import Flask, render_template
+# This code will run html files on the mini server with Flask
+import os
+import requests
+from flask import Flask, redirect, request, session, url_for, render_template
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'
 
-# Главная страница
-@app.route('/')
-def home():
-    return render_template('index.html')
+CLIENT_ID = "cb0aaca9b73140c4b8fd5d279875b8c0"
+CLIENT_SECRET = "f9d87c4baa2f45f985cf6936b32cb9ea"
+REDIRECT_URI = "http://127.0.0.1:5000/callback"
 
-# Страница калькулятора
-@app.route('/calculator')
+@app.route("/")
+def index():
+    user = session.get("user")
+    return render_template("index.html", user=user)
+
+@app.route("/calculator")
 def calculator():
     return render_template('calc.html')
 
-# Страница корзины
-@app.route('/cart')
+@app.route("/cart")
 def cart():
     return render_template('cartSamin.html')
 
-# Welcome page
-@app.route('/welcome')
+@app.route("/welcome")
 def welcome():
     return render_template('welcome__page.html')
+
+@app.route("/login")
+def login():
+    return redirect(
+        f"https://oauth.yandex.com/authorize?response_type=code&client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}"
+    )
+
+@app.route("/callback")
+def callback():
+    code = request.args.get("code")
+    if not code:
+        return "Ошибка авторизации"
+    token_res = requests.post("https://oauth.yandex.com/token", data={
+        "grant_type": "authorization_code",
+        "code": code,
+        "client_id": CLIENT_ID,
+        "client_secret": CLIENT_SECRET
+    })
+    token_json = token_res.json()
+    access_token = token_json.get("access_token")
+    if not access_token:
+        return "Ошибка получения токена"
+    user_info = requests.get("https://login.yandex.ru/info", headers={
+        "Authorization": f"OAuth {access_token}"
+    }).json()
+    session["user"] = {
+        "login": user_info["login"],
+        "avatar": user_info.get("default_avatar_id")
+    }
+    return redirect(url_for("index"))
 
 if __name__ == '__main__':
     app.run(debug=True)
 
 
-# Coding for going to the cart from saminCart page
-@app.route('/cart')
-def cart():
-    return render_template('cartSamin.html')
+# Putting Yandex ID avatar in the header
+session["user"] = {
+    "login": user_info["login"],
+    "avatar": user_info.get("default_avatar_id")
+}

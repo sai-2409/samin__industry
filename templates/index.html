@@ -36,6 +36,18 @@
     </div>
     <!-- I will put the main cart here for a moment -->
 
+    <!-- Puting Yandex Market ID avatar -->
+     <!-- {% if user %}
+     <div class="header__profile">
+      <img src="https://avatars.yandex.net/get-yapic/{{ user.avatar }}/islands-retina-50" alt="avatar">
+      <span>{{ user.login }}</span>
+     </div>
+     {% else %}
+     <a class="button__welcome-yandexID" href="/login" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;"><img src="{{ url_for('static', filename='images/logos/yandex-market-svg-logo-white.svg') }}" width="30px" height="30px" alt="Yandex ID">Войти через Яндекс</a>
+     {% endif %} -->
+    <!-- Puting Yandex Market ID avatar -->
+
+    <!-- Coding for the header of the website -->
     <header class="header">
       <div class="header__container">
         <nav class="nav">
@@ -91,6 +103,16 @@
               alt="Cart"
               class="header__cart"
             />
+            <!-- Puting Yandex Market ID avatar -->
+            {% if user %}
+            <div class="header__profile">
+              <img src="https://avatars.yandex.net/get-yapic/{{ user.avatar }}/islands-retina-50" alt="avatar">
+              <span>{{ user.login }}</span>
+            </div>
+            {% else %}
+            <a class="header__button-yandexID" href="/login" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;"><img src="{{ url_for('static', filename='images/logos/yandex-market-svg-logo-white.svg') }}" width="30px" height="30px" alt="Yandex ID">Войти c Яндекс ID</a>
+            {% endif %}
+            <!-- Puting Yandex Market ID avatar -->
             <button class="header__button common__button">Заказать</button>
           </div>
         </nav>
