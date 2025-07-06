@@ -94,6 +94,9 @@
     border-radius: 12px;
     margin: 0;
   }
+  .button__welcome-yandexID {
+    margin-top: 10px;
+  }
   .login__link {
     text-align: center;
     font-size: 0.95rem;

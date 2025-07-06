@@ -218,6 +218,9 @@ p {
   align-items: center;
   gap: 40px;
 }
+.button__welcome-yandexID-link {
+  text-decoration: none;
+}
 .button__welcome {
   background: var(--primary-color);
   color: var(--white);
@@ -229,6 +232,19 @@ p {
   width: 100%;
   margin-top: 10px;
   transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+.button__welcome-yandexID {
+  background: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+}
+.button__welcome-yandexID img {
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 .login__link {
   margin-top: 20px;
