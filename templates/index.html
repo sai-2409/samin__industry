@@ -1299,5 +1299,13 @@
     <script src="{{ url_for('static', filename='js/commonScript.js') }}"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script src="{{ url_for('static', filename='js/calc.js') }}"></script>
+
+
+    <!-- Greeting the customer message -->
+    {% if user and just_logged_in %}
+      <div id="welcome-greeting" class="welcome-greeting">
+        Добро пожаловать, {{ user.login }}!
+      </div>
+    {% endif %}
   </body>
 </html>

@@ -13,7 +13,8 @@ REDIRECT_URI = "http://127.0.0.1:5000/callback"
 @app.route("/")
 def index():
     user = session.get("user")
-    return render_template("index.html", user=user)
+    just_logged_in = session.pop("just_logged_in", None)
+    return render_template("index.html", user=user, just_logged_in=just_logged_in)
 
 @app.route("/calculator")
 def calculator():
@@ -55,6 +56,7 @@ def callback():
         "login": user_info["login"],
         "avatar": user_info.get("default_avatar_id")
     }
+    session["just_logged_in"] = True
     return redirect(url_for("index"))
 
 @app.route("/logout")

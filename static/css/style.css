@@ -7,6 +7,7 @@ html {
   margin: 0;
   padding: 0;
   /* overflow: hidden; Prevent scrolling */
+  font-family: "Roboto", sans-serif !important;
 }
 
 *,
@@ -15,6 +16,7 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif !important;
 }
 
 body {
@@ -2727,5 +2729,47 @@ section.pros {
     align-items: center;
     margin-right: 8rem;
     font-size: 10px;
+  }
+}
+
+.welcome-greeting {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 9999;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--main-orange, #ffc338);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 2rem 3rem;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  text-align: center;
+  opacity: 0;
+  animation: welcomeFadeInOut 2.5s cubic-bezier(0.23, 1.01, 0.32, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes welcomeFadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
   }
 }

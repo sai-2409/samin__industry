@@ -316,3 +316,12 @@ overlay.addEventListener("click", () => {
   sidebar.classList.remove("open");
   overlay.classList.remove("show");
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const greeting = document.getElementById("welcome-greeting");
+  if (greeting) {
+    setTimeout(() => {
+      greeting.remove();
+    }, 2500); // Match the animation duration
+  }
+});
