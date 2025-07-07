@@ -64,7 +64,20 @@
               </p>
             </div>
           </div>
-          <button id="toggleBtn">☰ Меню</button>
+          <nav class="nav__small-screens">
+            <!-- Puting Yandex Market ID avatar -->
+            {% if user %}
+            <div class="header__profile header__profile-small-screens">
+              <img src="https://avatars.yandex.net/get-yapic/{{ user.avatar }}/islands-retina-50" alt="avatar">
+              <span>{{ user.login }}</span>
+              <a href="/logout" class="header__profile-logout">Выйти</a>
+            </div>
+            {% else %}
+            <a class="header__button-yandexID header__button-yandexID-small-screens" href="/login" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;"><img src="{{ url_for('static', filename='images/logos/yandex-market-svg-logo-white.svg') }}" width="30px" height="30px" alt="Yandex ID">Войти c Яндекс ID</a>
+            {% endif %}
+            <!-- Puting Yandex Market ID avatar -->
+            <button id="toggleBtn">☰ Меню</button>
+          </nav>
 
           <!-- Overlay -->
           <div id="overlay" class="overlay"></div>
@@ -108,6 +121,7 @@
             <div class="header__profile">
               <img src="https://avatars.yandex.net/get-yapic/{{ user.avatar }}/islands-retina-50" alt="avatar">
               <span>{{ user.login }}</span>
+              <a href="/logout" class="header__profile-logout">Выйти</a>
             </div>
             {% else %}
             <a class="header__button-yandexID" href="/login" style="display: flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none;"><img src="{{ url_for('static', filename='images/logos/yandex-market-svg-logo-white.svg') }}" width="30px" height="30px" alt="Yandex ID">Войти c Яндекс ID</a>

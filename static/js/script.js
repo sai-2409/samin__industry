@@ -20,6 +20,8 @@ floatingCart.addEventListener("click", function () {
   window.location.href = "/cart";
 });
 
+// Coding for the logout button
+
 // Scrolling to Menu section with headerButton
 headerButton.addEventListener("click", function () {
   section3.scrollIntoView({ behavior: "smooth" });

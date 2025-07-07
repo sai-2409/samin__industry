@@ -136,12 +136,16 @@
     font-weight: 700;
     margin-bottom: 2px;
   }
+  .header__profile-small-screens {
+    display: flex;
+    align-items: center;
+    margin-right: 8rem;
+  }
   .header__statement {
     color: var(--main-orange);
     font-size: 12px;
     font-weight: 500;
   }
-
   #toggleBtn {
     display: block;
     margin-top: 1.5rem;
@@ -464,15 +468,31 @@
     margin-top: 20px;
     margin-bottom: 10vh;
   }
+  .header__logos {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding-left: 0;
+  }
   .header__logos img {
     width: 50px;
     height: 50px;
+    margin-right: 0;
+    margin-bottom: 2px;
+  }
+  .logo__name {
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
   }
   .header__samin {
-    font-size: 20px;
+    margin-bottom: 0;
+    font-size: 18px;
   }
   .header__statement {
     font-size: 10px;
+    margin-bottom: 0;
   }
   .main__pic img {
     width: 80%;
@@ -660,7 +680,7 @@
   }
   .card__cart p {
     position: absolute;
-    top: 0.10em;
+    top: 0.1em;
     left: 30%;
     margin: 0;
   }

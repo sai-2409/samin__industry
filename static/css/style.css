@@ -373,6 +373,7 @@ p {
   transform: scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
 .header__profile {
   display: flex;
   align-items: center;
@@ -413,6 +414,53 @@ p {
   margin-right: 4px;
   white-space: nowrap;
 }
+
+.header__profile {
+  position: relative;
+}
+.header__profile-small-screens {
+  display: none;
+}
+.header__profile-logout {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translateX(-100%) scaleY(0.8);
+  background: #fff;
+  color: #e74c3c;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 10;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.header__profile:hover .header__profile-logout {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) scaleY(1);
+  visibility: visible;
+}
+
+.header__profile-logout:hover {
+  background: #fbeee0;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) scaleY(1);
+  visibility: visible;
+}
+
+.header__profile-logout:active {
+  background: #fbeee0;
+}
 .header__order {
   display: flex;
   align-items: center;
@@ -421,6 +469,7 @@ p {
   margin-right: 10px;
   padding: 3px;
   cursor: pointer;
+  display: none;
 }
 .header__cart:hover {
   background-color: var(--ligherGray);
@@ -2652,5 +2701,31 @@ section.pros {
     flex-shrink: 0;
     flex-grow: 0;
     margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .header__logos {
+    display: flex;
+  }
+}
+@media (min-width: 701px) {
+  .header__logos {
+    display: flex; /* or whatever your default is */
+  }
+}
+
+/* Hide by default (large screens) */
+.header__button-yandexID-small-screens {
+  display: none !important;
+}
+
+/* Show only on small screens */
+@media (max-width: 900px) {
+  .header__button-yandexID-small-screens {
+    display: flex !important;
+    align-items: center;
+    margin-right: 8rem;
+    font-size: 10px;
   }
 }
