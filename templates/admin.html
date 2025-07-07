@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Samin Admin Dashboard</title>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .admin-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 400px;
+      }
+      .admin-title {
+        color: #333;
+        margin-bottom: 1rem;
+      }
+      .admin-button {
+        background: #667eea;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 10px;
+        transition: background 0.3s;
+      }
+      .admin-button:hover {
+        background: #5a6fd8;
+      }
+      .admin-info {
+        color: #666;
+        margin: 1rem 0;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="admin-container">
+      <h1 class="admin-title">Samin Admin Dashboard</h1>
+      <p class="admin-info">Welcome to the admin panel</p>
+
+      <button class="admin-button" onclick="openReactDashboard()">
+        Open React Dashboard
+      </button>
+
+      <button class="admin-button" onclick="window.location.href='/'">
+        Back to Main Site
+      </button>
+
+      <button class="admin-button" onclick="window.location.href='/logout'">
+        Logout
+      </button>
+    </div>
+
+    <script>
+      function openReactDashboard() {
+        // Open React admin dashboard in a new tab
+        window.open("http://localhost:3000", "_blank");
+      }
+    </script>
+  </body>
+</html>
