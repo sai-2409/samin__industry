@@ -1,6 +1,7 @@
 # This code will run html files on the mini server with Flask
 import os
 import requests
+import json
 from flask import Flask, redirect, request, session, url_for, render_template
 
 app = Flask(__name__)
@@ -33,9 +34,28 @@ def login():
     return redirect(
         f"https://oauth.yandex.com/authorize?response_type=code&client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}"
     )
+
+# Admin dashboard 
 @app.route("/admin")
 def admin():
-    return render_template("admin.html")
+    with open("static/data/orders.json") as f:
+        orders = json.load(f)
+
+    with open("static/data/customers.json") as f:
+        customers = json.load(f)
+
+    total_sales = sum(order["price"] for order in orders)
+
+    return render_template("admin.html", orders=orders, customers=customers, total_sales=total_sales)
+
+# Not showing error if the file is empty
+# with open('data/orders.json', 'r') as f:
+#     try:
+#         orders = json.load(f)
+#     except json.JSONDecodeError:
+#         orders = []
+
+
 
 @app.route("/callback")
 def callback():

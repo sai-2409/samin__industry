@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "product": "Almonds",
+        "price": 1200
+    },
+    {
+        "id": 2,
+        "product": "Pistachios",
+        "price": 2150
+    },
+    {
+        "id": 3,
+        "product": "Walnuts",
+        "price": 3200
+    }
+]
