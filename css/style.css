@@ -1234,6 +1234,53 @@ section.pros {
   padding: 10px 0;
   opacity: 0.8;
 }
+.footer__company {
+  min-width: 180px;
+}
+
+.footer__dropdown-btn {
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.footer__dropdown-btn:hover {
+  background: #666;
+}
+
+.footer__dropdown-content {
+  background: #232323;
+  color: #fff;
+  border-radius: 12px;
+  margin-top: 10px;
+  padding: 0 18px;
+  font-size: 15px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s,
+    padding 0.3s;
+  will-change: max-height, opacity, padding;
+  pointer-events: none;
+}
+
+.footer__dropdown-content.open {
+  padding: 14px 18px;
+  max-height: 400px; /* or a value big enough for your content */
+  opacity: 1;
+  pointer-events: auto;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s,
+    padding 0.3s;
+}
 /* Coding styles for the footer of the website */
 
 @media (max-width: 768px) {

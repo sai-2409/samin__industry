@@ -314,3 +314,10 @@ overlay.addEventListener("click", () => {
   sidebar.classList.remove("open");
   overlay.classList.remove("show");
 });
+
+
+// Dropdown functionality for the company info in the footer
+function toggleCompanyInfo() {
+  const info = document.getElementById("company-info");
+  info.classList.toggle("open");
+}
