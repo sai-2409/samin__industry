@@ -1180,3 +1180,10 @@ document.addEventListener("DOMContentLoaded", renderDeliveryDateOptions);
     }
   });
 })();
+
+
+// Dropdown functionality for the company info in the footer
+function toggleCompanyInfo() {
+  const info = document.getElementById("company-info");
+  info.classList.toggle("open");
+}
