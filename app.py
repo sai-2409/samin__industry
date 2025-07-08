@@ -33,6 +33,9 @@ def login():
     return redirect(
         f"https://oauth.yandex.com/authorize?response_type=code&client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}"
     )
+@app.route("/admin")
+def admin():
+    return render_template("admin.html")
 
 @app.route("/callback")
 def callback():
@@ -73,8 +76,4 @@ session["user"] = {
     "login": user_info["login"],
     "avatar": user_info.get("default_avatar_id")
 }
-
-# Admin dashboard 
-@app.route('/admin')
-def admin():
-    return render_template('admin.html')
+    
