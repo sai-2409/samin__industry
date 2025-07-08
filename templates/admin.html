@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google fonts and icons-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Dashboard</title>
+  </head>
+  <body class="bg-gray-100 font-['Roboto'] min-h-screen">
+    <div class="min-h-screen flex flex-col">
+      <!-- Header -->
+      <header class="bg-white shadow p-6 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <img
+            src="/static/images/logoWalnuts-welcome-page.svg"
+            alt="Samin Logo"
+            class="h-12 w-12 rounded-full bg-gray-200"
+          />
+          <h1 class="text-3xl font-bold text-orange-700 tracking-wide">
+            Samin Admin Dashboard
+          </h1>
+        </div>
+        <div class="text-gray-600 font-medium">Добро пожаловать, Админ!</div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-8 flex flex-col gap-8 max-w-6xl mx-auto w-full">
+        <!-- Sales Overview -->
+        <section
+          class="bg-white rounded-2xl shadow p-6 flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <div>
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">
+              Продажи за сегодня
+            </h2>
+            <div class="text-4xl font-bold text-green-600">₽ 0</div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-gray-500">Обновлено:</span>
+            <span class="text-gray-700">--:--</span>
+          </div>
+        </section>
+
+        <!-- Orders Table -->
+        <section class="bg-white rounded-2xl shadow p-6">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">
+            Информация о заказах
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    #
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Дата
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Состав заказа
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Сумма
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Статус
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-100">
+                <!-- {% if orders and orders|length > 0 %} {% for order in orders %} -->
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap"></td>
+                  <td class="px-6 py-4 whitespace-nowrap"></td>
+                  <td class="px-6 py-4 whitespace-nowrap"></td>
+                  <td class="px-6 py-4 whitespace-nowrap"></td>
+                    <span
+                      class="inline-block px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
+                      ></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="5" class="text-center py-6 text-gray-400">
+                    Нет заказов
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Customer Information -->
+        <section class="bg-white rounded-2xl shadow p-6">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">
+            Информация о клиентах
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-gray-50 rounded-xl p-5 shadow flex flex-col gap-2">
+              <div class="flex items-center gap-3 mb-2">
+                <span
+                  class="inline-block h-10 w-10 rounded-full bg-orange-200 flex items-center justify-center text-xl font-bold text-orange-700"
+                  ></span
+                >
+                <div>
+                  <div class="font-semibold text-gray-800">
+                  </div>
+                  <div class="text-gray-500 text-sm">
+                  </div>
+                </div>
+              </div>
+              <div class="text-gray-700 text-sm">
+                <span class="font-medium">Адрес:</span>
+              </div>
+              <div class="text-gray-700 text-sm">
+                <span class="font-medium">Примечание:</span>
+              </div>
+              <div class="text-gray-700 text-sm">
+                <span class="font-medium">Дата заказа:</span>
+              </div>
+              <div class="text-gray-700 text-sm">
+                <span class="font-medium">Доставка:</span>
+              </div>
+            </div>
+            <div class="text-center text-gray-400 col-span-2 py-6">
+              Нет клиентов
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

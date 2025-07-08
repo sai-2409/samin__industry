@@ -13,3 +13,9 @@ function updateFloatingCartCounter() {
     counter.textContent = getTotalCartQuantity();
   }
 }
+
+// Dropdown functionality for the company info in the footer
+function toggleCompanyInfo() {
+  const info = document.getElementById("company-info");
+  info.classList.toggle("open");
+}

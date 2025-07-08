@@ -73,3 +73,8 @@ session["user"] = {
     "login": user_info["login"],
     "avatar": user_info.get("default_avatar_id")
 }
+
+# Admin dashboard 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
