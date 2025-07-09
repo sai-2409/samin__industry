@@ -2,7 +2,15 @@
 import os
 import requests
 import json
-from flask import Flask, redirect, request, session, url_for, render_template
+from flask import (
+    Flask,
+    redirect,
+    request,
+    session,
+    url_for,
+    render_template
+)
+
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
