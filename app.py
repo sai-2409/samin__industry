@@ -36,17 +36,16 @@ def login():
     )
 
 # Admin dashboard 
-@app.route("/admin")
+@app.route('/admin')
 def admin():
-    with open("static/data/orders.json") as f:
-        orders = json.load(f)
+    try:
+        with open('static/data/orders.json', 'r') as f:
+            orders = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        orders = []
 
-    with open("static/data/customers.json") as f:
-        customers = json.load(f)
+    return render_template('admin.html', orders=orders)
 
-    total_sales = sum(order["price"] for order in orders)
-
-    return render_template("admin.html", orders=orders, customers=customers, total_sales=total_sales)
 
 # Not showing error if the file is empty
 # with open('data/orders.json', 'r') as f:

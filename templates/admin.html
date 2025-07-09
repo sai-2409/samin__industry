@@ -92,22 +92,29 @@
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-100">
+                {% if orders %} {% for order in orders %}
                 <tr>
-                  <td class="px-6 py-4 whitespace-nowrap"></td>
-                  <td class="px-6 py-4 whitespace-nowrap"></td>
-                  <td class="px-6 py-4 whitespace-nowrap"></td>
-                  <td class="px-6 py-4 whitespace-nowrap"></td>
+                  <td class="px-6 py-4 whitespace-nowrap">{{ order.id }}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">{{ order.date }}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">{{ order.items }}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    ₽ {{ order.total }}
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
                     <span
                       class="inline-block px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold"
-                      ></span
                     >
+                      {{ order.status }}
+                    </span>
                   </td>
                 </tr>
+                {% endfor %} {% else %}
                 <tr>
                   <td colspan="5" class="text-center py-6 text-gray-400">
                     Нет заказов
                   </td>
                 </tr>
+                {% endif %}
               </tbody>
             </table>
           </div>
@@ -123,13 +130,10 @@
               <div class="flex items-center gap-3 mb-2">
                 <span
                   class="inline-block h-10 w-10 rounded-full bg-orange-200 flex items-center justify-center text-xl font-bold text-orange-700"
-                  ></span
-                >
+                ></span>
                 <div>
-                  <div class="font-semibold text-gray-800">
-                  </div>
-                  <div class="text-gray-500 text-sm">
-                  </div>
+                  <div class="font-semibold text-gray-800"></div>
+                  <div class="text-gray-500 text-sm"></div>
                 </div>
               </div>
               <div class="text-gray-700 text-sm">

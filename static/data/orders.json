@@ -1,17 +1,16 @@
 [
     {
-        "id": 1,
-        "product": "Almonds",
-        "price": 1200
+      "id": 1,
+      "date": "2025-07-07",
+      "items": "Almonds x2",
+      "total": 1400,
+      "status": "Выполнен"
     },
     {
-        "id": 2,
-        "product": "Pistachios",
-        "price": 2150
-    },
-    {
-        "id": 3,
-        "product": "Walnuts",
-        "price": 3200
+      "id": 2,
+      "date": "2025-07-06",
+      "items": "Walnuts x3",
+      "total": 2100,
+      "status": "В ожидании"
     }
-]
+  ]
