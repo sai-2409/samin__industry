@@ -27,7 +27,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/responsiveCart.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}">
-    <!-- Title icon for the website -->
+
+    <!-- Title for the website -->
     <title>Samin</title>
   </head>
   <body>
@@ -526,9 +527,13 @@
               <span>Ещё 3 платежа раз в 2 недели</span>
             </div>
           </div> -->
-          <button class="payment__pay-btn">
-            Оплатить картой <span class="payment__pay-card">••0042</span>
+          <button id="yandex-pay-button" class="payment__pay-btn">
+            Оплатить онлайн
           </button>
+          
+          <div id="yandex-pay-button-container" style="display: none;"></div>
+          
+          
           <!-- <div class="payment__secure">
             Безопасная оплата с
             <img
@@ -661,14 +666,54 @@
       </div>
     </div>
 
+    <!-- Success Payment Modal -->
+    <div class="modal-success" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-title">Мы получили ваш заказ</div>
+        <div class="success-icon">
+          <svg viewBox="0 0 80 80" fill="none">
+            <circle
+              cx="40"
+              cy="40"
+              r="38"
+              stroke="#1dbf73"
+              stroke-width="4"
+              fill="#eafff3"
+            />
+            <path
+              class="success-check"
+              d="M24 42 L36 54 L56 30"
+              stroke="#1dbf73"
+              stroke-width="5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              fill="none"
+            />
+          </svg>
+        </div>
+        <div class="modal-btn">
+          Урааааа!
+        </div>
+      </div>
+    </div>
+    <!-- Success Payment Modal -->
+
     <!-- Connecting JS to the HTML -->
+
+    <!-- Connecting Yandex Market vidget and API for payment -->
+    <script src="https://pay.yandex.ru/sdk/v1/pay.js"></script>
+
+
+
     <!-- Connecting the Yandex Maps API Key -->
     <script
       src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=8891bddc-5383-4ef2-a49e-5ff720368e7b"
       type="text/javascript"
     ></script>
+    <script src="{{ url_for('static', filename='js/yandexPayInit.js') }}"></script>
     <script src="{{ url_for('static', filename='js/commonScript.js') }}"></script>
     <script src="{{ url_for('static', filename='js/saminCartScript.js') }}"></script>
+
 
     <!-- <script>
       ymaps.ready(() => {

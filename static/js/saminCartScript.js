@@ -1180,3 +1180,19 @@ document.addEventListener("DOMContentLoaded", renderDeliveryDateOptions);
     }
   });
 })();
+
+
+// Showing success payment modal when payment is successful
+const paymentButton = document.querySelector(".payment__pay-btn");
+paymentButton.addEventListener("click", () => {
+  const modalSuccess = document.querySelector(".modal-success")
+
+  modalSuccess.style.display = "flex";
+  
+  setTimeout(() => {
+    modalSuccess.style.display = "none";
+  }, 2000);
+});
+
+
+
