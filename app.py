@@ -90,8 +90,8 @@ if __name__ == '__main__':
 
 
 # Putting Yandex ID avatar in the header
-session["user"] = {
-    "login": user_info["login"],
-    "avatar": user_info.get("default_avatar_id")
-}
+# session["user"] = {
+#     "login": user_info["login"],
+#     "avatar": user_info.get("default_avatar_id")
+# }
     
