@@ -55,15 +55,6 @@ def admin():
     return render_template('admin.html', orders=orders)
 
 
-# Not showing error if the file is empty
-# with open('data/orders.json', 'r') as f:
-#     try:
-#         orders = json.load(f)
-#     except json.JSONDecodeError:
-#         orders = []
-
-
-
 @app.route("/callback")
 def callback():
     code = request.args.get("code")
