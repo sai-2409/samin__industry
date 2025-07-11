@@ -17,11 +17,10 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="shortcut icon"
-      href="images/logo__walnuts-print-version.svg"
-      type="image/x-icon"
-    />
+    <!-- Better favicon support -->
+    <link rel="icon" type="image/svg+xml" href="images/logo__walnuts-print-version.svg" />
+    <link rel="icon" type="image/png" href="images/logo__walnuts-print-version.png" />
+    <link rel="apple-touch-icon" href="images/logo__walnuts-print-version.png" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/animation.css" />
@@ -526,7 +525,7 @@
               <span>Ещё 3 платежа раз в 2 недели</span>
             </div>
           </div> -->
-          <button class="payment__pay-btn">
+          <button class="payment__pay-btn" id="payment__pay-btn-id">
             Оплатить картой <span class="payment__pay-card">••0042</span>
           </button>
           <!-- <div class="payment__secure">
@@ -651,11 +650,16 @@
     </div>
 
     <!-- Connecting JS to the HTML -->
+
+    <!-- Connecting GSAP to my html -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
     <!-- Connecting the Yandex Maps API Key -->
     <script
       src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=8891bddc-5383-4ef2-a49e-5ff720368e7b"
       type="text/javascript"
     ></script>
+    <script src="js/animationGSAP.js"></script>
     <script src="js/commonScript.js"></script>
     <script src="js/saminCartScript.js"></script>
 

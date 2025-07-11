@@ -110,3 +110,90 @@ Usage:
 .fade-out-slide {
   animation: fadeOutSlide 0.5s forwards;
 }
+
+/* Beautiful cart animations */
+@keyframes cartBounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes cardGlow {
+  0% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(76, 175, 80, 0.4);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+@keyframes flyingItem {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2) rotate(360deg);
+  }
+}
+
+/* Cart button hover effects */
+.card__cart {
+  transition: all 0.3s ease;
+}
+
+.card__cart:hover {
+  transform: scale(1.05);
+  background: #45a049;
+}
+
+.card__cart:active {
+  transform: scale(0.95);
+}
+
+/* Floating cart animations */
+.floating-cart {
+  transition: all 0.3s ease;
+}
+
+.floating-cart:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.floating__cart-counter {
+  transition: all 0.3s ease;
+}
+
+/* Product card hover effects */
+.cardM {
+  transition: all 0.3s ease;
+}
+
+.cardM:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Cart counter animations */
+.cart-bounce {
+  animation: cartBounce 0.4s ease-out;
+}
+
+.card-glow {
+  animation: cardGlow 0.3s ease-out;
+}
+
+.flying-item {
+  animation: flyingItem 0.8s ease-out forwards;
+}

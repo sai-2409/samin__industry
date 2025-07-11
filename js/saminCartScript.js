@@ -112,8 +112,8 @@ if (form) {
             <div class="saved-address__text"><span style="color:#888;">Индекс:</span> ${zipCode}</div>
         </div>
           <div class="saved-address__actions" style="margin-top: 8px;">
-            <button class="saved-address__button saved__address-button-select common__button">Выбрать</button>
-          <button class="saved-address__button saved__address-button-delete common__button">Удалить</button>
+            <button class="saved-address__button saved__address-button-select ">Выбрать</button>
+          <button class="saved-address__button saved__address-button-delete ">Удалить</button>
         </div>
       </div>
   `;

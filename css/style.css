@@ -84,11 +84,12 @@ p {
   font-size: 20px;
   font-weight: 700;
   border-radius: 14px;
-  border: 2px solid var(--main-orange);
+  border: none;
+  /* border: 2px solid var(--main-orange); */
   background: var(--main-orange);
   color: var(--white);
-  box-shadow: 0 2px 12px rgba(255, 195, 56, 0.18),
-    0 1.5px 6px rgba(0, 0, 0, 0.07);
+  /* box-shadow: 0 2px 12px rgba(255, 195, 56, 0.18),
+    0 1.5px 6px rgba(0, 0, 0, 0.07); */
   transition: all 0.25s cubic-bezier(0.23, 1.01, 0.32, 1);
   cursor: pointer;
   outline: none;
@@ -498,7 +499,7 @@ p {
 }
 .commitment__text {
   color: var(--text-color);
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 400;
   max-width: 520px;
 }
@@ -1821,6 +1822,8 @@ section.pros {
 .saved-address__button:hover {
   background-color: #f8f8f8;
   border-color: #888;
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
 /* Styles for selected address button */
@@ -2531,8 +2534,8 @@ section.pros {
   box-shadow: 0 2px 8px rgba(255, 179, 0, 0.13);
 }
 .samin-checkbox input[type="checkbox"]:checked + .checkmark {
-  background: #ffe600;
-  border-color: #1dbf73;
+  background: var(--ligherGray);
+  border-color: var(--main-orange);
   box-shadow: 0 2px 8px rgba(29, 191, 115, 0.13);
 }
 .samin-checkbox .checkmark::after {
@@ -2546,7 +2549,7 @@ section.pros {
   top: 3px;
   width: 7px;
   height: 13px;
-  border: solid #1dbf73;
+  border: solid var(--main-orange);
   border-width: 0 3px 3px 0;
   border-radius: 2px;
   transform: rotate(45deg);
